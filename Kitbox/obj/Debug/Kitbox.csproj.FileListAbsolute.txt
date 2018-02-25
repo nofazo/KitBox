@@ -1,0 +1,9 @@
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\bin\Debug\Kitbox.exe.config
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\bin\Debug\Kitbox.exe
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\bin\Debug\Kitbox.pdb
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.Properties.Resources.resources
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.exe
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.pdb
