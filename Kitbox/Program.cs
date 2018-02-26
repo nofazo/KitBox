@@ -13,7 +13,7 @@ namespace Kitbox
         public int lockerNumber;
         public List<Locker> lockerList;
         public Extrusion extrusion;
-        //liste cornière après
+        //liste cornière après, pas besoin de liste comme mêmes cornières (prix *4)
 
         public CupBoard (double width, double depth, int lockerNumber)
         {
@@ -32,7 +32,7 @@ namespace Kitbox
 
             double extrusionPrice = extrusion.GetPrice();
 
-            return lockerPrice + extrusionPrice ;
+            return lockerPrice + 4*extrusionPrice ;
         }
     }
 
@@ -54,6 +54,14 @@ namespace Kitbox
             return price;
         }
 
+    }
+
+    class CutExtrusion : Extrusion
+    {
+        public CutExtrusion (string color, double height, double price) : base (color, height, price)
+        {
+
+        }
     }
 
 
@@ -79,6 +87,21 @@ namespace Kitbox
             }
 
             return result;
+        }
+
+        public void AddAccessory(Accessory accessory)
+        {
+            //ajouter l'accessoire dans accessorylist
+        }
+
+        public void RemoveAccessory(Accessory accessory)
+        {
+            //supprimer accessoire dans la liste
+        }
+
+        public void UpdateAccessory(Accessory accessory)
+        {
+            //+ de paramètre pour les variables spécifiques à changer?
         }
 
     }
@@ -117,6 +140,37 @@ namespace Kitbox
         public override bool IsMajor()
         {
             return isMajor;
+        }
+    }
+
+    public class GlassDoor : Door
+    {
+       new  public double price;
+
+        public GlassDoor (double height, double width, string color, string material) : base (height, width, color, material)
+        {
+
+        }
+
+        public override double GetPrice()
+        {
+            return price;
+        }
+    }
+
+    public class NormalDoor : Door
+    {
+        public double cabinetHandlePrice;
+        new public double price;
+
+        public NormalDoor(double height, double width, string color, string material) : base (height, width, color, material)
+        {
+
+        }
+
+        public override double GetPrice()
+        {
+            return price;
         }
     }
 
@@ -163,6 +217,27 @@ namespace Kitbox
         }
     }
 
+    public class ARAVrail : Rail
+    {
+        public double width;
+
+        public ARAVrail(double width)
+        {
+            this.width = width;
+        }
+    }
+
+    public class GDrail : Rail
+    {
+        public double depth;
+
+        public GDrail(double depth)
+        {
+            this.depth = depth;
+        }
+    }
+
+
     public class Panel : Accessory
     {
         public string color;
@@ -184,6 +259,42 @@ namespace Kitbox
             return isMajor;
         }
 
+    }
+
+    public class ARpanel : Panel
+    {
+        public double width;
+        public double height;
+
+        public ARpanel(string color, double width, double height) : base (color)
+        {
+            this.width = width;
+            this.height = height;
+        }
+    }
+
+    public class GDpanel : Panel
+    {
+        public double depth;
+        public double height;
+
+        public GDpanel(string color, double depth, double height) : base(color)
+        {
+            this.depth = depth;
+            this.height = height;
+        }
+    }
+
+    public class HBpanel : Panel
+    {
+        public double depth;
+        public double width;
+
+        public HBpanel(string color, double depth, double width) : base(color)
+        {
+            this.depth = depth;
+            this.width = width;
+        }
     }
 
 }
