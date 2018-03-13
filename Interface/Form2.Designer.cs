@@ -1,6 +1,6 @@
 ﻿namespace Interface
 {
-    partial class Form1
+    partial class Form2
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1060, 588);
-            this.Name = "Form1";
-            this.Text = "Form3";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.BackColor = System.Drawing.Color.Thistle;
+            this.ClientSize = new System.Drawing.Size(747, 543);
+            this.Name = "Form2";
+            this.Text = "Etape 2";
             this.ResumeLayout(false);
 
         }

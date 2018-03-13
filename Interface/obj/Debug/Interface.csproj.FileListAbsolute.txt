@@ -1,0 +1,16 @@
+C:\Users\16354\Downloads\Kitbox\Interface\bin\Debug\Interface.exe.config
+C:\Users\16354\Downloads\Kitbox\Interface\bin\Debug\Interface.exe
+C:\Users\16354\Downloads\Kitbox\Interface\bin\Debug\Interface.pdb
+C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.csprojResolveAssemblyReference.cache
+C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.Form1.resources
+C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.Properties.Resources.resources
+C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.csproj.GenerateResource.Cache
+C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
+C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.exe
+C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.pdb
+C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.Form2.resources
+C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.UserControl1.resources
+C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.UserControl2.resources
+C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.UserControl3.resources
+C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.UserControl4.resources
+C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.Form3.resources
