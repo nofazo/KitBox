@@ -22,5 +22,10 @@ namespace Interface
             this.Controls.Clear();
             this.Controls.Add(new UserControl4());
         }
+
+        private void comboWidth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

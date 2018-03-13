@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace Interface
 {
-    public partial class UserControl2 : UserControl
+    public partial class UserControl5 : UserControl
     {
-        public UserControl2()
+        public UserControl5()
         {
             InitializeComponent();
-        }
-
-        private void Start_Click(object sender, EventArgs e)
-        {
-            this.Controls.Clear();
-            this.Controls.Add(new UserControl3());
         }
     }
 }

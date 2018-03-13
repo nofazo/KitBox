@@ -8,9 +8,8 @@ C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.csproj.GenerateRes
 C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
 C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.exe
 C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.pdb
-C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.Form2.resources
-C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.UserControl1.resources
 C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.UserControl2.resources
 C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.UserControl3.resources
 C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.UserControl4.resources
-C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.Form3.resources
+C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.Form2.resources
+C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.UserControl5.resources

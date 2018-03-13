@@ -1,6 +1,6 @@
 ﻿namespace Interface
 {
-    partial class UserControl2
+    partial class UserControl5
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -28,34 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Start = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // Start
+            // textBox1
             // 
-            this.Start.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Start.Location = new System.Drawing.Point(443, 363);
-            this.Start.Name = "Start";
-            this.Start.Size = new System.Drawing.Size(167, 73);
-            this.Start.TabIndex = 0;
-            this.Start.Text = "Start";
-            this.Start.UseVisualStyleBackColor = true;
-            this.Start.Click += new System.EventHandler(this.Start_Click);
+            this.textBox1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textBox1.Location = new System.Drawing.Point(291, 26);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(370, 34);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "Recapitulaif de la commande";
             // 
-            // UserControl2
+            // UserControl5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Interface.Properties.Resources.welcome;
-            this.Controls.Add(this.Start);
-            this.Name = "UserControl2";
-            this.Size = new System.Drawing.Size(1052, 592);
+            this.BackgroundImage = global::Interface.Properties.Resources.KITBOX_fond_basecorr__1_2;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.textBox1);
+            this.Name = "UserControl5";
+            this.Size = new System.Drawing.Size(1052, 606);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button Start;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

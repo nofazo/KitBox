@@ -16,5 +16,28 @@ namespace Interface
         {
             InitializeComponent();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void woodButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (woodButton.Checked == true)
+            {
+                textBox2.Visible = true;
+            }
+            else
+            {
+                textBox2.Visible = false;
+
+            }
+        }
+
+        private void DoorValid_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

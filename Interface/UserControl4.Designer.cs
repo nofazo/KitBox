@@ -28,58 +28,135 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboLargeur = new System.Windows.Forms.ComboBox();
+            this.AddLocker = new System.Windows.Forms.Button();
+            this.comboLongeur = new System.Windows.Forms.ComboBox();
+            this.ColorBox = new System.Windows.Forms.ComboBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.Finish = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // AddLocker
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(799, 412);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(250, 96);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Add locker";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.AddLocker.BackColor = System.Drawing.Color.Silver;
+            this.AddLocker.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddLocker.ForeColor = System.Drawing.Color.Black;
+            this.AddLocker.Location = new System.Drawing.Point(799, 404);
+            this.AddLocker.Name = "AddLocker";
+            this.AddLocker.Size = new System.Drawing.Size(250, 110);
+            this.AddLocker.TabIndex = 0;
+            this.AddLocker.Text = "Add locker";
+            this.AddLocker.UseVisualStyleBackColor = false;
+            this.AddLocker.Click += new System.EventHandler(this.AddLocker_Click);
             // 
-            // comboLargeur
+            // comboLongeur
             // 
-            this.comboLargeur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboLargeur.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboLargeur.Items.AddRange(new object[] {
-            "32",
-            "42",
-            "52",
-            "62",
-            "80",
-            "100",
-            "120"});
-            this.comboLargeur.Location = new System.Drawing.Point(296, 200);
-            this.comboLargeur.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.comboLargeur.Name = "comboLargeur";
-            this.comboLargeur.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.comboLargeur.Size = new System.Drawing.Size(126, 33);
-            this.comboLargeur.TabIndex = 13;
+            this.comboLongeur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboLongeur.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboLongeur.Items.AddRange(new object[] {
+            "36",
+            "46",
+            "56",
+            "72",
+            "92",
+            "108",
+            "112",
+            "138",
+            "144",
+            "168",
+            "180",
+            "184",
+            "216",
+            "224",
+            "230",
+            "252",
+            "276",
+            "280"});
+            this.comboLongeur.Location = new System.Drawing.Point(296, 200);
+            this.comboLongeur.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.comboLongeur.Name = "comboLongeur";
+            this.comboLongeur.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.comboLongeur.Size = new System.Drawing.Size(126, 33);
+            this.comboLongeur.TabIndex = 13;
+            this.comboLongeur.SelectedIndexChanged += new System.EventHandler(this.comboLongeur_SelectedIndexChanged);
+            // 
+            // ColorBox
+            // 
+            this.ColorBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ColorBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColorBox.Items.AddRange(new object[] {
+            "Brown",
+            "White"});
+            this.ColorBox.Location = new System.Drawing.Point(296, 259);
+            this.ColorBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.ColorBox.Name = "ColorBox";
+            this.ColorBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ColorBox.Size = new System.Drawing.Size(126, 33);
+            this.ColorBox.TabIndex = 14;
+            this.ColorBox.SelectedIndexChanged += new System.EventHandler(this.ColorBox_SelectedIndexChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(296, 322);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(39, 17);
+            this.radioButton1.TabIndex = 16;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "No";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(358, 322);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(43, 17);
+            this.radioButton2.TabIndex = 17;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Yes";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // Finish
+            // 
+            this.Finish.BackColor = System.Drawing.Color.Silver;
+            this.Finish.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Finish.ForeColor = System.Drawing.Color.Black;
+            this.Finish.Location = new System.Drawing.Point(523, 404);
+            this.Finish.Name = "Finish";
+            this.Finish.Size = new System.Drawing.Size(250, 110);
+            this.Finish.TabIndex = 18;
+            this.Finish.Text = "Finish";
+            this.Finish.UseVisualStyleBackColor = false;
             // 
             // UserControl4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::Interface.Properties.Resources.locker;
-            this.Controls.Add(this.comboLargeur);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Finish);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.ColorBox);
+            this.Controls.Add(this.comboLongeur);
+            this.Controls.Add(this.AddLocker);
             this.Name = "UserControl4";
             this.Size = new System.Drawing.Size(1052, 592);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboLargeur;
+        private System.Windows.Forms.Button AddLocker;
+        private System.Windows.Forms.ComboBox comboLongeur;
+        private System.Windows.Forms.ComboBox ColorBox;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Button Finish;
     }
 }

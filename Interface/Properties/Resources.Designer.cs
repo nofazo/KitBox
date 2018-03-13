@@ -73,6 +73,56 @@ namespace Interface.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap KITBOX_fond_basecorr {
+            get {
+                object obj = ResourceManager.GetObject("KITBOX fond basecorr", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap KITBOX_fond_basecorr__1_ {
+            get {
+                object obj = ResourceManager.GetObject("KITBOX fond basecorr (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap KITBOX_fond_basecorr__1_1 {
+            get {
+                object obj = ResourceManager.GetObject("KITBOX fond basecorr (1)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap KITBOX_fond_basecorr__1_2 {
+            get {
+                object obj = ResourceManager.GetObject("KITBOX fond basecorr (1)2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap KITBOX_fond_basecorr1 {
+            get {
+                object obj = ResourceManager.GetObject("KITBOX fond basecorr1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap locker {
             get {
                 object obj = ResourceManager.GetObject("locker", resourceCulture);
@@ -86,6 +136,16 @@ namespace Interface.Properties {
         internal static System.Drawing.Bitmap welcome {
             get {
                 object obj = ResourceManager.GetObject("welcome", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap welcome1 {
+            get {
+                object obj = ResourceManager.GetObject("welcome1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
