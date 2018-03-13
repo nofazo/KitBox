@@ -44,9 +44,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(27, 14);
+            this.label1.Location = new System.Drawing.Point(36, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 58);
+            this.label1.Size = new System.Drawing.Size(247, 74);
             this.label1.TabIndex = 0;
             this.label1.Text = "KIT BOX";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -56,10 +57,11 @@
             this.textBox3.BackColor = System.Drawing.Color.LightGray;
             this.textBox3.Cursor = System.Windows.Forms.Cursors.Default;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(20, 94);
+            this.textBox3.Location = new System.Drawing.Point(27, 116);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(1044, 98);
+            this.textBox3.Size = new System.Drawing.Size(1391, 120);
             this.textBox3.TabIndex = 5;
             this.textBox3.Text = resources.GetString("textBox3.Text");
             // 
@@ -68,10 +70,11 @@
             this.textBox1.BackColor = System.Drawing.Color.LightGray;
             this.textBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(17, 225);
+            this.textBox1.Location = new System.Drawing.Point(23, 277);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(122, 29);
+            this.textBox1.Size = new System.Drawing.Size(161, 34);
             this.textBox1.TabIndex = 6;
             this.textBox1.Text = "Largeur";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -81,10 +84,11 @@
             this.textBox2.BackColor = System.Drawing.Color.LightGray;
             this.textBox2.Cursor = System.Windows.Forms.Cursors.Default;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(17, 310);
+            this.textBox2.Location = new System.Drawing.Point(23, 382);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(122, 29);
+            this.textBox2.Size = new System.Drawing.Size(161, 34);
             this.textBox2.TabIndex = 7;
             this.textBox2.Text = "Profondeur";
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
@@ -100,9 +104,10 @@
             "80",
             "100",
             "120"});
-            this.comboBox1.Location = new System.Drawing.Point(463, 231);
+            this.comboBox1.Location = new System.Drawing.Point(617, 284);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(75, 21);
+            this.comboBox1.Size = new System.Drawing.Size(99, 24);
             this.comboBox1.TabIndex = 8;
             this.comboBox1.Text = "  - Choisir -";
             // 
@@ -114,17 +119,19 @@
             "42",
             "52",
             "62"});
-            this.comboBox2.Location = new System.Drawing.Point(463, 310);
+            this.comboBox2.Location = new System.Drawing.Point(617, 382);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(75, 21);
+            this.comboBox2.Size = new System.Drawing.Size(99, 24);
             this.comboBox2.TabIndex = 9;
             this.comboBox2.Text = " - Choisir -";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(875, 557);
+            this.button1.Location = new System.Drawing.Point(1167, 686);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 59);
+            this.button1.Size = new System.Drawing.Size(252, 73);
             this.button1.TabIndex = 10;
             this.button1.Text = "Suivant";
             this.button1.UseVisualStyleBackColor = true;
@@ -142,12 +149,13 @@
             "80",
             "100",
             "120"});
-            this.comboLargeur.Location = new System.Drawing.Point(168, 225);
-            this.comboLargeur.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.comboLargeur.Location = new System.Drawing.Point(224, 277);
+            this.comboLargeur.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.comboLargeur.Name = "comboLargeur";
             this.comboLargeur.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.comboLargeur.Size = new System.Drawing.Size(126, 33);
+            this.comboLargeur.Size = new System.Drawing.Size(167, 39);
             this.comboLargeur.TabIndex = 12;
+            this.comboLargeur.SelectedIndexChanged += new System.EventHandler(this.comboLargeur_SelectedIndexChanged);
             // 
             // comboProfondeur
             // 
@@ -158,16 +166,16 @@
             "42",
             "52",
             "62"});
-            this.comboProfondeur.Location = new System.Drawing.Point(168, 306);
-            this.comboProfondeur.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.comboProfondeur.Location = new System.Drawing.Point(224, 377);
+            this.comboProfondeur.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.comboProfondeur.Name = "comboProfondeur";
             this.comboProfondeur.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.comboProfondeur.Size = new System.Drawing.Size(126, 33);
+            this.comboProfondeur.Size = new System.Drawing.Size(167, 39);
             this.comboProfondeur.TabIndex = 13;
             // 
             // UserControl1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Thistle;
             this.Controls.Add(this.comboProfondeur);
@@ -179,8 +187,9 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UserControl1";
-            this.Size = new System.Drawing.Size(1100, 657);
+            this.Size = new System.Drawing.Size(1467, 809);
             this.ResumeLayout(false);
             this.PerformLayout();
 

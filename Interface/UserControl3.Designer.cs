@@ -45,12 +45,13 @@
             "80",
             "100",
             "120"});
-            this.comboLargeur.Location = new System.Drawing.Point(383, 196);
-            this.comboLargeur.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.comboLargeur.Location = new System.Drawing.Point(511, 241);
+            this.comboLargeur.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.comboLargeur.Name = "comboLargeur";
             this.comboLargeur.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.comboLargeur.Size = new System.Drawing.Size(122, 33);
+            this.comboLargeur.Size = new System.Drawing.Size(161, 39);
             this.comboLargeur.TabIndex = 13;
+            this.comboLargeur.SelectedIndexChanged += new System.EventHandler(this.comboLargeur_SelectedIndexChanged);
             // 
             // comboProfondeur
             // 
@@ -61,19 +62,20 @@
             "42",
             "52",
             "62"});
-            this.comboProfondeur.Location = new System.Drawing.Point(383, 269);
-            this.comboProfondeur.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.comboProfondeur.Location = new System.Drawing.Point(511, 331);
+            this.comboProfondeur.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.comboProfondeur.Name = "comboProfondeur";
             this.comboProfondeur.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.comboProfondeur.Size = new System.Drawing.Size(122, 33);
+            this.comboProfondeur.Size = new System.Drawing.Size(161, 39);
             this.comboProfondeur.TabIndex = 14;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(362, 371);
+            this.button1.Location = new System.Drawing.Point(483, 457);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(167, 73);
+            this.button1.Size = new System.Drawing.Size(223, 90);
             this.button1.TabIndex = 15;
             this.button1.Text = "Choose Locker";
             this.button1.UseVisualStyleBackColor = true;
@@ -81,14 +83,15 @@
             // 
             // UserControl3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Interface.Properties.Resources._long;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboProfondeur);
             this.Controls.Add(this.comboLargeur);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UserControl3";
-            this.Size = new System.Drawing.Size(1054, 592);
+            this.Size = new System.Drawing.Size(1405, 729);
             this.ResumeLayout(false);
 
         }

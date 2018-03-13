@@ -37,9 +37,10 @@
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(799, 412);
+            this.button1.Location = new System.Drawing.Point(1065, 507);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(250, 96);
+            this.button1.Size = new System.Drawing.Size(333, 118);
             this.button1.TabIndex = 0;
             this.button1.Text = "Add locker";
             this.button1.UseVisualStyleBackColor = false;
@@ -57,22 +58,24 @@
             "80",
             "100",
             "120"});
-            this.comboLargeur.Location = new System.Drawing.Point(296, 200);
-            this.comboLargeur.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.comboLargeur.Location = new System.Drawing.Point(395, 246);
+            this.comboLargeur.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.comboLargeur.Name = "comboLargeur";
             this.comboLargeur.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.comboLargeur.Size = new System.Drawing.Size(126, 33);
+            this.comboLargeur.Size = new System.Drawing.Size(167, 39);
             this.comboLargeur.TabIndex = 13;
             // 
             // UserControl4
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Interface.Properties.Resources.locker;
             this.Controls.Add(this.comboLargeur);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UserControl4";
-            this.Size = new System.Drawing.Size(1052, 592);
+            this.Size = new System.Drawing.Size(1403, 729);
+            this.Load += new System.EventHandler(this.UserControl4_Load);
             this.ResumeLayout(false);
 
         }

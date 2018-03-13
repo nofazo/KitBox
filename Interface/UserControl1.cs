@@ -38,5 +38,10 @@ namespace Interface
             contr2.Show();
             this.Hide();
         }
+
+        private void comboLargeur_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

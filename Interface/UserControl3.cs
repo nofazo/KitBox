@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Interface
 {
     public partial class UserControl3 : UserControl
@@ -21,6 +22,15 @@ namespace Interface
         {
             this.Controls.Clear();
             this.Controls.Add(new UserControl4());
+            double largeur = Convert.ToDouble(comboLargeur);
+            double profondeur = Convert.ToDouble(comboProfondeur);
+
+
+        }
+
+        private void comboLargeur_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
