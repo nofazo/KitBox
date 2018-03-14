@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.comboWidth = new System.Windows.Forms.ComboBox();
-            this.comboProfondeur = new System.Windows.Forms.ComboBox();
+            this.comboDepth = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -53,21 +53,22 @@
             this.comboWidth.TabIndex = 13;
             this.comboWidth.SelectedIndexChanged += new System.EventHandler(this.comboWidth_SelectedIndexChanged);
             // 
-            // comboProfondeur
+            // comboDepth
             // 
-            this.comboProfondeur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboProfondeur.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboProfondeur.Items.AddRange(new object[] {
+            this.comboDepth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboDepth.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboDepth.Items.AddRange(new object[] {
             "32",
             "42",
             "52",
             "62"});
-            this.comboProfondeur.Location = new System.Drawing.Point(383, 269);
-            this.comboProfondeur.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.comboProfondeur.Name = "comboProfondeur";
-            this.comboProfondeur.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.comboProfondeur.Size = new System.Drawing.Size(122, 33);
-            this.comboProfondeur.TabIndex = 14;
+            this.comboDepth.Location = new System.Drawing.Point(383, 269);
+            this.comboDepth.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.comboDepth.Name = "comboDepth";
+            this.comboDepth.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.comboDepth.Size = new System.Drawing.Size(122, 33);
+            this.comboDepth.TabIndex = 14;
+            this.comboDepth.SelectedIndexChanged += new System.EventHandler(this.comboDepth_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -86,7 +87,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Interface.Properties.Resources._long;
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboProfondeur);
+            this.Controls.Add(this.comboDepth);
             this.Controls.Add(this.comboWidth);
             this.Name = "UserControl3";
             this.Size = new System.Drawing.Size(1054, 592);
@@ -97,7 +98,7 @@
         #endregion
 
         private System.Windows.Forms.ComboBox comboWidth;
-        private System.Windows.Forms.ComboBox comboProfondeur;
+        private System.Windows.Forms.ComboBox comboDepth;
         private System.Windows.Forms.Button button1;
     }
 }

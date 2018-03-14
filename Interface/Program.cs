@@ -6,8 +6,10 @@ using System.Windows.Forms;
 
 namespace Interface
 {
+
     static class Program
     {
+        
         /// <summary>
         /// Point d'entrée principal de l'application.
         /// </summary>

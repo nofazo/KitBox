@@ -151,5 +151,11 @@
   <ItemGroup>
     <None Include="Resources\KITBOX fond basecorr %281%29.jpeg" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kitbox\Kitbox.csproj">
+      <Project>{c7d93301-5b49-4a4f-81b4-f598322c8e67}</Project>
+      <Name>Kitbox</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

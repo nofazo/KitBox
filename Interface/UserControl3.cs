@@ -17,13 +17,29 @@ namespace Interface
             InitializeComponent();
         }
 
+        public int WidthGet()
+        {
+            int width= Convert.ToInt32(comboWidth.Text);
+            return width;
+        }
+
+        public int DepthGet()
+        {
+            int deep = Convert.ToInt32(comboDepth.Text);
+            return deep;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             this.Controls.Clear();
-            this.Controls.Add(new UserControl4());
+            this.Controls.Add(new UserControl4(WidthGet(), DepthGet()));
         }
 
         private void comboWidth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboDepth_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
