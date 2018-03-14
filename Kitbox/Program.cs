@@ -919,6 +919,11 @@ namespace Kitbox
 
         }
 
+        public void lockerOKK()
+        {
+
+        }
+
     }
 
 }
