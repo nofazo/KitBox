@@ -1,9 +1,18 @@
-C:\Users\16354\Downloads\Kitbox\Kitbox\obj\Debug\Kitbox.csprojResolveAssemblyReference.cache
-C:\Users\16354\Downloads\Kitbox\Kitbox\obj\Debug\Kitbox.Properties.Resources.resources
-C:\Users\16354\Downloads\Kitbox\Kitbox\obj\Debug\Kitbox.csproj.GenerateResource.Cache
-C:\Users\16354\Downloads\Kitbox\Kitbox\obj\Debug\Kitbox.csproj.CoreCompileInputs.cache
-C:\Users\16354\Downloads\Kitbox\Kitbox\bin\Debug\Kitbox.dll.config
-C:\Users\16354\Downloads\Kitbox\Kitbox\bin\Debug\Kitbox.dll
-C:\Users\16354\Downloads\Kitbox\Kitbox\bin\Debug\Kitbox.pdb
-C:\Users\16354\Downloads\Kitbox\Kitbox\obj\Debug\Kitbox.dll
-C:\Users\16354\Downloads\Kitbox\Kitbox\obj\Debug\Kitbox.pdb
+C:/Users/16354/Downloads/Kitbox/Kitbox/obj/Debug/Kitbox.csprojResolveAssemblyReference.cache
+C:/Users/16354/Downloads/Kitbox/Kitbox/obj/Debug/Kitbox.Properties.Resources.resources
+C:/Users/16354/Downloads/Kitbox/Kitbox/obj/Debug/Kitbox.csproj.GenerateResource.Cache
+C:/Users/16354/Downloads/Kitbox/Kitbox/obj/Debug/Kitbox.csproj.CoreCompileInputs.cache
+C:/Users/16354/Downloads/Kitbox/Kitbox/bin/Debug/Kitbox.dll.config
+C:/Users/16354/Downloads/Kitbox/Kitbox/bin/Debug/Kitbox.dll
+C:/Users/16354/Downloads/Kitbox/Kitbox/bin/Debug/Kitbox.pdb
+C:/Users/16354/Downloads/Kitbox/Kitbox/obj/Debug/Kitbox.dll
+C:/Users/16354/Downloads/Kitbox/Kitbox/obj/Debug/Kitbox.pdb
+/Users/Fazo/Documents/ECAM/Q6/Projet Info/KitBox/Kitbox/bin/Debug/Kitbox.dll.config
+/Users/Fazo/Documents/ECAM/Q6/Projet Info/KitBox/Kitbox/bin/Debug/Kitbox.dll
+/Users/Fazo/Documents/ECAM/Q6/Projet Info/KitBox/Kitbox/bin/Debug/Kitbox.pdb
+/Users/Fazo/Documents/ECAM/Q6/Projet Info/KitBox/Kitbox/obj/Debug/Kitbox.csprojResolveAssemblyReference.cache
+/Users/Fazo/Documents/ECAM/Q6/Projet Info/KitBox/Kitbox/obj/Debug/Kitbox.Properties.Resources.resources
+/Users/Fazo/Documents/ECAM/Q6/Projet Info/KitBox/Kitbox/obj/Debug/Kitbox.csproj.GenerateResource.Cache
+/Users/Fazo/Documents/ECAM/Q6/Projet Info/KitBox/Kitbox/obj/Debug/Kitbox.csproj.CoreCompileInputs.cache
+/Users/Fazo/Documents/ECAM/Q6/Projet Info/KitBox/Kitbox/obj/Debug/Kitbox.dll
+/Users/Fazo/Documents/ECAM/Q6/Projet Info/KitBox/Kitbox/obj/Debug/Kitbox.pdb

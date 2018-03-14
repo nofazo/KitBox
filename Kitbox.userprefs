@@ -1,8 +1,8 @@
-﻿<Properties StartupConfiguration="{C7D93301-5B49-4A4F-81B4-F598322C8E67}|Default">
+﻿<Properties StartupConfiguration="{8FB36BFB-445A-465D-AA3A-F0D82AA661C2}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Kitbox/Program.cs">
     <Files>
       <File FileName="Interface/Properties/AssemblyInfo.cs" Line="1" Column="1" />
-      <File FileName="Kitbox/Program.cs" Line="17" Column="9" />
+      <File FileName="Kitbox/Program.cs" Line="19" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -12,4 +12,5 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Interface PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

@@ -19,8 +19,9 @@ namespace Interface
 
         public int WidthGet()
         {
-            int width= Convert.ToInt32(comboWidth.Text);
-            return width;
+                int width = Convert.ToInt32(comboWidth.Text);
+                return width;
+
         }
 
         public int DepthGet()
@@ -30,8 +31,15 @@ namespace Interface
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Controls.Clear();
-            this.Controls.Add(new UserControl4(WidthGet(), DepthGet()));
+            if (comboWidth.Text == "" || comboDepth.Text == "")
+            {
+                MessageBox.Show("Select a value please!");
+            }
+            else
+            {
+                this.Controls.Clear();
+                this.Controls.Add(new UserControl4(WidthGet(), DepthGet()));
+            }
         }
 
         private void comboWidth_SelectedIndexChanged(object sender, EventArgs e)

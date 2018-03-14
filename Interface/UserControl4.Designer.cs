@@ -131,6 +131,7 @@
             this.Finish.TabIndex = 18;
             this.Finish.Text = "Finish";
             this.Finish.UseVisualStyleBackColor = false;
+            this.Finish.Click += new System.EventHandler(this.Finish_Click);
             // 
             // textBox2
             // 

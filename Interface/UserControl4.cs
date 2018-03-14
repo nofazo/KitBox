@@ -36,9 +36,15 @@ namespace Interface
 
         private void AddLocker_Click(object sender, EventArgs e)
         {
-
-            this.Controls.Clear();
-            this.Controls.Add(new UserControl4(width , deep));
+            if (ColorBox.Text == "" || comboHeight.Text == "")
+            {
+                MessageBox.Show("Select a value please!");
+            }
+            else
+            {
+                this.Controls.Clear();
+                this.Controls.Add(new UserControl4(width, deep));
+            }
         }
 
         private void comboHeight_SelectedIndexChanged(object sender, EventArgs e)
@@ -117,7 +123,13 @@ namespace Interface
  
         private void UserControl4_Load_1(object sender, EventArgs e)
         {
-            textBox2.Text = Convert.ToString(this.deep) + " coucou "+ Convert.ToString(this.width); 
+            textBox2.Text = Convert.ToString(this.deep) + " coucou "+ Convert.ToString(this.width) + " " + Convert.ToString(hauteur); 
+        }
+
+        private void Finish_Click(object sender, EventArgs e)
+        {
+            this.Controls.Clear();
+            this.Controls.Add(new UserControl5());
         }
     }
 }
