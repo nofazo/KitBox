@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Interface
 {
-    public partial class UserControl2 : UserControl
+    public partial class UserControl2 : System.Windows.Forms.UserControl
     {
         public UserControl2()
         {

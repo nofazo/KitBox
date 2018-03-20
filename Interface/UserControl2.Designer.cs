@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControl2));
             this.Start = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Start
             // 
             this.Start.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Start.Location = new System.Drawing.Point(443, 363);
+            this.Start.Location = new System.Drawing.Point(591, 447);
+            this.Start.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Start.Name = "Start";
-            this.Start.Size = new System.Drawing.Size(167, 73);
+            this.Start.Size = new System.Drawing.Size(223, 90);
             this.Start.TabIndex = 0;
             this.Start.Text = "Start";
             this.Start.UseVisualStyleBackColor = true;
@@ -44,12 +46,14 @@
             // 
             // UserControl2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Interface.Properties.Resources.welcome;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.Start);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UserControl2";
-            this.Size = new System.Drawing.Size(1052, 592);
+            this.Size = new System.Drawing.Size(1403, 729);
             this.ResumeLayout(false);
 
         }

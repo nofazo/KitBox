@@ -27,17 +27,40 @@ namespace Interface
             if (woodButton.Checked == true)
             {
                 textBox2.Visible = true;
+                pictureBox1.Visible = false;
             }
             else
             {
                 textBox2.Visible = false;
-
+                pictureBox1.Visible = true;
             }
         }
 
         private void DoorValid_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (woodButton.Checked == true )
+            {
+                if (comboBox1.Text == "")
+                {
+                    MessageBox.Show("Select a value please!");
+                }
+
+                else
+                    this.Close();
+            }
+
+            else 
+                this.Close();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }

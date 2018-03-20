@@ -11,13 +11,13 @@ using Kitbox;
 
 namespace Interface
 {
-    public partial class UserControl4 : UserControl
+    public partial class UserControl4 : System.Windows.Forms.UserControl
     {
         int width;
         int deep;
         string color;
-        double hauteur;
-        double hauteurTasseau;
+        double height;
+        double cleatHeight;
 
         public UserControl4(int width,int deep)
         {
@@ -25,13 +25,12 @@ namespace Interface
             this.width = width;
             this.deep = deep;
             string color = ColorBox.Text;
-            double hauteur = Convert.ToDouble(comboHeight.SelectedValue);
-            double hauteurTasseau = hauteur - 4; // en cm
+
+            double height = Convert.ToDouble(comboHeight.SelectedValue);
+            double cleatHeight = height - 4; // en cm
             this.color = color;
-            this.hauteur = hauteur;
-            this.hauteurTasseau = hauteurTasseau;
-
-
+            this.height = height;
+            this.cleatHeight = cleatHeight;
         }
 
         private void AddLocker_Click(object sender, EventArgs e)
@@ -45,6 +44,31 @@ namespace Interface
                 this.Controls.Clear();
                 this.Controls.Add(new UserControl4(width, deep));
             }
+
+            List<Accessory> list = new List<Accessory>();
+
+            HBpanel HBpanell = new HBpanel(color, deep, width);
+            list.Add(HBpanell);
+
+            GDpanel GDpanell = new GDpanel(color, deep, cleatHeight);
+            list.Add(GDpanell);
+
+            ARpanel ARpanell = new ARpanel(color, width, cleatHeight);
+            list.Add(ARpanell);
+
+            ARAVrail ARAVraill = new ARAVrail(width);   //x2
+            list.Add(ARAVraill);
+
+            GDrail GDraill = new GDrail(deep);     //x2      
+            list.Add(GDraill);
+
+            Cleat cleatt = new Cleat(cleatHeight);           //x4
+            list.Add(cleatt);
+
+            Locker locker = new Locker(list, height, color);         // ouu Casier.AddAccessory(cleatt);
+
+            Form1 form = new Form1();
+            form.OpenConnection();
         }
 
         private void comboHeight_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,12 +88,12 @@ namespace Interface
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-          
-
+          //no
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
+            //yes
             if (radioButton2.Checked)
             {
                 Form2 f2 = new Form2();
@@ -77,59 +101,32 @@ namespace Interface
                 f2.ShowDialog();
             }
         }
-        public void UserControl4_Load(object sender, EventArgs e)
 
+        public void UserControl4_Load(object sender, EventArgs e)
         {
 
-
-            List<Accessory> list = new List<Accessory>();
-            HBpanel HBpanell = new HBpanel(color,deep,width);
-
-            list.Add(HBpanell);
-
-
-
-            GDpanel GDpanell = new GDpanel(color, deep, hauteurTasseau);
-
-            list.Add(GDpanell);
-
-
-
-            ARpanel ARpanell = new ARpanel(color, width, hauteurTasseau);
-
-            list.Add(ARpanell);
-
-
-
-            ARAVrail ARAVraill = new ARAVrail(width);   //x2
-
-            list.Add(ARAVraill);
-
-
-
-            GDrail GDraill = new GDrail(deep);     //x2
-
-            list.Add(GDraill);
-
-
-
-            Cleat cleatt = new Cleat(hauteurTasseau);           //x4
-
-            list.Add(cleatt);
-
         }
-
     
  
         private void UserControl4_Load_1(object sender, EventArgs e)
         {
-            textBox2.Text = Convert.ToString(this.deep) + " coucou "+ Convert.ToString(this.width) + " " + Convert.ToString(hauteur); 
+            textBox2.Text = Convert.ToString(this.deep) + " coucou "+ Convert.ToString(this.width) + " " + Convert.ToString(height);
+
+            if (width < 62)
+            {
+                pictureBox1.Visible = false;
+            }
         }
 
         private void Finish_Click(object sender, EventArgs e)
         {
             this.Controls.Clear();
-            this.Controls.Add(new UserControl5());
+            this.Controls.Add(new UserControl6());
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -16,3 +16,12 @@ C:/Users/16354/Downloads/Kitbox/Kitbox/obj/Debug/Kitbox.pdb
 /Users/Fazo/Documents/ECAM/Q6/Projet Info/KitBox/Kitbox/obj/Debug/Kitbox.csproj.CoreCompileInputs.cache
 /Users/Fazo/Documents/ECAM/Q6/Projet Info/KitBox/Kitbox/obj/Debug/Kitbox.dll
 /Users/Fazo/Documents/ECAM/Q6/Projet Info/KitBox/Kitbox/obj/Debug/Kitbox.pdb
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\bin\Debug\Kitbox.dll.config
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\bin\Debug\Kitbox.dll
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\bin\Debug\Kitbox.pdb
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.Properties.Resources.resources
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.dll
+C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.pdb

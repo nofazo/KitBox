@@ -16,3 +16,31 @@ C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.UserControl5.resou
 C:\Users\16354\Downloads\Kitbox\Interface\bin\Debug\Kitbox.dll
 C:\Users\16354\Downloads\Kitbox\Interface\bin\Debug\Kitbox.pdb
 C:\Users\16354\Downloads\Kitbox\Interface\bin\Debug\Kitbox.dll.config
+C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\Interface.exe.config
+C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\Interface.exe
+C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\Interface.pdb
+C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\Kitbox.dll
+C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\Kitbox.pdb
+C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\Kitbox.dll.config
+C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.Form1.resources
+C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.Form2.resources
+C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.Properties.Resources.resources
+C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.UserControl5.resources
+C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.UserControl2.resources
+C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.UserControl3.resources
+C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.UserControl4.resources
+C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.exe
+C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.pdb
+C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.UserControl6.resources
+C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySql.Data.dll
+C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.dll
+C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.dll
+C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySql.Data.xml
+C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.xml
+C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.xml
+C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.csproj.Interface.exe.config

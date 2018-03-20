@@ -14,11 +14,8 @@ using System.IO;
 namespace Kitbox
 
 {
-
     public class CupBoard
-
     {
-
         public double width;
 
         public double depth;
@@ -918,12 +915,5 @@ namespace Kitbox
             CupBoard armoire = new CupBoard(largeur, profondeur, lockerList, cornière);
 
         }
-
-        public void lockerOKK()
-        {
-
-        }
-
     }
-
 }

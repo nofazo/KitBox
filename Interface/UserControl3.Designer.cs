@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControl3));
             this.comboWidth = new System.Windows.Forms.ComboBox();
             this.comboDepth = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboWidth
@@ -45,11 +47,11 @@
             "80",
             "100",
             "120"});
-            this.comboWidth.Location = new System.Drawing.Point(383, 196);
-            this.comboWidth.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.comboWidth.Location = new System.Drawing.Point(511, 241);
+            this.comboWidth.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.comboWidth.Name = "comboWidth";
             this.comboWidth.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.comboWidth.Size = new System.Drawing.Size(122, 33);
+            this.comboWidth.Size = new System.Drawing.Size(161, 39);
             this.comboWidth.TabIndex = 13;
             this.comboWidth.SelectedIndexChanged += new System.EventHandler(this.comboWidth_SelectedIndexChanged);
             // 
@@ -62,36 +64,53 @@
             "42",
             "52",
             "62"});
-            this.comboDepth.Location = new System.Drawing.Point(383, 269);
-            this.comboDepth.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.comboDepth.Location = new System.Drawing.Point(511, 331);
+            this.comboDepth.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.comboDepth.Name = "comboDepth";
             this.comboDepth.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.comboDepth.Size = new System.Drawing.Size(122, 33);
+            this.comboDepth.Size = new System.Drawing.Size(161, 39);
             this.comboDepth.TabIndex = 14;
             this.comboDepth.SelectedIndexChanged += new System.EventHandler(this.comboDepth_SelectedIndexChanged);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(362, 371);
+            this.button1.Location = new System.Drawing.Point(483, 457);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(167, 73);
+            this.button1.Size = new System.Drawing.Size(223, 90);
             this.button1.TabIndex = 15;
             this.button1.Text = "Choose Locker";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.ForeColor = System.Drawing.Color.DarkRed;
+            this.textBox1.Location = new System.Drawing.Point(57, 477);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(394, 53);
+            this.textBox1.TabIndex = 16;
+            this.textBox1.Text = "Attention ! \r\nFor this width it\'s not possible to have a door.";
+            this.textBox1.Visible = false;
+            // 
             // UserControl3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Interface.Properties.Resources._long;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboDepth);
             this.Controls.Add(this.comboWidth);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UserControl3";
-            this.Size = new System.Drawing.Size(1054, 592);
+            this.Size = new System.Drawing.Size(1405, 729);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -100,5 +119,6 @@
         private System.Windows.Forms.ComboBox comboWidth;
         private System.Windows.Forms.ComboBox comboDepth;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -28,32 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.woodButton = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.DoorValid = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(6, 44);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(122, 42);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Style of the door";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // woodButton
             // 
             this.woodButton.AutoSize = true;
-            this.woodButton.Location = new System.Drawing.Point(144, 50);
+            this.woodButton.Location = new System.Drawing.Point(223, 146);
+            this.woodButton.Margin = new System.Windows.Forms.Padding(4);
             this.woodButton.Name = "woodButton";
-            this.woodButton.Size = new System.Drawing.Size(54, 17);
+            this.woodButton.Size = new System.Drawing.Size(66, 21);
             this.woodButton.TabIndex = 2;
             this.woodButton.TabStop = true;
             this.woodButton.Text = "Wood";
@@ -63,9 +54,10 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(219, 50);
+            this.radioButton2.Location = new System.Drawing.Point(315, 146);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(51, 17);
+            this.radioButton2.Size = new System.Drawing.Size(65, 21);
             this.radioButton2.TabIndex = 3;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Glass";
@@ -73,25 +65,16 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(325, 44);
+            this.textBox2.Location = new System.Drawing.Point(452, 134);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(310, 42);
+            this.textBox2.Size = new System.Drawing.Size(412, 51);
             this.textBox2.TabIndex = 4;
             this.textBox2.Text = "Attention please: You\'ve select a door made by wood, so you will have cabinet han" +
     "dle";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox2.Visible = false;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(6, 106);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(122, 46);
-            this.textBox3.TabIndex = 5;
-            this.textBox3.Text = "Color of the door";
             // 
             // comboBox1
             // 
@@ -101,49 +84,64 @@
             "Brown",
             "White",
             "Green"});
-            this.comboBox1.Location = new System.Drawing.Point(144, 111);
+            this.comboBox1.Location = new System.Drawing.Point(223, 207);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.comboBox1.Size = new System.Drawing.Size(149, 21);
+            this.comboBox1.Size = new System.Drawing.Size(197, 24);
             this.comboBox1.TabIndex = 6;
             // 
             // DoorValid
             // 
-            this.DoorValid.Location = new System.Drawing.Point(474, 357);
+            this.DoorValid.Location = new System.Drawing.Point(632, 439);
+            this.DoorValid.Margin = new System.Windows.Forms.Padding(4);
             this.DoorValid.Name = "DoorValid";
-            this.DoorValid.Size = new System.Drawing.Size(160, 67);
+            this.DoorValid.Size = new System.Drawing.Size(213, 82);
             this.DoorValid.TabIndex = 7;
             this.DoorValid.Text = "Next";
             this.DoorValid.UseVisualStyleBackColor = true;
             this.DoorValid.Click += new System.EventHandler(this.DoorValid_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox1.BackgroundImage = global::Interface.Properties.Resources.KITBOX_fond_basecorr;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 192);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(457, 59);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(669, 456);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(892, 561);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.DoorValid);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.woodButton);
-            this.Controls.Add(this.textBox1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form2";
             this.Text = "Door Specification";
+            this.Load += new System.EventHandler(this.Form2_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.RadioButton woodButton;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button DoorValid;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
