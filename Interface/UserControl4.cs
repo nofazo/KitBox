@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kitbox;
+using MySql.Data.MySqlClient;
 
 namespace Interface
 {
@@ -67,8 +68,33 @@ namespace Interface
 
             Locker locker = new Locker(list, height, color);         // ouu Casier.AddAccessory(cleatt);
 
+            //Form1 form = new Form1();
+            //form.OpenConnection();
+
             Form1 form = new Form1();
-            form.OpenConnection();
+            form.server = "localhost";
+            form.database = "kitboxdb";
+            form.uid = "root";
+            form.password = "Houda3ba";
+            string connectionString;
+            connectionString = "SERVER=" + form.server + ";" + "DATABASE=" + form.database + ";" + "UID=" + form.uid + ";" + "PASSWORD=" + form.password + ";";
+            form.connection = new MySqlConnection(connectionString);
+            //form.OpenConnection();
+
+            if (form.OpenConnection() == true)
+            {
+                // string MySQLCmd1 = "qui va chercher le bon id";
+                string MySQLCmd = " INSERT INTO locker(height, door, color, price) VALUES("+"'78', '1', 'white', '1'"+")";
+                MySqlCommand MySQLCommand = new MySqlCommand(MySQLCmd, form.connection);
+                MySQLCommand.ExecuteNonQuery();
+
+
+                
+
+                
+                
+            }
+            
         }
 
         private void comboHeight_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,7 +136,7 @@ namespace Interface
  
         private void UserControl4_Load_1(object sender, EventArgs e)
         {
-            textBox2.Text = Convert.ToString(this.deep) + " coucou "+ Convert.ToString(this.width) + " " + Convert.ToString(height);
+            textBox2.Text = "Profondeur : " + Convert.ToString(this.deep) + " cm \nLargeur : " + Convert.ToString(this.width) +" cm" ;
 
             if (width < 62)
             {
@@ -127,6 +153,11 @@ namespace Interface
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

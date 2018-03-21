@@ -36,20 +36,12 @@ namespace Interface
             form.connection = new MySqlConnection(connectionString);
             //form.OpenConnection();
             if (form.OpenConnection() == true)
-            {
-                
-                form.mySqlDataAdapter = new MySqlDataAdapter("select * from extrusions", form.connection);
+            {                
+                form.mySqlDataAdapter = new MySqlDataAdapter("select * from locker", form.connection);
                 DataSet DS = new DataSet();
                 form.mySqlDataAdapter.Fill(DS);
                 dataGridView1.DataSource = DS.Tables[0];
-                
-                
-                
-                
-                
-
-                
-                //close connection
+                                                                                                              //close connection
                 form.CloseConnection();
             }
         }
