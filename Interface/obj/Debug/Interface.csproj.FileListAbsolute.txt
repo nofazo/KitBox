@@ -44,3 +44,27 @@ C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySql.Data.Entity.E
 C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.xml
 C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.xml
 C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.csproj.Interface.exe.config
+C:\Users\16354\KitBox\Interface\bin\Debug\Interface.exe.config
+C:\Users\16354\KitBox\Interface\bin\Debug\Interface.exe
+C:\Users\16354\KitBox\Interface\bin\Debug\Interface.pdb
+C:\Users\16354\KitBox\Interface\bin\Debug\Kitbox.dll
+C:\Users\16354\KitBox\Interface\bin\Debug\Kitbox.pdb
+C:\Users\16354\KitBox\Interface\bin\Debug\Kitbox.dll.config
+C:\Users\16354\KitBox\Interface\bin\Debug\MySql.Data.xml
+C:\Users\16354\KitBox\Interface\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\16354\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.xml
+C:\Users\16354\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.xml
+C:\Users\16354\KitBox\Interface\obj\Debug\Interface.csprojResolveAssemblyReference.cache
+C:\Users\16354\KitBox\Interface\obj\Debug\Interface.csproj.Interface.exe.config
+C:\Users\16354\KitBox\Interface\obj\Debug\Interface.Form1.resources
+C:\Users\16354\KitBox\Interface\obj\Debug\Interface.Form2.resources
+C:\Users\16354\KitBox\Interface\obj\Debug\Interface.Properties.Resources.resources
+C:\Users\16354\KitBox\Interface\obj\Debug\Interface.Recap.resources
+C:\Users\16354\KitBox\Interface\obj\Debug\Interface.Welcome.resources
+C:\Users\16354\KitBox\Interface\obj\Debug\Interface.SpecAllLock.resources
+C:\Users\16354\KitBox\Interface\obj\Debug\Interface.Locker.resources
+C:\Users\16354\KitBox\Interface\obj\Debug\Interface.Extrusions.resources
+C:\Users\16354\KitBox\Interface\obj\Debug\Interface.csproj.GenerateResource.Cache
+C:\Users\16354\KitBox\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
+C:\Users\16354\KitBox\Interface\obj\Debug\Interface.exe
+C:\Users\16354\KitBox\Interface\obj\Debug\Interface.pdb

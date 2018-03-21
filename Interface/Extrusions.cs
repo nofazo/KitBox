@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Interface
 {
-    public partial class UserControl6 : System.Windows.Forms.UserControl
+    public partial class Extrusions : System.Windows.Forms.UserControl
     {
-        public UserControl6()
+        public Extrusions()
         {
             InitializeComponent();
         }
@@ -24,7 +24,7 @@ namespace Interface
             //les additionner 
             //choisir la bonne cornière (d'abord non découpée et ensuite découpée)
             this.Controls.Clear();
-            this.Controls.Add(new UserControl5());
+            this.Controls.Add(new Recap());
         }
 
         private void extrusionColor_SelectedIndexChanged(object sender, EventArgs e)

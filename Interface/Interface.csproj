@@ -63,35 +63,35 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControl6.cs">
+    <Compile Include="Extrusions.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl6.Designer.cs">
-      <DependentUpon>UserControl6.cs</DependentUpon>
+    <Compile Include="Extrusions.Designer.cs">
+      <DependentUpon>Extrusions.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl5.cs">
+    <Compile Include="Recap.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl5.Designer.cs">
-      <DependentUpon>UserControl5.cs</DependentUpon>
+    <Compile Include="Recap.Designer.cs">
+      <DependentUpon>Recap.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl2.cs">
+    <Compile Include="Welcome.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl2.Designer.cs">
-      <DependentUpon>UserControl2.cs</DependentUpon>
+    <Compile Include="Welcome.Designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl3.cs">
+    <Compile Include="SpecAllLock.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl3.Designer.cs">
-      <DependentUpon>UserControl3.cs</DependentUpon>
+    <Compile Include="SpecAllLock.Designer.cs">
+      <DependentUpon>SpecAllLock.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl4.cs">
+    <Compile Include="Locker.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl4.Designer.cs">
-      <DependentUpon>UserControl4.cs</DependentUpon>
+    <Compile Include="Locker.Designer.cs">
+      <DependentUpon>Locker.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -109,21 +109,22 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserControl5.resx">
-      <DependentUpon>UserControl5.cs</DependentUpon>
+    <EmbeddedResource Include="Recap.resx">
+      <DependentUpon>Recap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl2.resx">
-      <DependentUpon>UserControl2.cs</DependentUpon>
+    <EmbeddedResource Include="Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl3.resx">
-      <DependentUpon>UserControl3.cs</DependentUpon>
+    <EmbeddedResource Include="SpecAllLock.resx">
+      <DependentUpon>SpecAllLock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl4.resx">
-      <DependentUpon>UserControl4.cs</DependentUpon>
+    <EmbeddedResource Include="Locker.resx">
+      <DependentUpon>Locker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl6.resx">
-      <DependentUpon>UserControl6.cs</DependentUpon>
+    <EmbeddedResource Include="Extrusions.resx">
+      <DependentUpon>Extrusions.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Kitbox.Locker.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
