@@ -25,3 +25,12 @@ C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.csproj.Generate
 C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.dll
 C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.pdb
+C:\Users\Fatine\Desktop\KitBox\Kitbox\bin\Debug\Kitbox.dll.config
+C:\Users\Fatine\Desktop\KitBox\Kitbox\bin\Debug\Kitbox.dll
+C:\Users\Fatine\Desktop\KitBox\Kitbox\bin\Debug\Kitbox.pdb
+C:\Users\Fatine\Desktop\KitBox\Kitbox\obj\Debug\Kitbox.csprojResolveAssemblyReference.cache
+C:\Users\Fatine\Desktop\KitBox\Kitbox\obj\Debug\Kitbox.Properties.Resources.resources
+C:\Users\Fatine\Desktop\KitBox\Kitbox\obj\Debug\Kitbox.csproj.GenerateResource.Cache
+C:\Users\Fatine\Desktop\KitBox\Kitbox\obj\Debug\Kitbox.csproj.CoreCompileInputs.cache
+C:\Users\Fatine\Desktop\KitBox\Kitbox\obj\Debug\Kitbox.dll
+C:\Users\Fatine\Desktop\KitBox\Kitbox\obj\Debug\Kitbox.pdb
