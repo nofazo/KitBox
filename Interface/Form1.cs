@@ -74,7 +74,7 @@ namespace Interface
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            this.Controls.Add(new UserControl2());
+            this.Controls.Add(new Welcome());
             
 
             

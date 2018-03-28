@@ -1,6 +1,6 @@
 ﻿namespace Interface
 {
-    partial class UserControl6
+    partial class Extrusions
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControl6));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Extrusions));
             this.extrusionColor = new System.Windows.Forms.ComboBox();
             this.Finish = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -41,11 +41,11 @@
             "White",
             "Brown",
             "Black"});
-            this.extrusionColor.Location = new System.Drawing.Point(913, 321);
-            this.extrusionColor.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.extrusionColor.Location = new System.Drawing.Point(540, 143);
+            this.extrusionColor.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.extrusionColor.Name = "extrusionColor";
             this.extrusionColor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.extrusionColor.Size = new System.Drawing.Size(167, 39);
+            this.extrusionColor.Size = new System.Drawing.Size(126, 33);
             this.extrusionColor.TabIndex = 14;
             this.extrusionColor.SelectedIndexChanged += new System.EventHandler(this.extrusionColor_SelectedIndexChanged);
             // 
@@ -54,10 +54,9 @@
             this.Finish.BackColor = System.Drawing.Color.Silver;
             this.Finish.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Finish.ForeColor = System.Drawing.Color.Black;
-            this.Finish.Location = new System.Drawing.Point(998, 535);
-            this.Finish.Margin = new System.Windows.Forms.Padding(4);
+            this.Finish.Location = new System.Drawing.Point(845, 421);
             this.Finish.Name = "Finish";
-            this.Finish.Size = new System.Drawing.Size(333, 135);
+            this.Finish.Size = new System.Drawing.Size(175, 80);
             this.Finish.TabIndex = 19;
             this.Finish.Text = "Finish";
             this.Finish.UseVisualStyleBackColor = false;
@@ -65,14 +64,15 @@
             // 
             // UserControl6
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.Finish);
             this.Controls.Add(this.extrusionColor);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "UserControl6";
-            this.Size = new System.Drawing.Size(1403, 729);
+            this.Size = new System.Drawing.Size(1052, 592);
             this.ResumeLayout(false);
 
         }

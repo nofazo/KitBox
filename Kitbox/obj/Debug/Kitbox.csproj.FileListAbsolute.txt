@@ -25,6 +25,7 @@ C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.csproj.Generate
 C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.dll
 C:\Users\User\Desktop\Projet info\KitBox\Kitbox\obj\Debug\Kitbox.pdb
+<<<<<<< HEAD
 C:\Users\Fatine\Desktop\KitBox\Kitbox\bin\Debug\Kitbox.dll.config
 C:\Users\Fatine\Desktop\KitBox\Kitbox\bin\Debug\Kitbox.dll
 C:\Users\Fatine\Desktop\KitBox\Kitbox\bin\Debug\Kitbox.pdb
@@ -34,3 +35,14 @@ C:\Users\Fatine\Desktop\KitBox\Kitbox\obj\Debug\Kitbox.csproj.GenerateResource.C
 C:\Users\Fatine\Desktop\KitBox\Kitbox\obj\Debug\Kitbox.csproj.CoreCompileInputs.cache
 C:\Users\Fatine\Desktop\KitBox\Kitbox\obj\Debug\Kitbox.dll
 C:\Users\Fatine\Desktop\KitBox\Kitbox\obj\Debug\Kitbox.pdb
+=======
+C:\Users\16354\KitBox\Kitbox\bin\Debug\Kitbox.dll.config
+C:\Users\16354\KitBox\Kitbox\bin\Debug\Kitbox.dll
+C:\Users\16354\KitBox\Kitbox\bin\Debug\Kitbox.pdb
+C:\Users\16354\KitBox\Kitbox\obj\Debug\Kitbox.csprojResolveAssemblyReference.cache
+C:\Users\16354\KitBox\Kitbox\obj\Debug\Kitbox.Properties.Resources.resources
+C:\Users\16354\KitBox\Kitbox\obj\Debug\Kitbox.csproj.GenerateResource.Cache
+C:\Users\16354\KitBox\Kitbox\obj\Debug\Kitbox.csproj.CoreCompileInputs.cache
+C:\Users\16354\KitBox\Kitbox\obj\Debug\Kitbox.dll
+C:\Users\16354\KitBox\Kitbox\obj\Debug\Kitbox.pdb
+>>>>>>> 875e7dfc7b4b33196cfa6f8e59988791917942d8
