@@ -166,10 +166,6 @@
     <None Include="Resources\KITBOX fond basecorr %281%29.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\source\repos\WindowsFormsApp7\WindowsFormsApp7\Administrator.csproj">
-      <Project>{6db95d20-e479-4149-912e-63a442c2677a}</Project>
-      <Name>Administrator</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Kitbox\Kitbox.csproj">
       <Project>{c7d93301-5b49-4a4f-81b4-f598322c8e67}</Project>
       <Name>Kitbox</Name>
