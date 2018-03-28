@@ -137,10 +137,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Interface\Interface.csproj">
-      <Project>{8fb36bfb-445a-465d-aa3a-f0d82aa661c2}</Project>
-      <Name>Interface</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Kitbox\Kitbox.csproj">
       <Project>{c7d93301-5b49-4a4f-81b4-f598322c8e67}</Project>
       <Name>Kitbox</Name>
