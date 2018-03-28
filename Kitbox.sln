@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kitbox", "Kitbox\Kitbox.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{8FB36BFB-445A-465D-AA3A-F0D82AA661C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Administrator", "..\..\source\repos\WindowsFormsApp7\WindowsFormsApp7\Administrator.csproj", "{6DB95D20-E479-4149-912E-63A442C2677A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Administrator", "WindowsFormsApp7\WindowsFormsApp7\Administrator.csproj", "{6DB95D20-E479-4149-912E-63A442C2677A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
