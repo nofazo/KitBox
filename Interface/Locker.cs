@@ -27,7 +27,7 @@ namespace Interface
 
         List<Kitbox.Locker> listOfLocker = new List<Kitbox.Locker>();
 
-        public Locker()
+        public Locker(int width, int deep)
         {
             InitializeComponent();
             
@@ -38,6 +38,8 @@ namespace Interface
             this.color = color;
             this.height = height;
             this.cleatHeight = cleatHeight;
+            this.width = width;
+            this.deep = deep;
         }
 
         private void AddLocker_Click(object sender, EventArgs e)

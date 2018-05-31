@@ -1,133 +1,31 @@
-C:\Users\16354\Downloads\Kitbox\Interface\bin\Debug\Interface.exe.config
-C:\Users\16354\Downloads\Kitbox\Interface\bin\Debug\Interface.exe
-C:\Users\16354\Downloads\Kitbox\Interface\bin\Debug\Interface.pdb
-C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.csprojResolveAssemblyReference.cache
-C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.Form1.resources
-C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.Properties.Resources.resources
-C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.csproj.GenerateResource.Cache
-C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
-C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.exe
-C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.pdb
-C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.UserControl2.resources
-C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.UserControl3.resources
-C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.UserControl4.resources
-C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.Form2.resources
-C:\Users\16354\Downloads\Kitbox\Interface\obj\Debug\Interface.UserControl5.resources
-C:\Users\16354\Downloads\Kitbox\Interface\bin\Debug\Kitbox.dll
-C:\Users\16354\Downloads\Kitbox\Interface\bin\Debug\Kitbox.pdb
-C:\Users\16354\Downloads\Kitbox\Interface\bin\Debug\Kitbox.dll.config
-C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\Interface.exe.config
-C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\Interface.exe
-C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\Interface.pdb
-C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\Kitbox.dll
-C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\Kitbox.pdb
-C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\Kitbox.dll.config
-C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.csprojResolveAssemblyReference.cache
-C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.Form1.resources
-C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.Form2.resources
-C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.Properties.Resources.resources
-C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.UserControl5.resources
-C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.UserControl2.resources
-C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.UserControl3.resources
-C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.UserControl4.resources
-C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.csproj.GenerateResource.Cache
-C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
-C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.exe
-C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.pdb
-C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.UserControl6.resources
-C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySql.Data.dll
-C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySql.Data.Entity.EF6.dll
-C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.dll
-C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.dll
-C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySql.Data.xml
-C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySql.Data.Entity.EF6.xml
-C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.xml
-C:\Users\User\Desktop\Projet info\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.xml
-C:\Users\User\Desktop\Projet info\KitBox\Interface\obj\Debug\Interface.csproj.Interface.exe.config
-<<<<<<< HEAD
-C:\Users\Fatine\Desktop\KitBox\Interface\bin\Debug\Interface.exe.config
-C:\Users\Fatine\Desktop\KitBox\Interface\bin\Debug\Interface.exe
-C:\Users\Fatine\Desktop\KitBox\Interface\bin\Debug\Interface.pdb
-C:\Users\Fatine\Desktop\KitBox\Interface\bin\Debug\Kitbox.dll
-C:\Users\Fatine\Desktop\KitBox\Interface\bin\Debug\Kitbox.pdb
-C:\Users\Fatine\Desktop\KitBox\Interface\bin\Debug\Kitbox.dll.config
-C:\Users\Fatine\Desktop\KitBox\Interface\bin\Debug\MySql.Data.xml
-C:\Users\Fatine\Desktop\KitBox\Interface\bin\Debug\MySql.Data.Entity.EF6.xml
-C:\Users\Fatine\Desktop\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.xml
-C:\Users\Fatine\Desktop\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.xml
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.csprojResolveAssemblyReference.cache
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.csproj.Interface.exe.config
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.Form1.resources
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.Form2.resources
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.Properties.Resources.resources
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.UserControl5.resources
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.UserControl2.resources
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.UserControl3.resources
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.UserControl4.resources
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.UserControl6.resources
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.csproj.GenerateResource.Cache
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.exe
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.pdb
-=======
-C:\Users\16354\KitBox\Interface\bin\Debug\Interface.exe.config
-C:\Users\16354\KitBox\Interface\bin\Debug\Interface.exe
-C:\Users\16354\KitBox\Interface\bin\Debug\Interface.pdb
-C:\Users\16354\KitBox\Interface\bin\Debug\Kitbox.dll
-C:\Users\16354\KitBox\Interface\bin\Debug\Kitbox.pdb
-C:\Users\16354\KitBox\Interface\bin\Debug\Kitbox.dll.config
-C:\Users\16354\KitBox\Interface\bin\Debug\MySql.Data.xml
-C:\Users\16354\KitBox\Interface\bin\Debug\MySql.Data.Entity.EF6.xml
-C:\Users\16354\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.xml
-C:\Users\16354\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.xml
-C:\Users\16354\KitBox\Interface\obj\Debug\Interface.csprojResolveAssemblyReference.cache
-C:\Users\16354\KitBox\Interface\obj\Debug\Interface.csproj.Interface.exe.config
-C:\Users\16354\KitBox\Interface\obj\Debug\Interface.Form1.resources
-C:\Users\16354\KitBox\Interface\obj\Debug\Interface.Form2.resources
-C:\Users\16354\KitBox\Interface\obj\Debug\Interface.Properties.Resources.resources
-C:\Users\16354\KitBox\Interface\obj\Debug\Interface.Recap.resources
-C:\Users\16354\KitBox\Interface\obj\Debug\Interface.Welcome.resources
-C:\Users\16354\KitBox\Interface\obj\Debug\Interface.SpecAllLock.resources
-C:\Users\16354\KitBox\Interface\obj\Debug\Interface.Locker.resources
-C:\Users\16354\KitBox\Interface\obj\Debug\Interface.Extrusions.resources
-C:\Users\16354\KitBox\Interface\obj\Debug\Interface.csproj.GenerateResource.Cache
-C:\Users\16354\KitBox\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
-C:\Users\16354\KitBox\Interface\obj\Debug\Interface.exe
-C:\Users\16354\KitBox\Interface\obj\Debug\Interface.pdb
->>>>>>> 875e7dfc7b4b33196cfa6f8e59988791917942d8
-C:\Users\Fatine\Desktop\KitBox\Interface\bin\Debug\WindowsFormsApp7.exe
-C:\Users\Fatine\Desktop\KitBox\Interface\bin\Debug\WindowsFormsApp7.pdb
-C:\Users\Fatine\Desktop\KitBox\Interface\bin\Debug\WindowsFormsApp7.exe.config
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.Recap.resources
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.Welcome.resources
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.SpecAllLock.resources
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.Locker.resources
-C:\Users\Fatine\Desktop\KitBox\Interface\obj\Debug\Interface.Extrusions.resources
-C:\Users\Fatine\Desktop\KitBox2\Interface\obj\Debug\Interface.csprojResolveAssemblyReference.cache
-C:\Users\Fatine\Desktop\KitBox2\Interface\obj\Debug\Interface.csproj.Interface.exe.config
-C:\Users\Fatine\Desktop\KitBox2\Interface\obj\Debug\Interface.Form1.resources
-C:\Users\Fatine\Desktop\KitBox2\Interface\obj\Debug\Interface.Form2.resources
-C:\Users\Fatine\Desktop\KitBox2\Interface\obj\Debug\Interface.Properties.Resources.resources
-C:\Users\Fatine\Desktop\KitBox2\Interface\obj\Debug\Interface.Recap.resources
-C:\Users\Fatine\Desktop\KitBox2\Interface\obj\Debug\Interface.Welcome.resources
-C:\Users\Fatine\Desktop\KitBox2\Interface\obj\Debug\Interface.SpecAllLock.resources
-C:\Users\Fatine\Desktop\KitBox2\Interface\obj\Debug\Interface.Locker.resources
-C:\Users\Fatine\Desktop\KitBox2\Interface\obj\Debug\Interface.Extrusions.resources
-C:\Users\Fatine\Desktop\KitBox2\Interface\obj\Debug\Interface.csproj.GenerateResource.Cache
-C:\Users\Fatine\Desktop\KitBox2\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
-C:\Users\Fatine\Desktop\KitBox2\Interface\obj\Debug\Interface.exe
-C:\Users\Fatine\Desktop\KitBox2\Interface\obj\Debug\Interface.pdb
-C:\Users\Fatine\Desktop\KitBoxApp\Interface\obj\Debug\Interface.csprojResolveAssemblyReference.cache
-C:\Users\Fatine\Desktop\KitBoxApp\Interface\obj\Debug\Interface.csproj.Interface.exe.config
-C:\Users\Fatine\Desktop\KitBoxApp\Interface\obj\Debug\Interface.Form1.resources
-C:\Users\Fatine\Desktop\KitBoxApp\Interface\obj\Debug\Interface.Form2.resources
-C:\Users\Fatine\Desktop\KitBoxApp\Interface\obj\Debug\Interface.Properties.Resources.resources
-C:\Users\Fatine\Desktop\KitBoxApp\Interface\obj\Debug\Interface.Recap.resources
-C:\Users\Fatine\Desktop\KitBoxApp\Interface\obj\Debug\Interface.Welcome.resources
-C:\Users\Fatine\Desktop\KitBoxApp\Interface\obj\Debug\Interface.SpecAllLock.resources
-C:\Users\Fatine\Desktop\KitBoxApp\Interface\obj\Debug\Interface.Locker.resources
-C:\Users\Fatine\Desktop\KitBoxApp\Interface\obj\Debug\Interface.Extrusions.resources
-C:\Users\Fatine\Desktop\KitBoxApp\Interface\obj\Debug\Interface.csproj.GenerateResource.Cache
-C:\Users\Fatine\Desktop\KitBoxApp\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
-C:\Users\Fatine\Desktop\KitBoxApp\Interface\obj\Debug\Interface.exe
-C:\Users\Fatine\Desktop\KitBoxApp\Interface\obj\Debug\Interface.pdb
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\Interface.exe.config
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\Interface.exe
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\Interface.pdb
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\Kitbox.dll
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\MySql.Data.dll
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\MySql.Data.EntityFramework.dll
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.dll
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.dll
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\WindowsFormsApp7.exe
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\Google.Protobuf.dll
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\Kitbox.pdb
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\Kitbox.dll.config
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\WindowsFormsApp7.pdb
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\WindowsFormsApp7.exe.config
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\MySql.Data.xml
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\MySql.Data.EntityFramework.xml
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.xml
+C:\Users\User\Desktop\KitBox\Interface\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.xml
+C:\Users\User\Desktop\KitBox\Interface\obj\Debug\Interface.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\KitBox\Interface\obj\Debug\Interface.Form1.resources
+C:\Users\User\Desktop\KitBox\Interface\obj\Debug\Interface.Form2.resources
+C:\Users\User\Desktop\KitBox\Interface\obj\Debug\Interface.Properties.Resources.resources
+C:\Users\User\Desktop\KitBox\Interface\obj\Debug\Interface.Recap.resources
+C:\Users\User\Desktop\KitBox\Interface\obj\Debug\Interface.Welcome.resources
+C:\Users\User\Desktop\KitBox\Interface\obj\Debug\Interface.SpecAllLock.resources
+C:\Users\User\Desktop\KitBox\Interface\obj\Debug\Interface.Locker.resources
+C:\Users\User\Desktop\KitBox\Interface\obj\Debug\Interface.Extrusions.resources
+C:\Users\User\Desktop\KitBox\Interface\obj\Debug\Interface.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\KitBox\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\KitBox\Interface\obj\Debug\Interface.exe
+C:\Users\User\Desktop\KitBox\Interface\obj\Debug\Interface.pdb

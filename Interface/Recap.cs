@@ -28,9 +28,9 @@ namespace Interface
         {
             Form1 form = new Form1();
             form.server = "localhost";
-            form.database = "kitboxdb";
+            form.database = "kitboxdb2.0";
             form.uid = "root";
-            form.password = "Houda3ba";
+            form.password = "Senbonzakura1493";
             string connectionString;
             connectionString = "SERVER=" + form.server + ";" + "DATABASE=" + form.database + ";" + "UID=" + form.uid + ";" + "PASSWORD=" + form.password + ";";
             form.connection = new MySqlConnection(connectionString);
