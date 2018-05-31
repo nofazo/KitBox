@@ -35,5 +35,10 @@ namespace Interface
             
 
         }
+
+        private void Welcome_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

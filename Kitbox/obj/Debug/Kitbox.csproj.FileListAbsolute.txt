@@ -46,3 +46,12 @@ C:\Users\16354\KitBox\Kitbox\obj\Debug\Kitbox.csproj.CoreCompileInputs.cache
 C:\Users\16354\KitBox\Kitbox\obj\Debug\Kitbox.dll
 C:\Users\16354\KitBox\Kitbox\obj\Debug\Kitbox.pdb
 >>>>>>> 875e7dfc7b4b33196cfa6f8e59988791917942d8
+C:\Users\Fatine\Desktop\KitBox2\Kitbox\bin\Debug\Kitbox.dll.config
+C:\Users\Fatine\Desktop\KitBox2\Kitbox\bin\Debug\Kitbox.dll
+C:\Users\Fatine\Desktop\KitBox2\Kitbox\bin\Debug\Kitbox.pdb
+C:\Users\Fatine\Desktop\KitBox2\Kitbox\obj\Debug\Kitbox.csprojResolveAssemblyReference.cache
+C:\Users\Fatine\Desktop\KitBox2\Kitbox\obj\Debug\Kitbox.Properties.Resources.resources
+C:\Users\Fatine\Desktop\KitBox2\Kitbox\obj\Debug\Kitbox.csproj.GenerateResource.Cache
+C:\Users\Fatine\Desktop\KitBox2\Kitbox\obj\Debug\Kitbox.csproj.CoreCompileInputs.cache
+C:\Users\Fatine\Desktop\KitBox2\Kitbox\obj\Debug\Kitbox.dll
+C:\Users\Fatine\Desktop\KitBox2\Kitbox\obj\Debug\Kitbox.pdb
