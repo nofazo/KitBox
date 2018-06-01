@@ -36,7 +36,6 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.Finish = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Modify = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -152,17 +151,6 @@
             this.Finish.UseVisualStyleBackColor = false;
             this.Finish.Click += new System.EventHandler(this.Finish_Click);
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(785, 148);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(411, 150);
-            this.textBox2.TabIndex = 19;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
@@ -191,6 +179,7 @@
             // 
             // listBox1
             // 
+            this.listBox1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.listBox1.DataSource = this.lockerBindingSource;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
@@ -272,7 +261,6 @@
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.Modify);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.Finish);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
@@ -299,7 +287,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Button Finish;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button Modify;
         private System.Windows.Forms.ListBox listBox1;

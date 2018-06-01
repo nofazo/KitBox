@@ -8,17 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Kitbox;
 
 namespace Interface
 {
     public partial class Form1 : Form
     {
+
         public string server;
         public string database;
         public string uid;
         public string password;
         public MySqlConnection connection;
         public MySqlDataAdapter mySqlDataAdapter;
+
+        public static Extrusion extrusion = new Extrusion("", 0);
+        public static List<Kitbox.Locker> listOfLocker = new List<Kitbox.Locker>();  // attention existance de Interface.Locker à supprimer
+        public static CupBoard cupBoard = new CupBoard(0,0, listOfLocker, extrusion);
 
         //open connection to database
         public bool OpenConnection()

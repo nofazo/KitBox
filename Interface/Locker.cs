@@ -25,21 +25,33 @@ namespace Interface
         DataGridViewRow row = new DataGridViewRow();
         Form1 form = new Form1();
 
-        List<Kitbox.Locker> listOfLocker = new List<Kitbox.Locker>();
+        //List<Kitbox.Locker> listOfLocker = new List<Kitbox.Locker>();
 
         public Locker(int width, int deep)
         {
             InitializeComponent();
             
-            string color = ColorBox.Text;
-
+ 
             double height = Convert.ToDouble(comboHeight.SelectedValue);
             double cleatHeight = height - 4; // en cm
-            this.color = color;
+            
             this.height = height;
             this.cleatHeight = cleatHeight;
             this.width = width;
             this.deep = deep;
+        }
+
+        public int HeightGet()
+        {
+            int heightreal= Convert.ToInt32(comboHeight.Text);
+            return heightreal;
+        }
+
+        public string ColorGet()
+        {
+            string color = ColorBox.Text;
+            return color;
+
         }
 
         private void AddLocker_Click(object sender, EventArgs e)
@@ -53,8 +65,7 @@ namespace Interface
             dataGridView1.Rows.Add();
             row = dataGridView1.Rows.Count - 2;
 
-            
-
+         
            
             List<Accessory> list = new List<Accessory>();
 
@@ -76,21 +87,18 @@ namespace Interface
             Cleat cleatt = new Cleat(cleatHeight);           //x4
             list.Add(cleatt);
 
+            
             // je crée un objet par ligne avec sa liste d'accessoire associée.
-            Kitbox.Locker locker = new Kitbox.Locker(list, height, color);
+            Kitbox.Locker locker = new Kitbox.Locker(list, HeightGet(), ColorGet());
 
-            dataGridView1["couleur", row].Value = locker.color;
+
+            // ajout de moon casier à la liste de casier existant
+            Form1.listOfLocker.Add(locker);
+
+            dataGridView1["couleur", row].Value = ColorBox.Text;
             dataGridView1["hauteur", row].Value = comboHeight.Text;
             dataGridView1["profondeur", row].Value = this.width;
             dataGridView1["largeur", row].Value = this.deep;
-
-            // ajout de moon casier à la liste de casier existant
-            listOfLocker.Add(locker);
-
-
-
-
-
 
 
         }
@@ -144,7 +152,7 @@ namespace Interface
 
             form.connection = new MySqlConnection(connectionString);
 
-            textBox2.Text = "Profondeur : " + Convert.ToString(this.deep) + " cm \nLargeur : " + Convert.ToString(this.width) +" cm" ;
+          
 
             
 
@@ -191,7 +199,6 @@ namespace Interface
 
         private void button1_Click(object sender, EventArgs e)
         {            
-            textBox2.Hide();
             AddLocker.Hide();
             Finish.Hide();
             listBox1.Hide();
@@ -234,10 +241,9 @@ namespace Interface
         {
             //Update in datagrid
             DataGridViewRow newDataRow = dataGridView1.Rows[indexRow];
-            newDataRow.Cells[0].Value = comboHeight.Text;
-            newDataRow.Cells[1].Value = ColorBox.Text;
+            newDataRow.Cells[1].Value = comboHeight.Text;
+            newDataRow.Cells[0].Value = ColorBox.Text;
             
-            textBox2.Show();
             AddLocker.Show();
             Finish.Show();
             listBox1.Show();

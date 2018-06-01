@@ -37,7 +37,7 @@ namespace Interface
             //form.OpenConnection();
             if (form.OpenConnection() == true)
             {                
-                form.mySqlDataAdapter = new MySqlDataAdapter("select * from locker", form.connection);
+                form.mySqlDataAdapter = new MySqlDataAdapter("select * from lockers", form.connection);
                 DataSet DS = new DataSet();
                 form.mySqlDataAdapter.Fill(DS);
                 dataGridView1.DataSource = DS.Tables[0];

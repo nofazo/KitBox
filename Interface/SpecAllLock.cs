@@ -38,21 +38,15 @@ namespace Interface
             }
             else
             {
+                Form1.cupBoard.width = WidthGet();
+                Form1.cupBoard.depth = DepthGet();
                 this.Controls.Clear();
                 this.Controls.Add(new Locker(WidthGet(), DepthGet()));
             }
-
-            Extrusion extrusion = new Extrusion("", 0);
-            List<Kitbox.Locker> lockerList = new List<Kitbox.Locker>();
-
-            CupBoard cupBoard = new CupBoard(WidthGet(), DepthGet(), lockerList, extrusion);     
+   
         }
 
 
-        //public CupBoard GetCupBoard()
-        //{
-            
-        //}
 
         private void comboWidth_SelectedIndexChanged(object sender, EventArgs e)
         {
