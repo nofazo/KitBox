@@ -16,9 +16,9 @@ namespace Kitbox
 {
     public class CupBoard
     {
-        public double width;
+        public int width;
 
-        public double depth;
+        public int depth;
 
         //public int lockerNumber;
 
@@ -30,7 +30,7 @@ namespace Kitbox
 
 
 
-        public CupBoard(double width, double depth, List<Locker> lockerList, Extrusion extrusion)
+        public CupBoard(int width, int depth, List<Locker> lockerList, Extrusion extrusion)
 
         {
 
@@ -904,7 +904,7 @@ namespace Kitbox
 
 
 
-        public void ValiderArmoire(string couleur, double largeur, double profondeur) // largeur et profondeur à récupérer des pages précédentes
+        public void ValiderArmoire(string couleur, int largeur, int profondeur) // largeur et profondeur à récupérer des pages précédentes
 
         {
 

@@ -14,37 +14,26 @@ namespace Interface
 {
     public partial class Locker : System.Windows.Forms.UserControl
     {
-        int width;
-        int deep;
-        string color;
-        double height;
-        double cleatHeight; 
-        int indexRow;
-        
 
+        int indexRow;
         DataGridViewRow row = new DataGridViewRow();
         Form1 form = new Form1();
 
-        //List<Kitbox.Locker> listOfLocker = new List<Kitbox.Locker>();
 
-        public Locker(int width, int deep)
+        public Locker()
         {
             InitializeComponent();
-            
- 
-            double height = Convert.ToDouble(comboHeight.SelectedValue);
-            double cleatHeight = height - 4; // en cm
-            
-            this.height = height;
-            this.cleatHeight = cleatHeight;
-            this.width = width;
-            this.deep = deep;
         }
 
         public int HeightGet()
         {
-            int heightreal= Convert.ToInt32(comboHeight.Text);
-            return heightreal;
+            int height= Convert.ToInt32(comboHeight.Text); 
+            return height;
+        }
+
+        public int CleatHeightGet()
+        {
+            return HeightGet() - 4;
         }
 
         public string ColorGet()
@@ -53,6 +42,19 @@ namespace Interface
             return color;
 
         }
+
+        public int DepthGet()
+        {
+            return Form1.cupBoard.depth;
+        }
+
+        public int WidthGet()
+        {
+            return Form1.cupBoard.width;
+        }
+
+
+
 
         private void AddLocker_Click(object sender, EventArgs e)
         {
@@ -69,22 +71,22 @@ namespace Interface
            
             List<Accessory> list = new List<Accessory>();
 
-            HBpanel HBpanell = new HBpanel(color, deep, width);
+            HBpanel HBpanell = new HBpanel(ColorGet(), DepthGet(), WidthGet());
             list.Add(HBpanell);
 
-            GDpanel GDpanell = new GDpanel(color, deep, cleatHeight);
+            GDpanel GDpanell = new GDpanel(ColorGet(), DepthGet(), CleatHeightGet());
             list.Add(GDpanell);
 
-            ARpanel ARpanell = new ARpanel(color, width, cleatHeight);
+            ARpanel ARpanell = new ARpanel(ColorGet(), WidthGet(), CleatHeightGet());
             list.Add(ARpanell);
 
-            ARAVrail ARAVraill = new ARAVrail(width);   //x2
+            ARAVrail ARAVraill = new ARAVrail(WidthGet());   //x2
             list.Add(ARAVraill);
 
-            GDrail GDraill = new GDrail(deep);     //x2      
+            GDrail GDraill = new GDrail(DepthGet());     //x2      
             list.Add(GDraill);
 
-            Cleat cleatt = new Cleat(cleatHeight);           //x4
+            Cleat cleatt = new Cleat(CleatHeightGet());           //x4
             list.Add(cleatt);
 
             
@@ -92,13 +94,13 @@ namespace Interface
             Kitbox.Locker locker = new Kitbox.Locker(list, HeightGet(), ColorGet());
 
 
-            // ajout de moon casier à la liste de casier existant
+            // ajout de mon casier à la liste de casier statique existante dans le Form1
             Form1.listOfLocker.Add(locker);
 
-            dataGridView1["couleur", row].Value = ColorBox.Text;
-            dataGridView1["hauteur", row].Value = comboHeight.Text;
-            dataGridView1["profondeur", row].Value = this.width;
-            dataGridView1["largeur", row].Value = this.deep;
+            dataGridView1["couleur", row].Value = ColorGet();
+            dataGridView1["hauteur", row].Value = HeightGet();
+            dataGridView1["profondeur", row].Value = WidthGet();
+            dataGridView1["largeur", row].Value = DepthGet();
 
 
         }
@@ -156,7 +158,7 @@ namespace Interface
 
             
 
-            if (width < 62)
+            if (WidthGet() < 62)
             {
                 pictureBox1.Visible = false;
             }
@@ -180,6 +182,7 @@ namespace Interface
                 }
 
                 dataGridView1.Rows.Clear();
+
                 //close connection
                 form.CloseConnection();
             }

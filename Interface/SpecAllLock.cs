@@ -41,7 +41,7 @@ namespace Interface
                 Form1.cupBoard.width = WidthGet();
                 Form1.cupBoard.depth = DepthGet();
                 this.Controls.Clear();
-                this.Controls.Add(new Locker(WidthGet(), DepthGet()));
+                this.Controls.Add(new Locker());
             }
    
         }

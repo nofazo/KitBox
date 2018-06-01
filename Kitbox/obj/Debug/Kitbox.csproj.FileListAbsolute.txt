@@ -17,3 +17,4 @@ C:\Users\User\Desktop\KitBox\Kitbox\obj\Debug\Kitbox.csproj.GenerateResource.Cac
 C:\Users\User\Desktop\KitBox\Kitbox\obj\Debug\Kitbox.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\KitBox\Kitbox\obj\Debug\Kitbox.dll
 C:\Users\User\Desktop\KitBox\Kitbox\obj\Debug\Kitbox.pdb
+C:\Users\User\Desktop\KitBox\Kitbox\obj\Debug\Kitbox.csprojResolveAssemblyReference.cache
