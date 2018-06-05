@@ -18,14 +18,15 @@ namespace Interface
         int indexRow;
         DataGridViewRow row = new DataGridViewRow();
         Form1 form = new Form1();
-
+        public static List<Accessory> list = new List<Accessory>();
+        CupBoard cupBoard = Form1.GetCupBoard();
 
         public Locker()
         {
             InitializeComponent();
         }
 
-        public int HeightGet()
+        public int HeightGet()          // Hauteur totale du casier
         {
             int height= Convert.ToInt32(comboHeight.Text); 
             return height;
@@ -33,7 +34,7 @@ namespace Interface
 
         public int CleatHeightGet()
         {
-            return HeightGet() - 4;
+            return HeightGet() - 4;  // si valeur en cm
         }
 
         public string ColorGet()
@@ -43,14 +44,14 @@ namespace Interface
 
         }
 
-        public int DepthGet()
+        public double DepthGet()
         {
-            return Form1.cupBoard.depth;
+            return cupBoard.GetDepth();
         }
 
-        public int WidthGet()
+        public double WidthGet()
         {
-            return Form1.cupBoard.width;
+            return cupBoard.GetWidth();
         }
 
 
@@ -68,8 +69,6 @@ namespace Interface
             row = dataGridView1.Rows.Count - 2;
 
          
-           
-            List<Accessory> list = new List<Accessory>();
 
             HBpanel HBpanell = new HBpanel(ColorGet(), DepthGet(), WidthGet());
             list.Add(HBpanell);
@@ -89,13 +88,16 @@ namespace Interface
             Cleat cleatt = new Cleat(CleatHeightGet());           //x4
             list.Add(cleatt);
 
-            
-            // je crée un objet par ligne avec sa liste d'accessoire associée.
+                      
+            // création d'un nouvel objet locker
             Kitbox.Locker locker = new Kitbox.Locker(list, HeightGet(), ColorGet());
 
-
             // ajout de mon casier à la liste de casier statique existante dans le Form1
-            Form1.listOfLocker.Add(locker);
+           // Form1.listOfLocker.Add(locker);                                                    //methode qui modifie la listOfLocker si modify
+            cupBoard.AddLocker(locker);
+
+            //Comme "list" est une variable static, il faut la réinitialiser pour le prochain locker
+            list.Clear();
 
             dataGridView1["couleur", row].Value = ColorGet();
             dataGridView1["hauteur", row].Value = HeightGet();
@@ -125,15 +127,13 @@ namespace Interface
           //no
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        public void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            //yes
             if (radioButton2.Checked)
             {
                 Form2 f2 = new Form2();
-                // f2.UserControl4 = this; // Allow Form2 to access Form1 public members
-                f2.ShowDialog();
-            }
+                f2.ShowDialog();               
+            } 
         }
 
         public void UserControl4_Load(object sender, EventArgs e)
@@ -154,9 +154,6 @@ namespace Interface
 
             form.connection = new MySqlConnection(connectionString);
 
-          
-
-            
 
             if (WidthGet() < 62)
             {
@@ -177,8 +174,7 @@ namespace Interface
                     
                     MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`lockers` (`FkOrder`, `color`,`height`, `depth`, `width`) VALUES (' 1 ', '" + dataGridView1.Rows[i].Cells[0].Value + "', '" + dataGridView1.Rows[i].Cells[1].Value + "', '" + dataGridView1.Rows[i].Cells[2].Value + "', '" + dataGridView1.Rows[i].Cells[3].Value + "');", form.connection);
                    
-                    cmd.ExecuteNonQuery();
-                                      
+                    cmd.ExecuteNonQuery();                                    
                 }
 
                 dataGridView1.Rows.Clear();

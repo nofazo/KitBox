@@ -22,9 +22,16 @@ namespace Interface
         public MySqlConnection connection;
         public MySqlDataAdapter mySqlDataAdapter;
 
-        public static Extrusion extrusion = new Extrusion("", 0);
-        public static List<Kitbox.Locker> listOfLocker = new List<Kitbox.Locker>();  // attention existance de Interface.Locker à supprimer
-        public static CupBoard cupBoard = new CupBoard(0,0, listOfLocker, extrusion);
+        private static Extrusion extrusion = new Extrusion("", 0);
+        private static List<Kitbox.Locker> listOfLocker = new List<Kitbox.Locker>();  
+        private static CupBoard cupBoard = new CupBoard(0,0, listOfLocker, extrusion);
+
+        
+        static public CupBoard GetCupBoard()
+        {
+            return cupBoard;
+        }
+
 
         //open connection to database
         public bool OpenConnection()
@@ -81,10 +88,7 @@ namespace Interface
         {
 
             this.Controls.Add(new Welcome());
-            
-
-            
-
+                    
         }
     }
 }

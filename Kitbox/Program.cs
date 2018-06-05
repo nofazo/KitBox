@@ -16,18 +16,15 @@ namespace Kitbox
 {
     public class CupBoard
     {
-        public int width;
+        private double width;
 
-        public int depth;
+        private double depth;
 
-        //public int lockerNumber;
+        private List<Locker> lockerList;
 
-        public List<Locker> lockerList;
-
-        public Extrusion extrusion;
+        private Extrusion extrusion;
 
         //liste cornière après, pas besoin de liste comme mêmes cornières (prix *4)
-
 
 
         public CupBoard(int width, int depth, List<Locker> lockerList, Extrusion extrusion)
@@ -44,6 +41,48 @@ namespace Kitbox
 
         }
 
+        public List<Locker> GetLockerList()
+        {
+            return this.lockerList;
+        }
+
+        public void SetLockerList(List<Locker> newLockerList)
+        {
+            this.lockerList = newLockerList;
+        }
+
+
+        public Extrusion GetExtrusion()
+        {
+            return this.extrusion;
+        }
+
+        public void SetExtrusion(Extrusion newExtrusion)
+        {
+            this.extrusion = newExtrusion;
+        }
+
+
+        public double GetWidth()
+        {
+            return this.width;
+        }
+
+        public void SetWidth( double newWidth)
+        {
+            this.width = newWidth;
+        }
+
+
+        public double GetDepth()
+        {
+            return this.depth;
+        }
+
+        public void SetDepth(double newDepth)
+        {
+            this.depth = newDepth;
+        }
 
 
         public double GetPrice()
@@ -70,6 +109,30 @@ namespace Kitbox
 
         }
 
+        public double GetTotalHeight()  
+        {
+
+            double height = 0;
+
+            foreach (Locker locker in lockerList)
+
+            {
+
+                height += locker.GetLockerHeight();  
+
+            }
+
+            return height;
+
+        }
+
+        public void AddLocker(Locker locker)
+        {
+            this.lockerList.Add(locker);
+        }
+
+        //RemoveLastLocker?
+        //Remove un locker en particulier, comment ? parcourir et regarder les caractéristiques qui match ?
     }
 
 
@@ -78,11 +141,11 @@ namespace Kitbox
 
     {
 
-        public string color;
+        private string color;
 
-        public double height;
+        private double height;
 
-        public double price;
+        private double price;
 
 
 
@@ -97,16 +160,33 @@ namespace Kitbox
         }
 
 
+        public string GetColor()
+        {
+            return this.color;
+        }
+
+        public void SetColor(string newColor)
+        {
+            this.color = newColor;
+        }
+
+
+        public double GetHeight()
+        {
+            return this.height;
+        }
+
+        public void SetHeight(double newHeight)
+        {
+            this.height = newHeight;
+        }
+
 
         public double GetPrice()
 
         {
-
             return price;
-
         }
-
-
 
     }
 
@@ -117,10 +197,7 @@ namespace Kitbox
     {
 
         public CutExtrusion(string color, double height) : base(color, height)
-
         {
-
-
 
         }
 
@@ -134,11 +211,11 @@ namespace Kitbox
 
     {
 
-        public double lockerHeight;
+        private double lockerHeight;
 
-        public string color;
+        private string color;
 
-        public List<Accessory> accessoryList;
+        private List<Accessory> accessoryList;
 
 
 
@@ -154,8 +231,37 @@ namespace Kitbox
 
         }
 
+        public List<Accessory> GetAccessoryList()
+        {
+            return this.accessoryList;
+        }
+
+        public void SetAccessoryList(List<Accessory> newAccessList)
+        {
+            this.accessoryList = newAccessList;
+        }
 
 
+        public double GetLockerHeight()
+        {
+            return this.lockerHeight;
+        }
+
+        public void SetLockerHeight(double newLockerHeight)
+        {
+            this.lockerHeight = newLockerHeight;
+        }
+
+
+        public string GetColor()
+        {
+            return this.color;
+        }
+
+        public void SetColor(string newColor)
+        {
+            this.color = newColor;
+        }
 
 
         public double GetPrice()
@@ -215,23 +321,20 @@ namespace Kitbox
 
 
     public class Order
-
     {
 
-        public CupBoard cubBoard;
+        private CupBoard cubBoard;
 
-        public int id;
+        private int id;
 
-        public string NameClient;
+        private string NameClient;
 
 
 
         public void GetRecapitulatif()
-
         {
 
-            foreach (Locker locker in cubBoard.lockerList)
-
+            foreach (Locker locker in cubBoard.GetLockerList())
             {
 
                 int i = 1;
@@ -244,8 +347,7 @@ namespace Kitbox
 
 
 
-                foreach (Accessory accessory in locker.accessoryList)
-
+                foreach (Accessory accessory in locker.GetAccessoryList())
                 {
 
                     //afficher accessory.name + accessory.GetPrice();
@@ -271,7 +373,6 @@ namespace Kitbox
 
 
         public double GetTotalPrice(int quantity, double price)
-
         {
 
             return quantity * price;
@@ -287,27 +388,23 @@ namespace Kitbox
 
 
     public class Bill  //facture
-
     {
 
-        public string date;
+        private string date;
 
-        public CupBoard cubBoard;
+        private CupBoard cubBoard;
 
 
 
         public void GetDetailPart()
-
         {
 
             string path = @"/Users/User/source/DetailPart.txt";
 
             using (StreamWriter sw = File.CreateText(path))
-
             {
 
-                foreach (Locker locker in cubBoard.lockerList)
-
+                foreach (Locker locker in cubBoard.GetLockerList())
                 {
 
                     int i = 1;
@@ -320,8 +417,7 @@ namespace Kitbox
 
 
 
-                    foreach (Accessory accessory in locker.accessoryList)
-
+                    foreach (Accessory accessory in locker.GetAccessoryList())
                     {
 
                         //afficher accessory.name + accessory.GetPrice();
@@ -351,7 +447,6 @@ namespace Kitbox
 
 
         public void GetBill()
-
         {
 
             string path = @"/Users/User/source/Bill.txt";
@@ -360,11 +455,11 @@ namespace Kitbox
 
             {
 
-                foreach (Locker locker in cubBoard.lockerList)
+                foreach (Locker locker in cubBoard.GetLockerList())
 
                 {
 
-                    sw.WriteLine(locker.color + locker.GetPrice());   // sprint 3:faire distinction entre casier avec porte et casier sans porte
+                    sw.WriteLine(locker.GetColor() + locker.GetPrice());   // sprint 3:faire distinction entre casier avec porte et casier sans porte
 
                 }
 
@@ -383,55 +478,43 @@ namespace Kitbox
 
 
     public abstract class Accessory
-
     {
 
         // public double price;
 
         // public bool isMajor;
 
-
+        private string type;
 
         public abstract double GetPrice();
 
         public abstract bool IsMajor();
+
+        public string GetAccessType()
+        {
+            return this.type;          
+        }
 
     }
 
 
 
     public class Door : Accessory
-
     {
 
-        public double height;
+        private double price;
 
-        public double width;
-
-        public string material;
-
-        public double price;
-
-        public bool isMajor = false;
+        private bool isMajor = false;
 
 
-
-        public Door(double height, double width, string material)
-
+        public Door()
         {
-
-            this.height = height;
-
-            this.width = width;
-
-            this.material = material;
 
         }
 
 
 
         public override double GetPrice()
-
         {
 
             return price;
@@ -441,9 +524,7 @@ namespace Kitbox
 
 
         public override bool IsMajor()
-
         {
-
             return isMajor;
 
         }
@@ -453,25 +534,20 @@ namespace Kitbox
 
 
     public class GlassDoor : Door
-
     {
 
-        new public double price;
+        new private double price;
+        new private string type = "glassDoor";
 
 
-
-        public GlassDoor(double height, double width, string material) : base(height, width, material)
-
+        public GlassDoor()
         {
-
-
 
         }
 
 
 
         public override double GetPrice()
-
         {
 
             return price;
@@ -483,29 +559,35 @@ namespace Kitbox
 
 
     public class NormalDoor : Door
-
     {
 
-        public double cabinetHandlePrice;
+        private double cabinetHandlePrice;
 
-        new public double price;
+        private double price;
 
-        public string color;
+        private string color;
 
+        private string type = "normalDoor";
 
-
-        public NormalDoor(double height, double width, string material, string color) : base(height, width, material)
-
+        public NormalDoor(string color)
         {
 
             this.color = color;
 
         }
 
+        public string GetColor()
+        {
+            return this.color;
+        }
+
+        public void SetColor(string newColor)
+        {
+            this.color = newColor;
+        }
 
 
         public override double GetPrice()
-
         {
 
             return price;
@@ -517,29 +599,34 @@ namespace Kitbox
 
 
     public class Cleat : Accessory
-
     {
 
-        public double height;
+        private double height;
 
-        public double price;
+        private double price;
 
-        public bool isMajor = true;
+        private bool isMajor = true;
 
-
+        private string type = "cleat";
 
         public Cleat(double height)
-
         {
 
             this.height = height;
 
         }
 
+        public double GetHeight()
+        {
+            return this.height;
+        }
 
+        public void SetHeight(double newHeight)
+        {
+            this.height = newHeight;
+        }
 
         public override double GetPrice()
-
         {
 
             return price;
@@ -549,7 +636,6 @@ namespace Kitbox
 
 
         public override bool IsMajor()
-
         {
 
             return isMajor;
@@ -561,19 +647,14 @@ namespace Kitbox
 
 
     public class Rail : Accessory
-
     {
 
-        public double price;
+        private double price;
 
-        public bool isMajor = true;
-
-
+        private bool isMajor = true;
 
         public Rail()
-
         {
-
 
 
         }
@@ -581,7 +662,6 @@ namespace Kitbox
 
 
         public override double GetPrice()
-
         {
 
             return price;
@@ -603,11 +683,10 @@ namespace Kitbox
 
 
     public class ARAVrail : Rail
-
     {
 
-        public double width;
-
+        private double width;
+        private string type = "ARAVrail";
 
 
         public ARAVrail(double width)
@@ -618,6 +697,11 @@ namespace Kitbox
 
         }
 
+        public double GetWidtht()
+        {
+            return this.width;
+        }
+
     }
 
 
@@ -626,8 +710,8 @@ namespace Kitbox
 
     {
 
-        public double depth;
-
+        private double depth;
+        private string type = "GDrail";
 
 
         public GDrail(double depth)
@@ -636,6 +720,11 @@ namespace Kitbox
 
             this.depth = depth;
 
+        }
+
+        public double GetDepth()
+        {
+            return this.depth;
         }
 
     }
@@ -648,30 +737,32 @@ namespace Kitbox
 
     {
 
-        public string color;
+        private string color;
 
-        public double price;
+        private double price;
 
-        public bool isMajor = true;
-
+        private bool isMajor = true;
 
 
         public Panel(string color)
-
         {
-
             this.color = color;
-
         }
 
+        public string GetColor()
+        {
+            return this.color;
+        }
 
+        public void SetColor(string newColor)
+        {
+            this.color = newColor;
+        }
 
         public override double GetPrice()
 
         {
-
             return price;
-
         }
 
 
@@ -694,11 +785,11 @@ namespace Kitbox
 
     {
 
-        public double width;
+        private double width;
 
-        public double height;
+        private double height;
 
-
+        private string type = "ARpanel";
 
         public ARpanel(string color, double width, double height) : base(color)
 
@@ -710,6 +801,15 @@ namespace Kitbox
 
         }
 
+        public double GetHeight()
+        {
+            return this.height;
+        }
+
+        public double GetWidth()
+        {
+            return this.width;
+        }
     }
 
 
@@ -718,11 +818,11 @@ namespace Kitbox
 
     {
 
-        public double depth;
+        private double depth;
 
-        public double height;
+        private double height;
 
-
+        private string type = "GDpanel";
 
         public GDpanel(string color, double depth, double height) : base(color)
 
@@ -734,6 +834,16 @@ namespace Kitbox
 
         }
 
+        public double GetDepth()
+        {
+            return this.depth;
+        }
+
+        public double GetHeight()
+        {
+            return this.height;
+        }
+
     }
 
 
@@ -742,11 +852,11 @@ namespace Kitbox
 
     {
 
-        public double depth;
+        private double depth;
 
-        public double width;
+        private double width;
 
-
+        private string type = "HBpanel";
 
         public HBpanel(string color, double depth, double width) : base(color)
 
@@ -756,6 +866,16 @@ namespace Kitbox
 
             this.width = width;
 
+        }
+
+        public double GetDepth()
+        {
+            return this.depth;
+        }
+
+        public double GetWidth()
+        {
+            return this.width;
         }
 
     }
@@ -836,7 +956,7 @@ namespace Kitbox
 
                 {
 
-                    GlassDoor glassDoor = new GlassDoor(hauteur, largeur, materiau); // materiau sert à rien?
+                    GlassDoor glassDoor = new GlassDoor(); 
 
                     list.Add(glassDoor);
 
@@ -848,7 +968,7 @@ namespace Kitbox
 
                 {
 
-                    NormalDoor normalDoor = new NormalDoor(hauteur, largeur, materiau = "bois", couleur2);
+                    NormalDoor normalDoor = new NormalDoor( couleur2);
 
                     list.Add(normalDoor);
 
@@ -882,38 +1002,5 @@ namespace Kitbox
 
         }
 
-
-
-        public double GetTotalHeight()  // où placer cette methode? besoin d'une liste de casiers. Laisser dans le main?
-
-        {
-
-            double height = 0;
-
-            foreach (Locker locker in lockerList)
-
-            {
-
-                height += locker.lockerHeight;  // mettre la variable en pv et ajouter une methode GetLockerHeight
-
-            }
-
-            return height;
-
-        }
-
-
-
-        public void ValiderArmoire(string couleur, int largeur, int profondeur) // largeur et profondeur à récupérer des pages précédentes
-
-        {
-
-            double totalHeight = GetTotalHeight();
-
-            Extrusion cornière = new Extrusion(couleur, totalHeight);  // informer l'utilisateur s'il s'agit d'une cornière découpée
-
-            CupBoard armoire = new CupBoard(largeur, profondeur, lockerList, cornière);
-
-        }
     }
 }

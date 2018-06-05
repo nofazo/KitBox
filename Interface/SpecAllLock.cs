@@ -38,8 +38,10 @@ namespace Interface
             }
             else
             {
-                Form1.cupBoard.width = WidthGet();
-                Form1.cupBoard.depth = DepthGet();
+                CupBoard cupBoard = Form1.GetCupBoard();
+                cupBoard.SetWidth(WidthGet());
+                cupBoard.SetDepth(DepthGet());
+
                 this.Controls.Clear();
                 this.Controls.Add(new Locker());
             }
