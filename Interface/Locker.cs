@@ -191,26 +191,17 @@ namespace Interface
             
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {            
             AddLocker.Hide();
             Finish.Hide();
-            listBox1.Hide();
             
             Update.Show();
             radioButton1.Hide();
             radioButton2.Hide();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -245,13 +236,18 @@ namespace Interface
             
             AddLocker.Show();
             Finish.Show();
-            listBox1.Show();
             Update.Hide();
             radioButton1.Show();
             radioButton2.Show();
 
 
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Controls.Clear();
+            this.Controls.Add(new SpecAllLock());
         }
     }
 }

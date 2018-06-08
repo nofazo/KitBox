@@ -38,7 +38,6 @@
             this.Finish = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Modify = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.lockerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.couleur = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +45,7 @@
             this.profondeur = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.largeur = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Update = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lockerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -56,7 +56,7 @@
             this.AddLocker.BackColor = System.Drawing.Color.Silver;
             this.AddLocker.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddLocker.ForeColor = System.Drawing.Color.Black;
-            this.AddLocker.Location = new System.Drawing.Point(1161, 517);
+            this.AddLocker.Location = new System.Drawing.Point(1163, 504);
             this.AddLocker.Margin = new System.Windows.Forms.Padding(4);
             this.AddLocker.Name = "AddLocker";
             this.AddLocker.Size = new System.Drawing.Size(204, 101);
@@ -142,7 +142,7 @@
             this.Finish.BackColor = System.Drawing.Color.Silver;
             this.Finish.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Finish.ForeColor = System.Drawing.Color.Black;
-            this.Finish.Location = new System.Drawing.Point(601, 517);
+            this.Finish.Location = new System.Drawing.Point(919, 504);
             this.Finish.Margin = new System.Windows.Forms.Padding(4);
             this.Finish.Name = "Finish";
             this.Finish.Size = new System.Drawing.Size(204, 101);
@@ -168,7 +168,7 @@
             this.Modify.BackColor = System.Drawing.Color.Silver;
             this.Modify.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Modify.ForeColor = System.Drawing.Color.Black;
-            this.Modify.Location = new System.Drawing.Point(57, 517);
+            this.Modify.Location = new System.Drawing.Point(395, 504);
             this.Modify.Margin = new System.Windows.Forms.Padding(4);
             this.Modify.Name = "Modify";
             this.Modify.Size = new System.Drawing.Size(204, 101);
@@ -176,19 +176,6 @@
             this.Modify.Text = "Modify";
             this.Modify.UseVisualStyleBackColor = false;
             this.Modify.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // listBox1
-            // 
-            this.listBox1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.listBox1.DataSource = this.lockerBindingSource;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(893, 517);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(203, 100);
-            this.listBox1.TabIndex = 22;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // lockerBindingSource
             // 
@@ -240,7 +227,7 @@
             this.Update.BackColor = System.Drawing.Color.Silver;
             this.Update.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Update.ForeColor = System.Drawing.Color.Black;
-            this.Update.Location = new System.Drawing.Point(310, 516);
+            this.Update.Location = new System.Drawing.Point(665, 504);
             this.Update.Margin = new System.Windows.Forms.Padding(4);
             this.Update.Name = "Update";
             this.Update.Size = new System.Drawing.Size(204, 101);
@@ -249,6 +236,20 @@
             this.Update.UseVisualStyleBackColor = false;
             this.Update.Click += new System.EventHandler(this.Update_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Silver;
+            this.button1.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(65, 504);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(204, 101);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "Previous";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Locker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -256,9 +257,9 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Update);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.Modify);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Finish);
@@ -289,7 +290,6 @@
         private System.Windows.Forms.Button Finish;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button Modify;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.BindingSource lockerBindingSource;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn couleur;
@@ -297,5 +297,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn profondeur;
         private System.Windows.Forms.DataGridViewTextBoxColumn largeur;
         private System.Windows.Forms.Button Update;
+        private System.Windows.Forms.Button button1;
     }
 }
