@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kitbox;
+using MySql.Data.MySqlClient;
 
 namespace Interface
 {
     public partial class SpecAllLock : System.Windows.Forms.UserControl
     {
+        Form1 form = new Form1();
         public SpecAllLock()
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace Interface
             int deep = Convert.ToInt32(comboDepth.Text);
             return deep;
         }
+        
 
         protected void button1_Click(object sender, EventArgs e)
         {
@@ -42,14 +45,23 @@ namespace Interface
                 cupBoard.SetWidth(WidthGet());
                 cupBoard.SetDepth(DepthGet());
 
-                this.Controls.Clear();
-                this.Controls.Add(new Locker());
+                if (form.OpenConnection() == true)
+                {
+                    Order order = Form1.GetOrder();
+                    int idOrder = order.GetidOrder();
+                    MySqlCommand cmd = new MySqlCommand("UPDATE `kitboxdb2.0`.`orders` SET State='InProgress' WHERE idOrder ='" + idOrder + "'", form.connection);
+
+                    cmd.ExecuteNonQuery();
+
+                }
+
             }
-   
+            
+            this.Controls.Clear();
+            this.Controls.Add(new Locker());
         }
 
-
-
+       
         private void comboWidth_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (WidthGet() > 62)
@@ -70,6 +82,19 @@ namespace Interface
         {
             this.Controls.Clear();
             this.Controls.Add(new Welcome());
+        }
+
+        private void SpecAllLock_Load(object sender, EventArgs e)
+        {
+            form.server = "localhost";
+            form.database = "kitboxdb2.0";
+            form.uid = "root";
+            form.password = "Senbonzakura1493";
+            string connectionString;
+
+            connectionString = "SERVER=" + form.server + ";" + "DATABASE=" + form.database + ";" + "UID=" + form.uid + ";" + "PASSWORD=" + form.password + ";";
+
+            form.connection = new MySqlConnection(connectionString);
         }
     }
 }

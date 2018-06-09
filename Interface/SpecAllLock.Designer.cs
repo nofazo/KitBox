@@ -123,6 +123,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SpecAllLock";
             this.Size = new System.Drawing.Size(1405, 729);
+            this.Load += new System.EventHandler(this.SpecAllLock_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

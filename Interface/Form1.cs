@@ -22,6 +22,7 @@ namespace Interface
         public MySqlConnection connection;
         public MySqlDataAdapter mySqlDataAdapter;
 
+        private static Order order = new Order();
         private static Extrusion extrusion = new Extrusion("", 0);
         private static List<Kitbox.Locker> listOfLocker = new List<Kitbox.Locker>();  
         private static CupBoard cupBoard = new CupBoard(0,0, listOfLocker, extrusion);
@@ -30,6 +31,10 @@ namespace Interface
         static public CupBoard GetCupBoard()
         {
             return cupBoard;
+        }
+        static public Order GetOrder()
+        {
+            return order;
         }
 
 

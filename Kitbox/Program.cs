@@ -380,8 +380,14 @@ namespace Kitbox
         }
 
 
-
-
+        public void SetId(int id)
+        {
+            this.id = id;
+        }
+        public int GetidOrder()
+        {
+            return this.id;
+        }
 
     }
 
