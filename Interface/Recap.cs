@@ -38,18 +38,17 @@ namespace Interface
             
 
             int NbrLockers= dataGridView1.Rows.Count - 1 ;
-            textBox1.AppendText("Votre armoire est complète elle est composée de "+Form1.GetListofLocker().Count()+"  casiers : /n");
+            textBox1.AppendText("Your cupboard is complete , you choose  "+Form1.GetListofLocker().Count()+"  locker(s) : \n");
             int i = 1;
             foreach (Kitbox.Locker locker in Form1.GetListofLocker())
             {
                 //remplir le datagridview avec les valeurs des objects existants
                 textBox1.AppendText(" "+i+ " : One "  + locker.GetColor()+ "  locker. \n");
-                
-                    foreach (Kitbox.Accessory accessory in locker.GetAccessoryList())
-                    {
-                        textBox1.AppendText(" "+accessory.GetAccessType() +" ");
-                        MessageBox.Show(" " + accessory.GetAccessType() + " ");
-                    }
+
+                foreach (Kitbox.Accessory accessory in locker.GetAccessoryList())
+                {
+                    textBox1.AppendText(" " + accessory.GetAccessType() + " ");
+                }
                                        
                 i += 1;
 

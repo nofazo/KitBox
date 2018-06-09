@@ -189,7 +189,7 @@
             this.hauteur,
             this.profondeur,
             this.largeur});
-            this.dataGridView1.Location = new System.Drawing.Point(785, 319);
+            this.dataGridView1.Location = new System.Drawing.Point(790, 246);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
