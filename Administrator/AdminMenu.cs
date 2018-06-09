@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApp7
 {
     public partial class AdminMenu : UserControl
     {
+        
         public AdminMenu()
         {
             InitializeComponent();
@@ -50,7 +52,7 @@ namespace WindowsFormsApp7
 
         private void AdminMenu_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
