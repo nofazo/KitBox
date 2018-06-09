@@ -498,17 +498,14 @@ namespace Kitbox
 
         // public bool isMajor;
 
-        private string type;
+        //private string type ;
 
         public abstract double GetPrice();
 
         public abstract bool IsMajor();
 
-        public string GetAccessType()
-        {
-            return this.type;          
-        }
-
+        public abstract string GetAccessType();
+        
     }
 
 
@@ -519,6 +516,8 @@ namespace Kitbox
         private double price;
 
         private bool isMajor = false;
+
+        protected string type = "Door";
 
 
         public Door()
@@ -543,6 +542,12 @@ namespace Kitbox
 
         }
 
+        public override string GetAccessType()
+        {
+            return this.type;
+        }
+
+
     }
 
 
@@ -550,7 +555,7 @@ namespace Kitbox
     public class GlassDoor : Door
     {
 
-        new private double price;
+        private double price;
         new private string type = "glassDoor";
 
 
@@ -568,6 +573,11 @@ namespace Kitbox
 
         }
 
+        public override string GetAccessType()
+        {
+            return this.type;
+        }
+
     }
 
 
@@ -581,7 +591,7 @@ namespace Kitbox
 
         private string color;
 
-        private string type = "normalDoor";
+        new protected string type = "normalDoor";
 
         public NormalDoor(string color)
         {
@@ -607,6 +617,12 @@ namespace Kitbox
             return price;
 
         }
+
+        public override string GetAccessType()
+        {
+            return this.type;
+        }
+
 
     }
 
@@ -656,6 +672,11 @@ namespace Kitbox
 
         }
 
+        public override string GetAccessType()
+        {
+            return this.type;
+        }
+
     }
 
 
@@ -666,6 +687,8 @@ namespace Kitbox
         private double price;
 
         private bool isMajor = true;
+
+        private string type = "Rail";
 
         public Rail()
         {
@@ -692,6 +715,12 @@ namespace Kitbox
 
         }
 
+
+        public override string GetAccessType()
+        {
+            return this.type;
+        }
+
     }
 
 
@@ -714,6 +743,11 @@ namespace Kitbox
         public double GetWidtht()
         {
             return this.width;
+        }
+
+        public override string GetAccessType()
+        {
+            return this.type;
         }
 
     }
@@ -741,6 +775,11 @@ namespace Kitbox
             return this.depth;
         }
 
+        public override string GetAccessType()
+        {
+            return this.type;
+        }
+
     }
 
 
@@ -756,6 +795,8 @@ namespace Kitbox
         private double price;
 
         private bool isMajor = true;
+
+        private string type = "Panel";
 
 
         public Panel(string color)
@@ -787,6 +828,11 @@ namespace Kitbox
 
             return isMajor;
 
+        }
+
+        public override string GetAccessType()
+        {
+            return this.type;
         }
 
 
@@ -824,6 +870,11 @@ namespace Kitbox
         {
             return this.width;
         }
+
+        public override string GetAccessType()
+        {
+            return this.type;
+        }
     }
 
 
@@ -856,6 +907,11 @@ namespace Kitbox
         public double GetHeight()
         {
             return this.height;
+        }
+
+        public override string GetAccessType()
+        {
+            return this.type;
         }
 
     }
@@ -892,6 +948,10 @@ namespace Kitbox
             return this.width;
         }
 
+        public override string GetAccessType()
+        {
+            return this.type;
+        }
     }
 
 
