@@ -44,9 +44,9 @@ namespace Interface
                 dataGridView1.DataSource = DS.Tables[0];
                                                                                                               //close connection
                 form.CloseConnection();
-
             
             }
+
             int NbrLockers= dataGridView1.Rows.Count - 1 ;
             textBox1.AppendText("Votre armoire sera composée de "+NbrLockers+" casiers : " + Environment.NewLine);
 
@@ -59,6 +59,15 @@ namespace Interface
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (form.OpenConnection() == true)
+            {
+                Order order = Form1.GetOrder();
+                int idOrder = order.GetidOrder();
+                MySqlCommand cmd = new MySqlCommand("UPDATE `kitboxdb2.0`.`orders` SET State='Completed' WHERE idOrder ='" + idOrder + "'", form.connection);
+
+                cmd.ExecuteNonQuery();
+
+            }
             this.Controls.Clear();
             this.Controls.Add(new Welcome());
         }

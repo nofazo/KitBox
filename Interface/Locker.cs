@@ -20,7 +20,9 @@ namespace Interface
         Form1 form = new Form1();
         public static List<Accessory> list = new List<Accessory>();
         CupBoard cupBoard = Form1.GetCupBoard();
+
         Order order = Form1.GetOrder();
+        
 
         public Locker()
         {
@@ -192,9 +194,17 @@ namespace Interface
         {
             if (form.OpenConnection() == true)
             {
-                
+                int idOrder = order.GetidOrder();
+                //update in database if previous mode.
+                if (order.GetState() == "InProgress")
+                {
+                    MySqlCommand cmd2 = new MySqlCommand("Delete FROM `kitboxdb2.0`.`lockers` WHERE FkOrder ='" + idOrder + "'", form.connection);
+                    cmd2.ExecuteNonQuery();
+                }
+
                 for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
                 {
+                    
                     
                     MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`lockers` (`FkOrder`, `color`,`height`, `depth`, `width`) VALUES ('"+order.GetidOrder()+ " ', '" + dataGridView1.Rows[i].Cells[0].Value + "', '" + dataGridView1.Rows[i].Cells[1].Value + "', '" + dataGridView1.Rows[i].Cells[2].Value + "', '" + dataGridView1.Rows[i].Cells[3].Value + "');", form.connection);
                    
@@ -210,8 +220,8 @@ namespace Interface
             }
             if (form.OpenConnection() == true)
             {
-                Order order = Form1.GetOrder();
                 int idOrder = order.GetidOrder();
+
                 order.SetState("InProgress");
                 MySqlCommand cmd = new MySqlCommand("UPDATE `kitboxdb2.0`.`orders` SET State='InProgress' WHERE idOrder ='" + idOrder + "'", form.connection);
 
@@ -276,8 +286,7 @@ namespace Interface
             radioButton1.Show();
             radioButton2.Show();
 
-
-
+            
         }
 
         private void button1_Click_1(object sender, EventArgs e)
