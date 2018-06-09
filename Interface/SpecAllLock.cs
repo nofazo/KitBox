@@ -45,15 +45,7 @@ namespace Interface
                 cupBoard.SetWidth(WidthGet());
                 cupBoard.SetDepth(DepthGet());
 
-                if (form.OpenConnection() == true)
-                {
-                    Order order = Form1.GetOrder();
-                    int idOrder = order.GetidOrder();
-                    MySqlCommand cmd = new MySqlCommand("UPDATE `kitboxdb2.0`.`orders` SET State='InProgress' WHERE idOrder ='" + idOrder + "'", form.connection);
-
-                    cmd.ExecuteNonQuery();
-
-                }
+                
 
             }
             

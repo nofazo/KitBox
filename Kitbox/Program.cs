@@ -326,7 +326,7 @@ namespace Kitbox
         private CupBoard cubBoard;
 
         private int id;
-
+        private string state;
         private string NameClient;
 
 
@@ -389,6 +389,14 @@ namespace Kitbox
             return this.id;
         }
 
+        public void SetState(string state)
+        {
+            this.state = state;
+        }
+        public string GetState()
+        {
+            return this.state;
+        }
     }
 
 

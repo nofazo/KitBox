@@ -20,6 +20,7 @@ namespace Interface
         Form1 form = new Form1();
         public static List<Accessory> list = new List<Accessory>();
         CupBoard cupBoard = Form1.GetCupBoard();
+        Order order = Form1.GetOrder();
 
         public Locker()
         {
@@ -101,8 +102,8 @@ namespace Interface
 
             dataGridView1["couleur", row].Value = ColorGet();
             dataGridView1["hauteur", row].Value = HeightGet();
-            dataGridView1["profondeur", row].Value = WidthGet();
-            dataGridView1["largeur", row].Value = DepthGet();
+            dataGridView1["profondeur", row].Value = DepthGet();
+            dataGridView1["largeur", row].Value = WidthGet();
 
 
         }
@@ -143,7 +144,10 @@ namespace Interface
     
  
         private void UserControl4_Load_1(object sender, EventArgs e)
+
         {
+            int idOrder = order.GetidOrder();
+           
             form.server = "localhost";
             form.database = "kitboxdb2.0";
             form.uid = "root";
@@ -161,7 +165,27 @@ namespace Interface
             }
             
             Update.Hide();
+
+            //Si on est en previous
+            if (order.GetState() == "InProgress")
+            {
+                foreach  ( Kitbox.Locker locker  in  Form1.GetListofLocker() )
+                {
+                    //remplir le datagridview avec les valeurs des objects existants
+
+                    int row = 0;
+                    dataGridView1.Rows.Add();
+                    row = dataGridView1.Rows.Count - 2;
+                    dataGridView1["couleur", row].Value = locker.GetColor();
+                    dataGridView1["hauteur", row].Value = locker.GetLockerHeight();
+                    dataGridView1["profondeur", row].Value = cupBoard.GetDepth();
+                    dataGridView1["largeur", row].Value =cupBoard.GetWidth();
+
+                }
             
+            
+            }
+
         }
 
         private void Finish_Click(object sender, EventArgs e)
@@ -172,15 +196,27 @@ namespace Interface
                 for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
                 {
                     
-                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`lockers` (`FkOrder`, `color`,`height`, `depth`, `width`) VALUES (' 1 ', '" + dataGridView1.Rows[i].Cells[0].Value + "', '" + dataGridView1.Rows[i].Cells[1].Value + "', '" + dataGridView1.Rows[i].Cells[2].Value + "', '" + dataGridView1.Rows[i].Cells[3].Value + "');", form.connection);
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`lockers` (`FkOrder`, `color`,`height`, `depth`, `width`) VALUES ('"+order.GetidOrder()+ " ', '" + dataGridView1.Rows[i].Cells[0].Value + "', '" + dataGridView1.Rows[i].Cells[1].Value + "', '" + dataGridView1.Rows[i].Cells[2].Value + "', '" + dataGridView1.Rows[i].Cells[3].Value + "');", form.connection);
                    
-                    cmd.ExecuteNonQuery();                                    
+                    cmd.ExecuteNonQuery();
+
+                   
                 }
 
                 dataGridView1.Rows.Clear();
 
                 //close connection
                 form.CloseConnection();
+            }
+            if (form.OpenConnection() == true)
+            {
+                Order order = Form1.GetOrder();
+                int idOrder = order.GetidOrder();
+                order.SetState("InProgress");
+                MySqlCommand cmd = new MySqlCommand("UPDATE `kitboxdb2.0`.`orders` SET State='InProgress' WHERE idOrder ='" + idOrder + "'", form.connection);
+
+                cmd.ExecuteNonQuery();
+
             }
             this.Controls.Clear();
             this.Controls.Add(new Extrusions());

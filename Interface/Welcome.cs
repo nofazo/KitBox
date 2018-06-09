@@ -45,6 +45,7 @@ namespace Interface
                     Order order = Form1.GetOrder();
                     int currentIdOrder = Convert.ToInt32(DS.Tables[0].Rows[0]["idORder"]);
                     order.SetId(currentIdOrder);
+                    order.SetState("initialized");
                     this.Controls.Clear();
                     this.Controls.Add(new SpecAllLock());
 
