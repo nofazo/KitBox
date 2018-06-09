@@ -35,20 +35,25 @@ namespace Interface
             string connectionString;
             connectionString = "SERVER=" + form.server + ";" + "DATABASE=" + form.database + ";" + "UID=" + form.uid + ";" + "PASSWORD=" + form.password + ";";
             form.connection = new MySqlConnection(connectionString);
-            //form.OpenConnection();
-            if (form.OpenConnection() == true)
-            {                
-                form.mySqlDataAdapter = new MySqlDataAdapter("SELECT  FkOrder,idLocker, color FROM   lockers WHERE  FkOrder = (SELECT MAX(FkOrder) FROM lockers)", form.connection);
-                DataSet DS = new DataSet();
-                form.mySqlDataAdapter.Fill(DS);
-                dataGridView1.DataSource = DS.Tables[0];
-                                                                                                              //close connection
-                form.CloseConnection();
             
-            }
 
             int NbrLockers= dataGridView1.Rows.Count - 1 ;
-            textBox1.AppendText("Votre armoire sera composée de "+NbrLockers+" casiers : " + Environment.NewLine);
+            textBox1.AppendText("Votre armoire est complète elle est composée de "+Form1.GetListofLocker().Count()+"  casiers : /n");
+            int i = 1;
+            foreach (Kitbox.Locker locker in Form1.GetListofLocker())
+            {
+                //remplir le datagridview avec les valeurs des objects existants
+                textBox1.AppendText(" "+i+ " : One "  + locker.GetColor()+ "  locker. \n");
+                
+                    foreach (Kitbox.Accessory accessory in locker.GetAccessoryList())
+                    {
+                        textBox1.AppendText(" "+accessory.GetAccessType() +" ");
+                        MessageBox.Show(" " + accessory.GetAccessType() + " ");
+                    }
+                                       
+                i += 1;
+
+            }
 
         }
 

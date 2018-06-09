@@ -60,7 +60,7 @@ namespace Interface
         }
 
         private void DoorValid_Click(object sender, EventArgs e)
-        {
+        {          
             if (GetDoor() == "glass")
                 Locker.list.Add(glassDoor);       // Locker référencie à Locker.cs et non le type Locker qui est référencié par KitBox.Locker
             else
@@ -81,6 +81,8 @@ namespace Interface
 
             else 
                 this.Close();
+            MessageBox.Show(""+ Locker.list[0].GetAccessType()+ "");
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
