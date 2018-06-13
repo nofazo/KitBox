@@ -37,12 +37,12 @@ namespace Interface
             form.connection = new MySqlConnection(connectionString);
             
 
-            int NbrLockers= dataGridView1.Rows.Count - 1 ;
+            
             textBox1.AppendText("Your cupboard is complete , you choose  "+Form1.GetListofLocker().Count()+"  locker(s) : \n");
             int i = 1;
             foreach (Kitbox.Locker locker in Form1.GetListofLocker())
             {
-                //remplir le datagridview avec les valeurs des objects existants
+                //remplir le textbox avec les valeurs des objects existants
                 textBox1.AppendText(" "+i+ " : One "  + locker.GetColor()+ "  locker. \n");
 
                 foreach (Kitbox.Accessory accessory in locker.GetAccessoryList())
@@ -56,10 +56,7 @@ namespace Interface
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
+   
 
         private void button2_Click(object sender, EventArgs e)
         {
