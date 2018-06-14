@@ -29,10 +29,10 @@ namespace Interface
             Extrusion extrusion = new Extrusion(color, extrusionHeight);
             cupBoard.SetExtrusion(extrusion);
 
-
             //parcours de la bdd pour prendre leur hauteur 
             //les additionner 
             //choisir la bonne cornière (d'abord non découpée et ensuite découpée)
+            
 
             this.Controls.Clear();
             this.Controls.Add(new Recap());
