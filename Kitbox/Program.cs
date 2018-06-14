@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.IO;
+using System.Data;
+using MySql.Data.MySqlClient;
+using Kitbox;
 
 
 namespace Kitbox
@@ -505,6 +508,34 @@ namespace Kitbox
         public abstract bool IsMajor();
 
         public abstract string GetAccessType();
+
+        public double GetPrice(MySqlConnection connection , string reference, double height, double width, double depth, string color)
+        {
+            //chercher la le prix dans la base de donnée 
+
+            
+            MySqlCommand command = new MySqlCommand("SELECT Price FROM parts WHERE ref='" + reference + "',height='" + height + "',width='" + width+ "',depth='" + depth + "',color='" + color + "';", connection);
+            connection.Open();
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0}\t{1}", reader.GetInt32(0),
+                        reader.GetString(1));
+                }
+            }
+            else
+            {
+                Console.WriteLine("No rows found.");
+            }
+            reader.Close();
+
+       
+            return 0;
+        }
         
     }
 
@@ -958,7 +989,7 @@ namespace Kitbox
 
 
 
-    public class interfacee
+    public class tg
 
     {
 
