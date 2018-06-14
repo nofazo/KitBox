@@ -42,7 +42,7 @@
             "White",
             "Brown",
             "Black"});
-            this.extrusionColor.Location = new System.Drawing.Point(720, 176);
+            this.extrusionColor.Location = new System.Drawing.Point(720, 160);
             this.extrusionColor.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.extrusionColor.Name = "extrusionColor";
             this.extrusionColor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -56,7 +56,7 @@
             this.Finish.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Finish.ForeColor = System.Drawing.Color.Black;
             this.Finish.Location = new System.Drawing.Point(1127, 518);
-            this.Finish.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Finish.Margin = new System.Windows.Forms.Padding(4);
             this.Finish.Name = "Finish";
             this.Finish.Size = new System.Drawing.Size(233, 98);
             this.Finish.TabIndex = 19;
