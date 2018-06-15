@@ -279,7 +279,7 @@ namespace Kitbox
 
             {
 
-                result += elem.GetPrice();
+                //result += elem.GetPrice();
 
             }
 
@@ -503,7 +503,7 @@ namespace Kitbox
 
         //private string type ;
 
-        public abstract double GetPrice();
+        //public abstract double GetPrice();
 
         public abstract bool IsMajor();
 
@@ -512,8 +512,12 @@ namespace Kitbox
         public double GetPrice(MySqlConnection connection , string reference, double height, double width, double depth, string color)
         {
             //chercher la le prix dans la base de donnée 
+<<<<<<< HEAD
 
             
+=======
+            double price = 0 ;
+>>>>>>> 9a94b6c81e0c7e1747a1875a1169d18247be9276
             MySqlCommand command = new MySqlCommand("SELECT Price FROM parts WHERE ref='" + reference + "',height='" + height + "',width='" + width+ "',depth='" + depth + "',color='" + color + "';", connection);
             connection.Open();
 
@@ -523,18 +527,31 @@ namespace Kitbox
             {
                 while (reader.Read())
                 {
+<<<<<<< HEAD
                     Console.WriteLine("{0}\t{1}", reader.GetInt32(0),
                         reader.GetString(1));
+=======
+                   price = reader.GetDouble(0);                    
+>>>>>>> 9a94b6c81e0c7e1747a1875a1169d18247be9276
                 }
             }
             else
             {
+<<<<<<< HEAD
                 Console.WriteLine("No rows found.");
+=======
+                MessageBox.Show("there is no rows in the datareader");
+                
+>>>>>>> 9a94b6c81e0c7e1747a1875a1169d18247be9276
             }
             reader.Close();
 
        
+<<<<<<< HEAD
             return 0;
+=======
+            return price;
+>>>>>>> 9a94b6c81e0c7e1747a1875a1169d18247be9276
         }
         
     }
@@ -553,15 +570,6 @@ namespace Kitbox
 
         public Door()
         {
-
-        }
-
-
-
-        public override double GetPrice()
-        {
-
-            return price;
 
         }
 
@@ -595,14 +603,6 @@ namespace Kitbox
 
         }
 
-
-
-        public override double GetPrice()
-        {
-
-            return price;
-
-        }
 
         public override string GetAccessType()
         {
@@ -642,13 +642,6 @@ namespace Kitbox
         }
 
 
-        public override double GetPrice()
-        {
-
-            return price;
-
-        }
-
         public override string GetAccessType()
         {
             return this.type;
@@ -687,13 +680,6 @@ namespace Kitbox
             this.height = newHeight;
         }
 
-        public override double GetPrice()
-        {
-
-            return price;
-
-        }
-
 
 
         public override bool IsMajor()
@@ -724,15 +710,6 @@ namespace Kitbox
         public Rail()
         {
 
-
-        }
-
-
-
-        public override double GetPrice()
-        {
-
-            return price;
 
         }
 
@@ -844,13 +821,6 @@ namespace Kitbox
         {
             this.color = newColor;
         }
-
-        public override double GetPrice()
-
-        {
-            return price;
-        }
-
 
 
         public override bool IsMajor()
