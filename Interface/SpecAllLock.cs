@@ -88,44 +88,5 @@ namespace Interface
 
             form.connection = new MySqlConnection(connectionString);
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        }
     }
 }

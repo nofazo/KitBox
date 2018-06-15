@@ -81,7 +81,8 @@ namespace Interface
 
             else 
                 this.Close();
-
+            MessageBox.Show(""+ Locker.list[0].GetAccessType()+ "");
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

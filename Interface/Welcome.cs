@@ -25,7 +25,7 @@ namespace Interface
         private void Start_Click(object sender, EventArgs e)
         {
             
-            if  (textBox2.Text=="Please enter an email before starting")
+            if  (textBox1.Text=="Please enter an email before starting")
             {
                 MessageBox.Show("You forgot enter an email !!");
             }
@@ -33,7 +33,7 @@ namespace Interface
             {
                 if (form.OpenConnection() == true)
                 {
-                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`orders` (`clientAdressMail`,`State`) VALUES ('" + textBox2.Text + "','initialized');", form.connection);
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`orders` (`clientAdressMail`,`State`) VALUES ('" + textBox1.Text + "','initialized');", form.connection);
                     form.mySqlDataAdapter = new MySqlDataAdapter("SELECT  idOrder FROM  orders WHERE  idOrder = (SELECT MAX(idOrder) FROM orders)", form.connection);
 
                     cmd.ExecuteNonQuery();
@@ -83,10 +83,11 @@ namespace Interface
             form.connection = new MySqlConnection(connectionString);
         }
 
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
+
+        
     }
 }

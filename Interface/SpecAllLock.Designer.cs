@@ -96,12 +96,11 @@
             this.textBox1.TabIndex = 16;
             this.textBox1.Text = "Attention ! \r\nFor this width it\'s not possible to have a door.";
             this.textBox1.Visible = false;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(57, 555);
+            this.button2.Location = new System.Drawing.Point(57, 566);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(223, 90);
@@ -123,7 +122,7 @@
             this.Controls.Add(this.comboWidth);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SpecAllLock";
-            this.Size = new System.Drawing.Size(1403, 729);
+            this.Size = new System.Drawing.Size(1405, 729);
             this.Load += new System.EventHandler(this.SpecAllLock_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
