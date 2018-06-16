@@ -35,7 +35,7 @@ namespace Interface
             return height;
         }
 
-        public int LockerHeightGet()
+        public int CleatHeightGet()
         {
             return HeightGet() + 4;  // si valeur en cm
         }
@@ -61,87 +61,84 @@ namespace Interface
 
 
         private void AddLocker_Click(object sender, EventArgs e)
-        {          
+        {
             if (ColorBox.Text == "" || comboHeight.Text == "")
             {
                 MessageBox.Show("Select a value please!");
             }
 
-            if (cupBoard.GetLockerList().Count() == 7)
+            int row = 0;
+            dataGridView1.Rows.Add();
+            row = dataGridView1.Rows.Count - 2;
+
+            List<Accessory> accList = new List<Accessory>();
+
+            HBpanel HBpanell = new HBpanel(ColorGet(), DepthGet(), WidthGet());
+            accList.Add(HBpanell);
+
+            GDpanel GDpanell = new GDpanel(ColorGet(), DepthGet(), HeightGet());
+            accList.Add(GDpanell);
+
+            ARpanel ARpanell = new ARpanel(ColorGet(), WidthGet(), HeightGet());
+            accList.Add(ARpanell);
+
+            ARrail ARraill = new ARrail(WidthGet());
+            accList.Add(ARraill);
+
+            AVrail AVraill = new AVrail(WidthGet());
+            accList.Add(AVraill);
+
+            GDrail GDraill = new GDrail(DepthGet());     //x2      
+            accList.Add(GDraill);
+
+            Cleat cleat = new Cleat(CleatHeightGet());           //x4
+            accList.Add(cleat);
+
+            //Add door (if there is one)
+            if (list.Count() != 0)
             {
-                MessageBox.Show("You have reached the maximum number of lockers");
-            }
-
-            else
-            {
-                int row = 0;
-                dataGridView1.Rows.Add();
-                row = dataGridView1.Rows.Count - 2;
-
-                List<Accessory> accList = new List<Accessory>();
-
-                HBpanel HBpanell = new HBpanel(ColorGet(), DepthGet(), WidthGet());
-                accList.Add(HBpanell);
-
-                GDpanel GDpanell = new GDpanel(ColorGet(), DepthGet(), HeightGet());
-                accList.Add(GDpanell);
-
-                ARpanel ARpanell = new ARpanel(ColorGet(), WidthGet(), HeightGet());
-                accList.Add(ARpanell);
-
-                ARrail ARraill = new ARrail(WidthGet());
-                accList.Add(ARraill);
-
-                AVrail AVraill = new AVrail(WidthGet());
-                accList.Add(AVraill);
-
-                GDrail GDraill = new GDrail(DepthGet());     //x2      
-                accList.Add(GDraill);
-
-                Cleat cleat = new Cleat(HeightGet());           //x4
-                accList.Add(cleat);
-
-                //Add door (if there is one)
-                if (list.Count() != 0)
+                if (list[0] == "wood")
                 {
-                    if (list[0] == "wood")
-                    {
-                        NormalDoor door = new NormalDoor(HeightGet(), WidthGet(), list[1]);
-                        accList.Add(door);
-                    }
-
-                    if (list[0] == "glass")
-                    {
-                        GlassDoor door = new GlassDoor(HeightGet(), WidthGet());
-                    }
+                    NormalDoor door = new NormalDoor(HeightGet(), WidthGet(), list[1]);
+                    accList.Add(door);
                 }
 
+                if (list[0] == "glass")
+                {
+                    GlassDoor door = new GlassDoor(HeightGet(), WidthGet());
+                }
+            }
 
-                // création d'un nouvel objet locker
-                Kitbox.Locker locker = new Kitbox.Locker(accList, LockerHeightGet(), ColorGet());
 
-                // ajout de mon casier à la liste de casier statique existante dans le Form1
-                // Form1.listOfLocker.Add(locker);                                                    //methode qui modifie la listOfLocker si modify
-                cupBoard.AddLocker(locker);
+            // création d'un nouvel objet locker
+            Kitbox.Locker locker = new Kitbox.Locker(accList, HeightGet(), ColorGet());
 
-                //Vérifier si un suplément devras être payé
-                double extrusionHeight = cupBoard.GetTotalHeight();
+            // ajout de mon casier à la liste de casier statique existante dans le Form1
+            // Form1.listOfLocker.Add(locker);                                                    //methode qui modifie la listOfLocker si modify
+            cupBoard.AddLocker(locker);
 
-                if (cupBoard.GetExtrusion().IsCut(extrusionHeight))
-                    textBox1.Visible = true;
 
-                else
-                    textBox1.Visible = false;
 
-                dataGridView1["couleur", row].Value = ColorGet();
-                dataGridView1["hauteur", row].Value = HeightGet();
-                dataGridView1["profondeur", row].Value = DepthGet();
-                dataGridView1["largeur", row].Value = WidthGet();
 
-                //Comme "list" est une variable static, il faut la réinitialiser pour le prochain door
-                list.Clear();
-            }         
+            dataGridView1["ColorLocker", row].Value = ColorGet();
+            dataGridView1["HeightLocker", row].Value = HeightGet();
+            if (list.Count() != 0)
+            {
+                dataGridView1["DoorType", row].Value = list[0];
+
+                if (list[0] == "wood")
+                {
+                    dataGridView1["ColorDoor", row].Value = list[1];
+                }
+            }
+
+
+            dataGridView1["Disponibility", row].Value = "Disponible";
+
+            //Comme "list" est une variable static, il faut la réinitialiser pour le prochain door
+            list.Clear();
         }
+    
 
         private void comboHeight_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -204,24 +201,38 @@ namespace Interface
             //Si on est en previous
             if (order.GetState() == "InProgress")
             {
-                foreach  ( Kitbox.Locker locker  in  Form1.GetListofLocker() )
+                foreach (Kitbox.Locker locker in Form1.GetListofLocker())
                 {
                     //remplir le datagridview avec les valeurs des objects existants
 
                     int row = 0;
                     dataGridView1.Rows.Add();
                     row = dataGridView1.Rows.Count - 2;
-                    dataGridView1["couleur", row].Value = locker.GetColor();
-                    dataGridView1["hauteur", row].Value = locker.GetLockerHeight();
-                    dataGridView1["profondeur", row].Value = cupBoard.GetDepth();
-                    dataGridView1["largeur", row].Value =cupBoard.GetWidth();
+                    dataGridView1["ColorLocker", row].Value = locker.GetColor();
+                    dataGridView1["HeightLocker", row].Value = locker.GetLockerHeight();
+                    foreach (Accessory accessory in locker.GetAccessoryList())
+                    {
+                        if (accessory.GetAccessType() == "normalDoor")
+                        {
+                            dataGridView1["DoorType", row].Value = "Wood";
+                            NormalDoor accessory2 = (NormalDoor)accessory;
+                            dataGridView1["ColorDoor", row].Value = accessory2.GetColor();
+                        }
+                        if (accessory.GetAccessType() == "glassDoor")
+                        {
+                            dataGridView1["DoorType", row].Value = "Glass";
+
+                        }
+
+
+                    }
+
+
 
                 }
-            
-            
             }
 
-        }
+            }
 
         private void Finish_Click(object sender, EventArgs e)
         {
@@ -239,7 +250,7 @@ namespace Interface
                 {
                     
                     
-                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`lockers` (`FkOrder`, `color`,`height`, `depth`, `width`) VALUES ('"+order.GetidOrder()+ " ', '" + dataGridView1.Rows[i].Cells[0].Value + "', '" + dataGridView1.Rows[i].Cells[1].Value + "', '" + dataGridView1.Rows[i].Cells[2].Value + "', '" + dataGridView1.Rows[i].Cells[3].Value + "');", form.connection);
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`lockers` (`FkOrder`, `color`,`height`, `depth`, `width`) VALUES ('"+order.GetidOrder()+ " ', '" + dataGridView1.Rows[i].Cells[0].Value + "', '" + dataGridView1.Rows[i].Cells[1].Value + "', '" + DepthGet() + "', '" + WidthGet() + "');", form.connection);
                    
                     cmd.ExecuteNonQuery();
 
