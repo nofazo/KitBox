@@ -40,13 +40,14 @@
             this.Modify = new System.Windows.Forms.Button();
             this.lockerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.couleur = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hauteur = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.profondeur = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.largeur = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Update = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ColorLocker = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HeightLocker = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DoorType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColorDoor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Disponibility = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lockerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -171,11 +172,12 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.couleur,
-            this.hauteur,
-            this.profondeur,
-            this.largeur});
-            this.dataGridView1.Location = new System.Drawing.Point(790, 246);
+            this.ColorLocker,
+            this.HeightLocker,
+            this.DoorType,
+            this.ColorDoor,
+            this.Disponibility});
+            this.dataGridView1.Location = new System.Drawing.Point(790, 236);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -183,30 +185,6 @@
             this.dataGridView1.TabIndex = 23;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // couleur
-            // 
-            this.couleur.HeaderText = "couleur";
-            this.couleur.Name = "couleur";
-            this.couleur.ReadOnly = true;
-            // 
-            // hauteur
-            // 
-            this.hauteur.HeaderText = "hauteur";
-            this.hauteur.Name = "hauteur";
-            this.hauteur.ReadOnly = true;
-            // 
-            // profondeur
-            // 
-            this.profondeur.HeaderText = "profondeur";
-            this.profondeur.Name = "profondeur";
-            this.profondeur.ReadOnly = true;
-            // 
-            // largeur
-            // 
-            this.largeur.HeaderText = "largeur";
-            this.largeur.Name = "largeur";
-            this.largeur.ReadOnly = true;
             // 
             // Update
             // 
@@ -248,6 +226,36 @@
             this.textBox1.Text = "Attention ! \r\nWe don\'t have corner with a corresponding height. You will be asked" +
     " for an extra charge for cutting the corner.";
             this.textBox1.Visible = false;
+            // 
+            // ColorLocker
+            // 
+            this.ColorLocker.HeaderText = "Color locker";
+            this.ColorLocker.Name = "ColorLocker";
+            this.ColorLocker.ReadOnly = true;
+            // 
+            // HeightLocker
+            // 
+            this.HeightLocker.HeaderText = "Height Locker";
+            this.HeightLocker.Name = "HeightLocker";
+            this.HeightLocker.ReadOnly = true;
+            // 
+            // DoorType
+            // 
+            this.DoorType.HeaderText = "Door";
+            this.DoorType.Name = "DoorType";
+            this.DoorType.ReadOnly = true;
+            // 
+            // ColorDoor
+            // 
+            this.ColorDoor.HeaderText = "Door Color";
+            this.ColorDoor.Name = "ColorDoor";
+            this.ColorDoor.ReadOnly = true;
+            // 
+            // Disponibility
+            // 
+            this.Disponibility.HeaderText = "Disponibility";
+            this.Disponibility.Name = "Disponibility";
+            this.Disponibility.ReadOnly = true;
             // 
             // Locker
             // 
@@ -292,12 +300,13 @@
         private System.Windows.Forms.Button Modify;
         private System.Windows.Forms.BindingSource lockerBindingSource;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn couleur;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hauteur;
-        private System.Windows.Forms.DataGridViewTextBoxColumn profondeur;
-        private System.Windows.Forms.DataGridViewTextBoxColumn largeur;
         private System.Windows.Forms.Button Update;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColorLocker;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HeightLocker;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DoorType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColorDoor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Disponibility;
     }
 }
