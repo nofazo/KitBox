@@ -72,8 +72,8 @@ namespace Interface
             double price = Form1.GetCupBoard().GetPrice(form.connection);
             MessageBox.Show(Convert.ToString(price));
 
-            //this.Controls.Clear();
-            //this.Controls.Add(new Welcome());
+            this.Controls.Clear();
+            this.Controls.Add(new Welcome());
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
