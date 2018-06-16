@@ -254,6 +254,7 @@ namespace Kitbox
             this.accessoryList = newAccessList;
         }
 
+        
 
         public double GetLockerHeight()
         {
@@ -291,7 +292,7 @@ namespace Kitbox
 
         }
 
-
+       
 
         public void AddAccessory(Accessory accessory)
 
@@ -320,7 +321,10 @@ namespace Kitbox
             //+ de paramètre pour les variables spécifiques à changer?
 
         }
-
+        
+           
+          
+        
     }
 
 

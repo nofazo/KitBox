@@ -120,10 +120,20 @@ namespace Interface
             
             
 
-            dataGridView1["couleur", row].Value = ColorGet();
-            dataGridView1["hauteur", row].Value = HeightGet();
-            dataGridView1["profondeur", row].Value = DepthGet();
-            dataGridView1["largeur", row].Value = WidthGet();
+            dataGridView1["ColorLocker", row].Value = ColorGet();
+            dataGridView1["HeightLocker", row].Value = HeightGet();
+            if (list.Count()!= 0 )
+            {
+                dataGridView1["DoorType", row].Value = list[0];
+
+                if (list[0] == "wood")
+                {
+                    dataGridView1["ColorDoor", row].Value = list[1];
+                }
+            }
+            
+
+            dataGridView1["Disponibility", row].Value = "Disponible";
 
             //Comme "list" est une variable static, il faut la réinitialiser pour le prochain door
             list.Clear();
@@ -197,10 +207,26 @@ namespace Interface
                     int row = 0;
                     dataGridView1.Rows.Add();
                     row = dataGridView1.Rows.Count - 2;
-                    dataGridView1["couleur", row].Value = locker.GetColor();
-                    dataGridView1["hauteur", row].Value = locker.GetLockerHeight();
-                    dataGridView1["profondeur", row].Value = cupBoard.GetDepth();
-                    dataGridView1["largeur", row].Value =cupBoard.GetWidth();
+                    dataGridView1["ColorLocker", row].Value = locker.GetColor();
+                    dataGridView1["HeightLocker", row].Value = locker.GetLockerHeight();
+                    foreach (Accessory accessory in locker.GetAccessoryList())
+                    {
+                        if (accessory.GetAccessType() == "normalDoor")
+                        {
+                            dataGridView1["DoorType", row].Value = "Wood";
+                            NormalDoor accessory2 = (NormalDoor)accessory;
+                            dataGridView1["ColorDoor", row].Value=accessory2.GetColor();
+                        }
+                        if (accessory.GetAccessType() == "glassDoor")
+                        { 
+                            dataGridView1["DoorType", row].Value ="Glass";
+                           
+                        }
+                        
+                        
+                    }
+                    
+                    
 
                 }
             
@@ -225,7 +251,7 @@ namespace Interface
                 {
                     
                     
-                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`lockers` (`FkOrder`, `color`,`height`, `depth`, `width`) VALUES ('"+order.GetidOrder()+ " ', '" + dataGridView1.Rows[i].Cells[0].Value + "', '" + dataGridView1.Rows[i].Cells[1].Value + "', '" + dataGridView1.Rows[i].Cells[2].Value + "', '" + dataGridView1.Rows[i].Cells[3].Value + "');", form.connection);
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`lockers` (`FkOrder`, `color`,`height`, `depth`, `width`) VALUES ('"+order.GetidOrder()+ " ', '" + dataGridView1.Rows[i].Cells[0].Value + "', '" + dataGridView1.Rows[i].Cells[1].Value + "', '" + DepthGet() + "', '" + WidthGet() + "');", form.connection);
                    
                     cmd.ExecuteNonQuery();
 
