@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using WindowsFormsApp7;
 
+
 namespace WindowsFormsApp7
 {
     public partial class Template : Form
@@ -19,6 +20,8 @@ namespace WindowsFormsApp7
         {
             InitializeComponent();
         }
+
+        //Form1.GetCupBoard();
 
         public string server;
         public string database;

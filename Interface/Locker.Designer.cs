@@ -70,24 +70,9 @@
             this.comboHeight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboHeight.Items.AddRange(new object[] {
-            "36",
-            "46",
-            "56",
-            "72",
-            "92",
-            "108",
-            "112",
-            "138",
-            "144",
-            "168",
-            "180",
-            "184",
-            "216",
-            "224",
-            "230",
-            "252",
-            "276",
-            "280"});
+            "32",
+            "42",
+            "52"});
             this.comboHeight.Location = new System.Drawing.Point(395, 246);
             this.comboHeight.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.comboHeight.Name = "comboHeight";

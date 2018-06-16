@@ -13,10 +13,6 @@ namespace Interface
 {
     public partial class Form2 : Form
     {
-        // Comme je ne peux pas créer d'objet dans le 'if' d'en bas, je les crée ici et je n'en prendrai qu'un seul des deux
-        GlassDoor glassDoor = new GlassDoor();
-        NormalDoor normalDoor = new NormalDoor("");
-
         public Form2()
         {
             InitializeComponent();
@@ -62,11 +58,16 @@ namespace Interface
         private void DoorValid_Click(object sender, EventArgs e)
         {          
             if (GetDoor() == "glass")
-                Locker.list.Add(glassDoor);       // Locker référencie à Locker.cs et non le type Locker qui est référencié par KitBox.Locker
-            else
-                normalDoor.SetColor(GetColorDoor());
-                Locker.list.Add(normalDoor);
+            {
+                Locker.list.Add("glass");       // Locker référencie à Locker.cs et non le type Locker qui est référencié par KitBox.Locker
+            }
                 
+            else
+            {
+                Locker.list.Add("wood");
+                Locker.list.Add(GetColorDoor());
+            }
+                             
 
             if (woodButton.Checked == true )
             {
@@ -80,9 +81,7 @@ namespace Interface
             }
 
             else 
-                this.Close();
-            MessageBox.Show(""+ Locker.list[0].GetAccessType()+ "");
-            
+                this.Close();                
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

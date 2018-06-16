@@ -18,7 +18,7 @@ namespace Interface
         int indexRow;
         DataGridViewRow row = new DataGridViewRow();
         Form1 form = new Form1();
-        public static List<Accessory> list = new List<Accessory>();
+        public static List<String> list = new List<String>();  // just for door or other access wich use other form (like door)
         CupBoard cupBoard = Form1.GetCupBoard();
 
         Order order = Form1.GetOrder();
@@ -61,7 +61,7 @@ namespace Interface
 
 
         private void AddLocker_Click(object sender, EventArgs e)
-        {
+        {          
             if (ColorBox.Text == "" || comboHeight.Text == "")
             {
                 MessageBox.Show("Select a value please!");
@@ -71,43 +71,62 @@ namespace Interface
             dataGridView1.Rows.Add();
             row = dataGridView1.Rows.Count - 2;
 
-         
+            List<Accessory> accList = new List<Accessory>();
 
             HBpanel HBpanell = new HBpanel(ColorGet(), DepthGet(), WidthGet());
-            list.Add(HBpanell);
+            accList.Add(HBpanell);
 
-            GDpanel GDpanell = new GDpanel(ColorGet(), DepthGet(), CleatHeightGet());
-            list.Add(GDpanell);
+            GDpanel GDpanell = new GDpanel(ColorGet(), DepthGet(), HeightGet());
+            accList.Add(GDpanell);
 
-            ARpanel ARpanell = new ARpanel(ColorGet(), WidthGet(), CleatHeightGet());
-            list.Add(ARpanell);
+            ARpanel ARpanell = new ARpanel(ColorGet(), WidthGet(), HeightGet());
+            accList.Add(ARpanell);
 
-            ARAVrail ARAVraill = new ARAVrail(WidthGet());   //x2
-            list.Add(ARAVraill);
+            ARrail ARraill = new ARrail(WidthGet());   
+            accList.Add(ARraill);
+
+            AVrail AVraill = new AVrail(WidthGet());   
+            accList.Add(AVraill);
 
             GDrail GDraill = new GDrail(DepthGet());     //x2      
-            list.Add(GDraill);
+            accList.Add(GDraill);
 
-            Cleat cleatt = new Cleat(CleatHeightGet());           //x4
-            list.Add(cleatt);
+            Cleat cleat = new Cleat(CleatHeightGet());           //x4
+            accList.Add(cleat);
 
+            //Add door (if there is one)
+            if (list.Count() != 0)
+            {
+                if (list[0] == "wood")
+                {
+                    NormalDoor door = new NormalDoor(HeightGet(), WidthGet(), list[1]);
+                    accList.Add(door);
+                }
+
+                if (list[0] == "glass")
+                {
+                    GlassDoor door = new GlassDoor(HeightGet(), WidthGet());
+                }
+            }
+                
                       
             // création d'un nouvel objet locker
-            Kitbox.Locker locker = new Kitbox.Locker(list, HeightGet(), ColorGet());
+            Kitbox.Locker locker = new Kitbox.Locker(accList, HeightGet(), ColorGet());
 
             // ajout de mon casier à la liste de casier statique existante dans le Form1
            // Form1.listOfLocker.Add(locker);                                                    //methode qui modifie la listOfLocker si modify
             cupBoard.AddLocker(locker);
 
-            //Comme "list" est une variable static, il faut la réinitialiser pour le prochain locker
-            list.Clear();
+            
+            
 
             dataGridView1["couleur", row].Value = ColorGet();
             dataGridView1["hauteur", row].Value = HeightGet();
             dataGridView1["profondeur", row].Value = DepthGet();
             dataGridView1["largeur", row].Value = WidthGet();
 
-
+            //Comme "list" est une variable static, il faut la réinitialiser pour le prochain door
+            list.Clear();
         }
 
         private void comboHeight_SelectedIndexChanged(object sender, EventArgs e)

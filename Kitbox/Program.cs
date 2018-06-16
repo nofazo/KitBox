@@ -88,28 +88,16 @@ namespace Kitbox
         }
 
 
-        public double GetPrice()
-
+        public double GetPrice(MySqlConnection connection)
         {
-
             double lockerPrice = 0;
 
-            foreach (Locker locker in lockerList)
+            foreach (Locker locker in lockerList)         
+                lockerPrice += locker.GetPrice(connection);
+           
+            double extrusionPrice = extrusion.GetPrice(connection);
 
-            {
-
-                lockerPrice += locker.GetPrice();
-
-            }
-
-
-
-            double extrusionPrice = extrusion.GetPrice();
-
-
-
-            return lockerPrice + 4 * extrusionPrice;
-
+            return lockerPrice;  // + 4 * extrusionPrice
         }
 
         public double GetTotalHeight()  
@@ -185,9 +173,31 @@ namespace Kitbox
         }
 
 
-        public double GetPrice()
+        public double GetPrice(MySqlConnection connection)
 
         {
+            string reference = "Cornières";
+            MySqlDataReader reader;
+            MySqlCommand command = new MySqlCommand("SELECT Price FROM `kitboxdb2.0`.`parts` WHERE ref='" + reference + "'AND height='" + height + "'AND color='" + color + "'", connection);
+
+            reader = command.ExecuteReader();
+
+            double price = 0;
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    price = reader.GetDouble(0);
+                }
+            }
+            else
+            {
+                MessageBox.Show("there is no rows in the datareader");
+            }
+
+            reader.Close();
+
             return price;
         }
 
@@ -211,7 +221,6 @@ namespace Kitbox
 
 
     public class Locker
-
     {
 
         private double lockerHeight;
@@ -219,6 +228,7 @@ namespace Kitbox
         private string color;
 
         private List<Accessory> accessoryList;
+        
 
 
 
@@ -265,27 +275,19 @@ namespace Kitbox
         {
             this.color = newColor;
         }
+        
 
-
-        public double GetPrice()
-
+        public double GetPrice(MySqlConnection connection)
         {
-
-            double result = 0;
-
-
+            double price = 4;
 
             foreach (Accessory elem in accessoryList)
-
-            {
-
-                //result += elem.GetPrice();
-
+            {      
+                price = 0;
+                price += elem.GetPrice(connection);             
             }
-
-
-
-            return result;
+            MessageBox.Show(Convert.ToString(price+10000));
+            return price;
 
         }
 
@@ -369,7 +371,7 @@ namespace Kitbox
 
 
 
-            Console.WriteLine("Total : " + cubBoard.GetPrice());
+           // Console.WriteLine("Total : " + cubBoard.GetPrice(MySqlConnection connection));
 
         }
 
@@ -437,13 +439,11 @@ namespace Kitbox
                     foreach (Accessory accessory in locker.GetAccessoryList())
                     {
 
-                        //afficher accessory.name + accessory.GetPrice();
+                        //afficher accessory.GetAccessType() + accessory.GetPrice();
 
-                        // nom + id + quantité + prix unitaire + prix totale 
-
-                        //nom + id + prix unitaire de l'accessoire à prendre de la bdd? 
-
-                        // ajouter une variable "quantité?"
+                        // afficher nom + id + quantité + prix unitaire + prix totale 
+                        
+                        // ajouter une variable "quantité?" pour la quantitié qu'il faut d'un access pour un casier
 
                         // attention responsabilité unique
 
@@ -453,7 +453,7 @@ namespace Kitbox
 
 
 
-                sw.WriteLine("Total : " + cubBoard.GetPrice());
+               // sw.WriteLine("Total : " + cubBoard.GetPrice(MySqlConnection connection));
 
             }
 
@@ -476,13 +476,13 @@ namespace Kitbox
 
                 {
 
-                    sw.WriteLine(locker.GetColor() + locker.GetPrice());   // sprint 3:faire distinction entre casier avec porte et casier sans porte
+                    //sw.WriteLine(locker.GetColor() + locker.GetPrice(MySqlConnection connection));   // sprint 3:faire distinction entre casier avec porte et casier sans porte
 
                 }
 
 
 
-                sw.WriteLine("Total" + cubBoard.GetPrice());
+                //sw.WriteLine("Total" + cubBoard.GetPrice(MySqlConnection connection));
 
             }
 
@@ -504,19 +504,41 @@ namespace Kitbox
         //private string type ;
 
         //public abstract double GetPrice();
+        public MySqlConnection connection;
 
         public abstract bool IsMajor();
 
         public abstract string GetAccessType();
 
-        public double GetPrice(MySqlConnection connection , string reference, double height, double width, double depth, string color)
-        {
-            //chercher la le prix dans la base de donnée 
-            double price = 0 ;
-            MySqlCommand command = new MySqlCommand("SELECT Price FROM parts WHERE ref='" + reference + "',height='" + height + "',width='" + width+ "',depth='" + depth + "',color='" + color + "';", connection);
-            connection.Open();
+        public abstract double GetPrice(MySqlConnection connection);
 
-            MySqlDataReader reader = command.ExecuteReader();
+        public double GetPrices(MySqlConnection connection , string reference, double height, double width, double depth, string color)
+        {
+            string dbColor = "";
+
+            if (color == "Brown")
+                dbColor = "Brun";          
+
+            if (color == "White")
+                dbColor = "Blanc";            
+
+            if (color == "Green")
+                dbColor = "Vert";
+            
+            if (color == "Black")
+                dbColor = "Noir";            
+
+            if (color == "glass")
+                dbColor = "Verre";
+            
+
+
+            MySqlDataReader reader;
+            MySqlCommand command = new MySqlCommand("SELECT Price FROM `kitboxdb2.0`.`parts` WHERE ref='" + reference + "'AND height='" + Convert.ToString(height) + "'AND width='" + Convert.ToString(width) + "'AND depth='" + Convert.ToString(depth) + "'AND color='" + dbColor + "'", connection);
+
+            reader = command.ExecuteReader();
+
+            double price = 0;
 
             if (reader.HasRows)
             {
@@ -527,11 +549,10 @@ namespace Kitbox
             }
             else
             {
-                MessageBox.Show("there is no rows in the datareader");
-                
+                MessageBox.Show("there is no rows in the datareader");               
             }
-            reader.Close();
 
+            reader.Close();
        
             return price;
         }
@@ -548,14 +569,25 @@ namespace Kitbox
         private bool isMajor = false;
 
         protected string type = "Door";
+        private double height;
+        private double width;
 
 
-        public Door()
+        public Door(double height, double width)
         {
-
+            this.height = height;
+            this.width = width;
         }
 
+        public double GetHeight()
+        {
+            return this.height;
+        }
 
+        public double GetWidth()
+        {
+            return this.width;
+        }
 
         public override bool IsMajor()
         {
@@ -566,6 +598,11 @@ namespace Kitbox
         public override string GetAccessType()
         {
             return this.type;
+        }
+
+        public override double GetPrice(MySqlConnection connection)
+        {
+            return GetPrices(connection, "Door", height, width, 0, "");
         }
 
 
@@ -580,7 +617,7 @@ namespace Kitbox
         new private string type = "glassDoor";
 
 
-        public GlassDoor()
+        public GlassDoor(double height, double width) : base( height, width)
         {
 
         }
@@ -589,6 +626,14 @@ namespace Kitbox
         public override string GetAccessType()
         {
             return this.type;
+        }
+
+        public override double GetPrice(MySqlConnection connection)
+        {
+            price = GetPrices(connection, "Porte", GetHeight(), GetWidth(), 0, "glass");   // va-t-il retourner le bon height et width?
+            MessageBox.Show(Convert.ToString(price));
+            return price;
+
         }
 
     }
@@ -606,7 +651,7 @@ namespace Kitbox
 
         new protected string type = "normalDoor";
 
-        public NormalDoor(string color)
+        public NormalDoor(double height, double width, string color): base (height, width)
         {
 
             this.color = color;
@@ -629,6 +674,12 @@ namespace Kitbox
             return this.type;
         }
 
+        public override double GetPrice(MySqlConnection connection)
+        {
+            price = GetPrices(connection, "Porte", GetHeight(), GetWidth(), 0, color);
+            MessageBox.Show(Convert.ToString(price));
+            return price;
+        }
 
     }
 
@@ -676,6 +727,13 @@ namespace Kitbox
             return this.type;
         }
 
+        public override double GetPrice(MySqlConnection connection)
+        {
+            price = GetPrices(connection, "Tasseau", height, 0, 0, "");
+            MessageBox.Show(Convert.ToString(price));
+            return price;
+        }
+
     }
 
 
@@ -711,18 +769,57 @@ namespace Kitbox
             return this.type;
         }
 
+        public override double GetPrice(MySqlConnection connection)
+        {
+            price = GetPrices(connection, "Traverse", 0, 0, 0, "");
+            return price;
+        }
+
     }
 
 
 
-    public class ARAVrail : Rail
+    public class ARrail : Rail
     {
-
+        private double price;
         private double width;
-        private string type = "ARAVrail";
+        private string type = "ARrail";
 
 
-        public ARAVrail(double width)
+        public ARrail(double width)
+        {
+
+            this.width = width;
+
+        }
+
+        public double GetWidtht()
+        {
+            return this.width;
+        }
+
+        public override string GetAccessType()
+        {
+            return this.type;
+        }
+
+        public override double GetPrice(MySqlConnection connection)
+        {
+            price = GetPrices(connection, "Traverse Ar", 0, width, 0, "");
+            MessageBox.Show(Convert.ToString(price));
+            return price;
+        }
+
+    }
+
+    public class AVrail : Rail
+    {
+        private double price;
+        private double width;
+        private string type = "AVrail";
+
+
+        public AVrail(double width)
 
         {
 
@@ -740,14 +837,20 @@ namespace Kitbox
             return this.type;
         }
 
+        public override double GetPrice(MySqlConnection connection)
+        {
+            price = GetPrices(connection, "Traverse Av", 0, width, 0, "");
+            MessageBox.Show(Convert.ToString(price));
+            return price;
+        }
+
     }
 
 
 
     public class GDrail : Rail
-
     {
-
+        private double price;
         private double depth;
         private string type = "GDrail";
 
@@ -768,6 +871,13 @@ namespace Kitbox
         public override string GetAccessType()
         {
             return this.type;
+        }
+
+        public override double GetPrice(MySqlConnection connection)
+        {
+            price = GetPrices(connection, "Traverse GD", 0, 0, depth, "");
+            MessageBox.Show(Convert.ToString(price));
+            return price;
         }
 
     }
@@ -818,7 +928,12 @@ namespace Kitbox
             return this.type;
         }
 
-
+        public override double GetPrice(MySqlConnection connection)
+        {
+            price = GetPrices(connection, "Panneau", 0, 0, 0, color);
+            MessageBox.Show(Convert.ToString(price));
+            return price;
+        }
 
     }
 
@@ -827,6 +942,7 @@ namespace Kitbox
     public class ARpanel : Panel
 
     {
+        private double price;
 
         private double width;
 
@@ -858,13 +974,20 @@ namespace Kitbox
         {
             return this.type;
         }
+
+        public override double GetPrice(MySqlConnection connection)
+        {
+            price = GetPrices(connection, "Panneau Ar", height, width, 0, GetColor());
+            MessageBox.Show(Convert.ToString(price));
+            return price;
+        }
     }
 
 
 
     public class GDpanel : Panel
-
     {
+        private double price;
 
         private double depth;
 
@@ -897,13 +1020,19 @@ namespace Kitbox
             return this.type;
         }
 
+        public override double GetPrice(MySqlConnection connection)
+        {
+            price = GetPrices(connection, "Panneau GD", height, 0, depth, GetColor());
+            MessageBox.Show(Convert.ToString(price));
+            return price;
+        }
     }
 
 
 
     public class HBpanel : Panel
-
     {
+        private double price;
 
         private double depth;
 
@@ -934,6 +1063,13 @@ namespace Kitbox
         public override string GetAccessType()
         {
             return this.type;
+        }
+
+        public override double GetPrice(MySqlConnection connection)
+        {
+            price = GetPrices(connection, "Panneau HB", 0, width, depth, GetColor());
+            MessageBox.Show(Convert.ToString(price));
+            return price;
         }
     }
 
@@ -979,9 +1115,9 @@ namespace Kitbox
 
 
 
-            ARAVrail ARAVraill = new ARAVrail(largeur);   //x2
+            //ARAVrail ARAVraill = new ARAVrail(largeur);   //x2
 
-            list.Add(ARAVraill);
+            //list.Add(ARAVraill);
 
 
 
@@ -1013,9 +1149,9 @@ namespace Kitbox
 
                 {
 
-                    GlassDoor glassDoor = new GlassDoor(); 
+                    //GlassDoor glassDoor = new GlassDoor(); 
 
-                    list.Add(glassDoor);
+                    //list.Add(glassDoor);
 
                 }
 
@@ -1025,9 +1161,9 @@ namespace Kitbox
 
                 {
 
-                    NormalDoor normalDoor = new NormalDoor( couleur2);
+                    //NormalDoor normalDoor = new NormalDoor( couleur2);
 
-                    list.Add(normalDoor);
+                    //list.Add(normalDoor);
 
 
 

@@ -67,25 +67,13 @@ namespace Interface
                 MySqlCommand cmd = new MySqlCommand("UPDATE `kitboxdb2.0`.`orders` SET State='Completed' WHERE idOrder ='" + idOrder + "'", form.connection);
 
                 cmd.ExecuteNonQuery();
-
             }
 
-            List<Accessory> acc = Form1.GetCupBoard().GetLockerList()[0].GetAccessoryList();
-            double price = 4;
-
-            foreach (Accessory elem in acc)
-            {
-                if (elem.GetAccessType() == "cleat")
-                {
-                    price = elem.GetPrice(form.connection, "Tasseau", 32, 0, 0, "");
-                    price = 0;
-                }             
-            }
-
+            double price = Form1.GetCupBoard().GetPrice(form.connection);
             MessageBox.Show(Convert.ToString(price));
 
-           // this.Controls.Clear();
-           // this.Controls.Add(new Welcome());
+            //this.Controls.Clear();
+            //this.Controls.Add(new Welcome());
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
