@@ -35,7 +35,7 @@ namespace Interface
             return height;
         }
 
-        public int CleatHeightGet()
+        public int LockerHeightGet()
         {
             return HeightGet() + 4;  // si valeur en cm
         }
@@ -67,6 +67,16 @@ namespace Interface
                 MessageBox.Show("Select a value please!");
             }
 
+            if (cupBoard.GetLockerList().Count() == 7)
+            {
+                MessageBox.Show("You have reached the maximum number of lockers");
+            }
+
+            else
+            {
+
+            }
+
             int row = 0;
             dataGridView1.Rows.Add();
             row = dataGridView1.Rows.Count - 2;
@@ -91,7 +101,7 @@ namespace Interface
             GDrail GDraill = new GDrail(DepthGet());     //x2      
             accList.Add(GDraill);
 
-            Cleat cleat = new Cleat(CleatHeightGet());           //x4
+            Cleat cleat = new Cleat(HeightGet());           //x4
             accList.Add(cleat);
 
             //Add door (if there is one)
@@ -111,13 +121,20 @@ namespace Interface
 
 
             // création d'un nouvel objet locker
-            Kitbox.Locker locker = new Kitbox.Locker(accList, HeightGet(), ColorGet());
+            Kitbox.Locker locker = new Kitbox.Locker(accList, LockerHeightGet(), ColorGet());
 
             // ajout de mon casier à la liste de casier statique existante dans le Form1
             // Form1.listOfLocker.Add(locker);                                                    //methode qui modifie la listOfLocker si modify
             cupBoard.AddLocker(locker);
 
+            //Vérifier si un suplément devras être payé
+            double extrusionHeight = cupBoard.GetTotalHeight();
 
+            if (cupBoard.GetExtrusion().IsCut(extrusionHeight))
+                textBox1.Visible = true;
+
+            else
+                textBox1.Visible = false;
 
 
             dataGridView1["ColorLocker", row].Value = ColorGet();
