@@ -31,7 +31,6 @@ namespace Kitbox
 
 
         public CupBoard(int width, int depth, List<Locker> lockerList, Extrusion extrusion)
-
         {
 
             this.width = width;
@@ -97,7 +96,7 @@ namespace Kitbox
            
             double extrusionPrice = extrusion.GetPrice(connection);
 
-            return lockerPrice;  // + 4 * extrusionPrice
+            return lockerPrice + extrusionPrice ; 
         }
 
         public double GetTotalHeight()  
@@ -106,7 +105,6 @@ namespace Kitbox
             double height = 0;
 
             foreach (Locker locker in lockerList)
-
             {
 
                 height += locker.GetLockerHeight();  
@@ -129,15 +127,13 @@ namespace Kitbox
 
 
     public class Extrusion
-
     {
-
         private string color;
-
         private double height;
-
         private double price;
+        private bool isCut = false;
 
+        private int[] heightList = new int[] { 36, 46, 50, 56, 72, 75, 92, 100, 108, 112, 125, 138, 144, 150, 168, 175, 180, 184, 200, 216, 224, 225, 230, 250, 252, 275, 276, 280, 300, 325, 350, 375};
 
 
         public Extrusion(string color, double height)
@@ -172,33 +168,99 @@ namespace Kitbox
             this.height = newHeight;
         }
 
+        public bool IsCut( double height)
+        {
+            isCut = true;
+            foreach(int elem in heightList)
+            {
+                if (elem == height)
+                    isCut = false;
+            }
+            return isCut;
+        }
+
+        public double GetExistingTopHeight(double height)
+        {
+            double value = heightList.Max();
+            foreach (int elem in heightList )
+            {
+                if (height < elem)
+                {
+                    value = elem;
+                    break;
+                }
+            }
+            return value;           
+        }
+
 
         public double GetPrice(MySqlConnection connection)
-
         {
-            string reference = "Cornières";
+            string dbColor = "";
+
+            if (color == "Brown")
+                dbColor = "Brun";
+
+            if (color == "White")
+                dbColor = "Blanc";
+
+            if (color == "Galvanised")
+                dbColor = "Galvanisé";
+
+            if (color == "Black")
+                dbColor = "Noir";
+            
+
+            string reference = "Cornières" ;
             MySqlDataReader reader;
-            MySqlCommand command = new MySqlCommand("SELECT Price FROM `kitboxdb2.0`.`parts` WHERE ref='" + reference + "'AND height='" + height + "'AND color='" + color + "'", connection);
+            MySqlDataReader reader2;
+            MySqlCommand command = new MySqlCommand("SELECT Price, PartForLocker FROM `kitboxdb2.0`.`parts` WHERE ref='" + reference + "'AND height='" + Convert.ToString(height) + "'AND color='" + dbColor + "'", connection);
 
             reader = command.ExecuteReader();
 
             double price = 0;
+            double partForCupboard = 0;
 
             if (reader.HasRows)
             {
                 while (reader.Read())
                 {
                     price = reader.GetDouble(0);
+                    partForCupboard = reader.GetDouble(1);
                 }
+                reader.Close();
             }
+
             else
             {
-                MessageBox.Show("there is no rows in the datareader");
+                reader.Close();
+                isCut = true;
+
+                //on prend une hauteur existante que l'ouvrier coupera manuellement
+                double existingHeight = GetExistingTopHeight(height);
+
+                MySqlCommand command2 = new MySqlCommand("SELECT Price, PartForLocker FROM `kitboxdb2.0`.`parts` WHERE ref='" + reference + "'AND height='" + Convert.ToString(existingHeight) + "'AND color='" + dbColor + "'", connection);
+                reader2 = command2.ExecuteReader();
+                price = 0;
+                if (reader2.HasRows)
+                {
+                    while (reader2.Read())
+                    {
+                        price = reader2.GetDouble(0);
+                        partForCupboard = reader2.GetDouble(1);
+                    }
+                }
+
+                else
+                {
+                    MessageBox.Show("there is no rows in the datareader !");
+                }
+
+                reader2.Close();
             }
+         
 
-            reader.Close();
-
-            return price;
+            return (price * partForCupboard) + 1;
         }
 
     }
@@ -280,16 +342,13 @@ namespace Kitbox
 
         public double GetPrice(MySqlConnection connection)
         {
-            double price = 4;
+            double price = 0;
 
             foreach (Accessory elem in accessoryList)
             {      
-                price = 0;
                 price += elem.GetPrice(connection);             
             }
-            MessageBox.Show(Convert.ToString(price+10000));
             return price;
-
         }
 
        
@@ -538,7 +597,7 @@ namespace Kitbox
 
 
             MySqlDataReader reader;
-            MySqlCommand command = new MySqlCommand("SELECT Price FROM `kitboxdb2.0`.`parts` WHERE ref='" + reference + "'AND height='" + Convert.ToString(height) + "'AND width='" + Convert.ToString(width) + "'AND depth='" + Convert.ToString(depth) + "'AND color='" + dbColor + "'", connection);
+            MySqlCommand command = new MySqlCommand("SELECT Price, PartForLocker FROM `kitboxdb2.0`.`parts` WHERE ref='" + reference + "'AND height='" + Convert.ToString(height) + "'AND width='" + Convert.ToString(width) + "'AND depth='" + Convert.ToString(depth) + "'AND color='" + dbColor + "'", connection);
 
             reader = command.ExecuteReader();
 
@@ -548,7 +607,7 @@ namespace Kitbox
             {
                 while (reader.Read())
                 {
-                   price = reader.GetDouble(0);                    
+                   price = reader.GetDouble(0) * reader.GetDouble(1);                    
                 }
             }
             else
@@ -635,7 +694,6 @@ namespace Kitbox
         public override double GetPrice(MySqlConnection connection)
         {
             price = GetPrices(connection, "Porte", GetHeight(), GetWidth(), 0, "glass");   // va-t-il retourner le bon height et width?
-            MessageBox.Show(Convert.ToString(price));
             return price;
 
         }
@@ -681,8 +739,8 @@ namespace Kitbox
         public override double GetPrice(MySqlConnection connection)
         {
             price = GetPrices(connection, "Porte", GetHeight(), GetWidth(), 0, color);
-            MessageBox.Show(Convert.ToString(price));
-            return price;
+            cabinetHandlePrice = GetPrices(connection, "Coupelles", 0, 0, 0, "");
+            return price + cabinetHandlePrice;
         }
 
     }
@@ -734,7 +792,6 @@ namespace Kitbox
         public override double GetPrice(MySqlConnection connection)
         {
             price = GetPrices(connection, "Tasseau", height, 0, 0, "");
-            MessageBox.Show(Convert.ToString(price));
             return price;
         }
 
@@ -810,7 +867,6 @@ namespace Kitbox
         public override double GetPrice(MySqlConnection connection)
         {
             price = GetPrices(connection, "Traverse Ar", 0, width, 0, "");
-            MessageBox.Show(Convert.ToString(price));
             return price;
         }
 
@@ -844,7 +900,6 @@ namespace Kitbox
         public override double GetPrice(MySqlConnection connection)
         {
             price = GetPrices(connection, "Traverse Av", 0, width, 0, "");
-            MessageBox.Show(Convert.ToString(price));
             return price;
         }
 
@@ -880,7 +935,6 @@ namespace Kitbox
         public override double GetPrice(MySqlConnection connection)
         {
             price = GetPrices(connection, "Traverse GD", 0, 0, depth, "");
-            MessageBox.Show(Convert.ToString(price));
             return price;
         }
 
@@ -935,7 +989,6 @@ namespace Kitbox
         public override double GetPrice(MySqlConnection connection)
         {
             price = GetPrices(connection, "Panneau", 0, 0, 0, color);
-            MessageBox.Show(Convert.ToString(price));
             return price;
         }
 
@@ -982,7 +1035,6 @@ namespace Kitbox
         public override double GetPrice(MySqlConnection connection)
         {
             price = GetPrices(connection, "Panneau Ar", height, width, 0, GetColor());
-            MessageBox.Show(Convert.ToString(price));
             return price;
         }
     }
@@ -1027,7 +1079,6 @@ namespace Kitbox
         public override double GetPrice(MySqlConnection connection)
         {
             price = GetPrices(connection, "Panneau GD", height, 0, depth, GetColor());
-            MessageBox.Show(Convert.ToString(price));
             return price;
         }
     }
@@ -1072,7 +1123,6 @@ namespace Kitbox
         public override double GetPrice(MySqlConnection connection)
         {
             price = GetPrices(connection, "Panneau HB", 0, width, depth, GetColor());
-            MessageBox.Show(Convert.ToString(price));
             return price;
         }
     }

@@ -42,11 +42,15 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Update = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+<<<<<<< HEAD
             this.colorLocker = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HeightLocker = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DoorType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColorDoor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Disponibility = new System.Windows.Forms.DataGridViewTextBoxColumn();
+=======
+            this.textBox1 = new System.Windows.Forms.TextBox();
+>>>>>>> 3272fac57130b9528f212f781ab3577c1b42f514
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lockerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -213,6 +217,7 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+<<<<<<< HEAD
             // colorLocker
             // 
             this.colorLocker.HeaderText = "Color Locker";
@@ -242,6 +247,20 @@
             this.Disponibility.HeaderText = "Disponibility";
             this.Disponibility.Name = "Disponibility";
             this.Disponibility.ReadOnly = true;
+=======
+            // textBox1
+            // 
+            this.textBox1.ForeColor = System.Drawing.Color.DarkRed;
+            this.textBox1.Location = new System.Drawing.Point(790, 426);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(394, 61);
+            this.textBox1.TabIndex = 28;
+            this.textBox1.Text = "Attention ! \r\nWe don\'t have corner with a corresponding height. You will be asked" +
+    " for an extra charge for cutting the corner.";
+            this.textBox1.Visible = false;
+>>>>>>> 3272fac57130b9528f212f781ab3577c1b42f514
             // 
             // Locker
             // 
@@ -250,6 +269,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Update);
             this.Controls.Add(this.dataGridView1);
@@ -287,10 +307,14 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button Update;
         private System.Windows.Forms.Button button1;
+<<<<<<< HEAD
         private System.Windows.Forms.DataGridViewTextBoxColumn colorLocker;
         private System.Windows.Forms.DataGridViewTextBoxColumn HeightLocker;
         private System.Windows.Forms.DataGridViewTextBoxColumn DoorType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColorDoor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Disponibility;
+=======
+        private System.Windows.Forms.TextBox textBox1;
+>>>>>>> 3272fac57130b9528f212f781ab3577c1b42f514
     }
 }

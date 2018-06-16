@@ -35,9 +35,9 @@ namespace Interface
             return height;
         }
 
-        public int CleatHeightGet()
+        public int LockerHeightGet()
         {
-            return HeightGet() - 4;  // si valeur en cm
+            return HeightGet() + 4;  // si valeur en cm
         }
 
         public string ColorGet()
@@ -67,59 +67,73 @@ namespace Interface
                 MessageBox.Show("Select a value please!");
             }
 
-            int row = 0;
-            dataGridView1.Rows.Add();
-            row = dataGridView1.Rows.Count - 2;
-
-            List<Accessory> accList = new List<Accessory>();
-
-            HBpanel HBpanell = new HBpanel(ColorGet(), DepthGet(), WidthGet());
-            accList.Add(HBpanell);
-
-            GDpanel GDpanell = new GDpanel(ColorGet(), DepthGet(), HeightGet());
-            accList.Add(GDpanell);
-
-            ARpanel ARpanell = new ARpanel(ColorGet(), WidthGet(), HeightGet());
-            accList.Add(ARpanell);
-
-            ARrail ARraill = new ARrail(WidthGet());   
-            accList.Add(ARraill);
-
-            AVrail AVraill = new AVrail(WidthGet());   
-            accList.Add(AVraill);
-
-            GDrail GDraill = new GDrail(DepthGet());     //x2      
-            accList.Add(GDraill);
-
-            Cleat cleat = new Cleat(CleatHeightGet());           //x4
-            accList.Add(cleat);
-
-            //Add door (if there is one)
-            if (list.Count() != 0)
+            if (cupBoard.GetLockerList().Count() == 7)
             {
-                if (list[0] == "wood")
-                {
-                    NormalDoor door = new NormalDoor(HeightGet(), WidthGet(), list[1]);
-                    accList.Add(door);
-                }
-
-                if (list[0] == "glass")
-                {
-                    GlassDoor door = new GlassDoor(HeightGet(), WidthGet());
-                }
+                MessageBox.Show("You have reached the maximum number of lockers");
             }
-                
-                      
-            // création d'un nouvel objet locker
-            Kitbox.Locker locker = new Kitbox.Locker(accList, HeightGet(), ColorGet());
 
-            // ajout de mon casier à la liste de casier statique existante dans le Form1
-           // Form1.listOfLocker.Add(locker);                                                    //methode qui modifie la listOfLocker si modify
-            cupBoard.AddLocker(locker);
+            else
+            {
+                int row = 0;
+                dataGridView1.Rows.Add();
+                row = dataGridView1.Rows.Count - 2;
 
-            
-            
+                List<Accessory> accList = new List<Accessory>();
 
+                HBpanel HBpanell = new HBpanel(ColorGet(), DepthGet(), WidthGet());
+                accList.Add(HBpanell);
+
+                GDpanel GDpanell = new GDpanel(ColorGet(), DepthGet(), HeightGet());
+                accList.Add(GDpanell);
+
+                ARpanel ARpanell = new ARpanel(ColorGet(), WidthGet(), HeightGet());
+                accList.Add(ARpanell);
+
+                ARrail ARraill = new ARrail(WidthGet());
+                accList.Add(ARraill);
+
+                AVrail AVraill = new AVrail(WidthGet());
+                accList.Add(AVraill);
+
+                GDrail GDraill = new GDrail(DepthGet());     //x2      
+                accList.Add(GDraill);
+
+                Cleat cleat = new Cleat(HeightGet());           //x4
+                accList.Add(cleat);
+
+                //Add door (if there is one)
+                if (list.Count() != 0)
+                {
+                    if (list[0] == "wood")
+                    {
+                        NormalDoor door = new NormalDoor(HeightGet(), WidthGet(), list[1]);
+                        accList.Add(door);
+                    }
+
+                    if (list[0] == "glass")
+                    {
+                        GlassDoor door = new GlassDoor(HeightGet(), WidthGet());
+                    }
+                }
+
+
+                // création d'un nouvel objet locker
+                Kitbox.Locker locker = new Kitbox.Locker(accList, LockerHeightGet(), ColorGet());
+
+                // ajout de mon casier à la liste de casier statique existante dans le Form1
+                // Form1.listOfLocker.Add(locker);                                                    //methode qui modifie la listOfLocker si modify
+                cupBoard.AddLocker(locker);
+
+                //Vérifier si un suplément devras être payé
+                double extrusionHeight = cupBoard.GetTotalHeight();
+
+                if (cupBoard.GetExtrusion().IsCut(extrusionHeight))
+                    textBox1.Visible = true;
+
+                else
+                    textBox1.Visible = false;
+
+<<<<<<< HEAD
             dataGridView1["ColorLocker", row].Value = ColorGet();
             dataGridView1["HeightLocker", row].Value = HeightGet();
             if (list.Count()!= 0 )
@@ -134,9 +148,16 @@ namespace Interface
             
 
             dataGridView1["Disponibility", row].Value = "Disponible";
+=======
+                dataGridView1["couleur", row].Value = ColorGet();
+                dataGridView1["hauteur", row].Value = HeightGet();
+                dataGridView1["profondeur", row].Value = DepthGet();
+                dataGridView1["largeur", row].Value = WidthGet();
+>>>>>>> 3272fac57130b9528f212f781ab3577c1b42f514
 
-            //Comme "list" est une variable static, il faut la réinitialiser pour le prochain door
-            list.Clear();
+                //Comme "list" est une variable static, il faut la réinitialiser pour le prochain door
+                list.Clear();
+            }         
         }
 
         private void comboHeight_SelectedIndexChanged(object sender, EventArgs e)

@@ -96,6 +96,7 @@
             this.textBox1.TabIndex = 16;
             this.textBox1.Text = "Attention ! \r\nFor this width it\'s not possible to have a door.";
             this.textBox1.Visible = false;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button2
             // 
