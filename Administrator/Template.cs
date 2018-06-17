@@ -22,12 +22,6 @@ namespace WindowsFormsApp7
         }
 
         //Reconstruction de l'objet cupBoard
-
-        //Recréer accessoires, ensuite locker ensuite extrusion ensuite cupBoard
-        //Y-a-t-il une porte? comment savoir --> Ajout BDD
-        //Ajout price locker pour aller plus vite
-        //attention diff accessoire pour diff locker composant un mm casier : idlock
-        //organiser ça ds un datagriedview ensuite sur fichier txt
      
 
         //Retourne les id des lockers spécifiques à une commande
@@ -59,6 +53,8 @@ namespace WindowsFormsApp7
             return IDList;
         }
 
+
+
         public Dictionary<string, string> GetLockerAttribute (MySqlConnection connection, int FkOrder, int idLocker)
         {
             Dictionary<string, string> lockerAttribute = new Dictionary<string, string>();
@@ -87,12 +83,13 @@ namespace WindowsFormsApp7
             return lockerAttribute;
         }
 
-        public List<Accessory> GetAccessoryList(Dictionary<string, string> lockerAttribute)
+
+        public List<Accessory> GetAccessoryList(Dictionary<string, string> lockerAttribute, int FkOrder, int idLocker)
         {
             List<Accessory> accessList = new List<Accessory>();
             
             string color = lockerAttribute["color"];
-            double height = Convert.ToDouble(lockerAttribute["height"]);
+            double height = (Convert.ToDouble(lockerAttribute["height"])-4);
             double width = Convert.ToDouble(lockerAttribute["width"]);
             double depth = Convert.ToDouble(lockerAttribute["depth"]);
 
@@ -118,9 +115,13 @@ namespace WindowsFormsApp7
             accessList.Add(cleat);
 
             //if there is a door
-            if (lockerAttribute.ContainsKey("door"))
+
+            string IdPart = GetIdPart(FkOrder, idLocker, "POR");
+            if ( IdPart != "")
             {
-                if (lockerAttribute["door"] == "glass")
+                string colorDoor = GetColorPart(IdPart);
+
+                if (colorDoor == "Verre")
                 {
                     Accessory.GlassDoor glassDoor = new Accessory.GlassDoor(height, width);
                     accessList.Add(glassDoor);
@@ -128,7 +129,7 @@ namespace WindowsFormsApp7
 
                 else
                 {
-                    Accessory.NormalDoor normalDoor = new Accessory.NormalDoor(height, width, lockerAttribute["door"]);
+                    Accessory.NormalDoor normalDoor = new Accessory.NormalDoor(height, width, colorDoor);
                     accessList.Add(normalDoor);
                 }
             }
@@ -144,16 +145,88 @@ namespace WindowsFormsApp7
             foreach (int idLocker in idLockers)
             {               
                 Dictionary<string, string> lockerAttribute = GetLockerAttribute(connection, FkOrder, idLocker);
-                List<Accessory> accessList = GetAccessoryList(lockerAttribute);
-                double height = (Convert.ToDouble(lockerAttribute["height"]) + 4);
+                List<Accessory> accessList = GetAccessoryList(lockerAttribute, FkOrder, idLocker);
+                double height = Convert.ToDouble(lockerAttribute["height"]);
                 string color = lockerAttribute["color"];
 
-                Locker locker = new Locker(accessList, height, color);  // height + 4?  ou -
+                Locker locker = new Locker(accessList, height, color, idLocker);  
                 lockerList.Add(locker);
 
             }  
 
             return lockerList;
+        }
+
+        public string GetIdPart(int FkOrder, int idLocker, string referencePart)
+        {
+            MySqlDataReader reader;
+            MySqlCommand command = new MySqlCommand("SELECT FkkPart FROM `kitboxdb2.0`.`linked` WHERE FkkOrder='" + Convert.ToString(FkOrder) + "'AND FkkLocker='" + Convert.ToString(idLocker) + "'", connection);
+
+            reader = command.ExecuteReader();
+            string IdPart = "";
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    IdPart = reader.GetString(0);
+                    string refPart = IdPart.Substring(0, 3);
+                    if (refPart == referencePart)
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("there is no idPart for this order");
+            }
+
+            reader.Close();
+
+            return IdPart;
+        }
+        
+        public string GetColorPart(string IdPart)
+        {
+            MySqlDataReader reader;
+            MySqlCommand command = new MySqlCommand("SELECT color FROM `kitboxdb2.0`.`parts` WHERE Idpart='" + IdPart + "'", connection);
+
+            reader = command.ExecuteReader();
+
+            string colorPart = "";
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    colorPart = reader.GetString(0);
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("there is no colorPart for this order");
+            }
+
+            reader.Close();
+
+            return colorPart;
+        }
+
+        public Extrusion GetExtrusion(int FkOrder, int idLocker)
+        {
+            string IdPart = GetIdPart(FkOrder, idLocker, "COR");
+            if ( IdPart != "")
+            {
+                string colorExtrusion = GetColorPart(IdPart);
+                Extrusion extrusion = new Extrusion(colorExtrusion, 0);
+                return extrusion;
+            }
+            else
+            {
+                MessageBox.Show("No extrusion for this id");
+                Extrusion extrusion = new Extrusion("", 0);
+                return extrusion;
+            }
         }
 
         public CupBoard GetCupBoard(MySqlConnection connection, int FkOrder)
@@ -168,7 +241,7 @@ namespace WindowsFormsApp7
             double width = Convert.ToDouble(lockerAttribute["width"]);
             double depth = Convert.ToDouble(lockerAttribute["depth"]);
 
-            Extrusion extrusion = new Extrusion(color, 0);                                      //Attention la couleur n'est pas la bonne !
+            Extrusion extrusion = GetExtrusion(FkOrder, idLocker);                                    
             CupBoard cupBoard = new CupBoard(width, depth, lockerList, extrusion);
             double extrusionHeight = cupBoard.GetTotalHeight();
             cupBoard.GetExtrusion().SetHeight(extrusionHeight);

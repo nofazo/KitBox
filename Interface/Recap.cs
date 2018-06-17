@@ -15,6 +15,8 @@ namespace Interface
     public partial class Recap : System.Windows.Forms.UserControl
     {
         Form1 form = new Form1();
+        Order order = Form1.GetOrder();
+
         public Recap()
         {
             InitializeComponent();
@@ -51,29 +53,105 @@ namespace Interface
                 }
                                        
                 i += 1;
-
             }
 
         }
 
-   
+        
 
         private void button2_Click(object sender, EventArgs e)
         {
             if (form.OpenConnection() == true)
-            {
-                Order order = Form1.GetOrder();
+            {              
                 int idOrder = order.GetidOrder();
                 MySqlCommand cmd = new MySqlCommand("UPDATE `kitboxdb2.0`.`orders` SET State='Confirmed' WHERE idOrder ='" + idOrder + "'", form.connection);
                 order.SetState("Confirmed");
                 cmd.ExecuteNonQuery();
             }
 
+            //Affiche le prix total pour vérification
             double price = Form1.GetCupBoard().GetPrice(form.connection);
             MessageBox.Show(Convert.ToString(price));
 
+            CompleteLinkedTable();
+
             this.Controls.Clear();
             this.Controls.Add(new Welcome());
+        }
+
+        public void CompleteLinkedTable()
+        {
+            CupBoard cupBoard = Form1.GetCupBoard();
+
+            foreach (Kitbox.Locker locker in cupBoard.GetLockerList())
+            {
+                foreach (Accessory access in locker.GetAccessoryList())
+                {
+                    //Prendre les references de toutes les parts d'un locker 
+
+                    MySqlDataReader reader;
+                    MySqlCommand command = new MySqlCommand("SELECT Idpart FROM `kitboxdb2.0`.`parts` WHERE ref='" + access.GetRefDB() + "'AND height='" + Convert.ToString(access.GetHeight()) + "'AND width='" + Convert.ToString(access.GetWidth()) + "'AND depth='" + Convert.ToString(access.GetDepth()) + "'AND color='" + access.GetColorDB(access.GetColor()) + "'", form.connection);
+                    reader = command.ExecuteReader();
+
+                    string idPart = "";
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            idPart = reader.GetString(0);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("there is no idPart in the datareader");
+                    }
+
+                    reader.Close();
+
+                    //insérer les IDPARTS dans la table linked, ainsi on sait quel type de part est concerné pour chaque locker --> facile pour faire -1 
+                    MySqlCommand command2 = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`linked` (FkkOrder, FkkLocker,`FkkPart`) VALUES ('" + order.GetidOrder() + " ', '" + Convert.ToString(locker.GetID()) + "', '" + idPart + "');", form.connection);
+                    command2.ExecuteNonQuery();                   
+                }
+            }
+
+            //Ajout de extrusion dans linked : une seule fois
+            Extrusion extrusion = cupBoard.GetExtrusion();
+            double extrusionHeight = 0;
+            if (extrusion.IsCut(extrusion.GetHeight()))
+            {
+                extrusionHeight = extrusion.GetExistingTopHeight(extrusion.GetHeight());
+            }
+            else
+            {
+                extrusionHeight = extrusion.GetHeight();
+            }
+
+            string refcor = "Cornières";
+            MySqlDataReader reader3;
+            MySqlCommand command3 = new MySqlCommand("SELECT Idpart FROM `kitboxdb2.0`.`parts` WHERE ref='" + refcor + "'AND height='" + Convert.ToString(extrusionHeight) + "'AND color='" + extrusion.GetColorDB(extrusion.GetColor()) + "'", form.connection);
+            reader3 = command3.ExecuteReader();
+
+            string idCor = "";
+
+            if (reader3.HasRows)
+            {
+                while (reader3.Read())
+                {
+                    idCor = reader3.GetString(0);
+                }
+            }
+            else
+            {
+                MessageBox.Show("there is no extrusion in the datareader");
+            }
+
+            reader3.Close();
+
+            //prendre nptqel id de locker
+            int fkkLocker = cupBoard.GetLockerList()[0].GetID();
+            MySqlCommand command4 = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`linked` (FkkOrder, FkkLocker,`FkkPart`) VALUES ('" + order.GetidOrder() + "', '" + fkkLocker + "', '" + idCor + "');", form.connection);
+            command4.ExecuteNonQuery();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

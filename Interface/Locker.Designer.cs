@@ -40,14 +40,14 @@
             this.Modify = new System.Windows.Forms.Button();
             this.lockerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Update = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.ColorLocker = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HeightLocker = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DoorType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColorDoor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Disponibility = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Update = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lockerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -72,9 +72,9 @@
             this.comboHeight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboHeight.Items.AddRange(new object[] {
-            "32",
-            "42",
-            "52"});
+            "36",
+            "46",
+            "56"});
             this.comboHeight.Location = new System.Drawing.Point(395, 246);
             this.comboHeight.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.comboHeight.Name = "comboHeight";
@@ -186,6 +186,36 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // ColorLocker
+            // 
+            this.ColorLocker.HeaderText = "Color locker";
+            this.ColorLocker.Name = "ColorLocker";
+            this.ColorLocker.ReadOnly = true;
+            // 
+            // HeightLocker
+            // 
+            this.HeightLocker.HeaderText = "Height Locker";
+            this.HeightLocker.Name = "HeightLocker";
+            this.HeightLocker.ReadOnly = true;
+            // 
+            // DoorType
+            // 
+            this.DoorType.HeaderText = "Door";
+            this.DoorType.Name = "DoorType";
+            this.DoorType.ReadOnly = true;
+            // 
+            // ColorDoor
+            // 
+            this.ColorDoor.HeaderText = "Door Color";
+            this.ColorDoor.Name = "ColorDoor";
+            this.ColorDoor.ReadOnly = true;
+            // 
+            // Disponibility
+            // 
+            this.Disponibility.HeaderText = "Disponibility";
+            this.Disponibility.Name = "Disponibility";
+            this.Disponibility.ReadOnly = true;
+            // 
             // Update
             // 
             this.Update.BackColor = System.Drawing.Color.Silver;
@@ -226,36 +256,6 @@
             this.textBox1.Text = "Attention ! \r\nWe don\'t have corner with a corresponding height. You will be asked" +
     " for an extra charge for cutting the corner.";
             this.textBox1.Visible = false;
-            // 
-            // ColorLocker
-            // 
-            this.ColorLocker.HeaderText = "Color locker";
-            this.ColorLocker.Name = "ColorLocker";
-            this.ColorLocker.ReadOnly = true;
-            // 
-            // HeightLocker
-            // 
-            this.HeightLocker.HeaderText = "Height Locker";
-            this.HeightLocker.Name = "HeightLocker";
-            this.HeightLocker.ReadOnly = true;
-            // 
-            // DoorType
-            // 
-            this.DoorType.HeaderText = "Door";
-            this.DoorType.Name = "DoorType";
-            this.DoorType.ReadOnly = true;
-            // 
-            // ColorDoor
-            // 
-            this.ColorDoor.HeaderText = "Door Color";
-            this.ColorDoor.Name = "ColorDoor";
-            this.ColorDoor.ReadOnly = true;
-            // 
-            // Disponibility
-            // 
-            this.Disponibility.HeaderText = "Disponibility";
-            this.Disponibility.Name = "Disponibility";
-            this.Disponibility.ReadOnly = true;
             // 
             // Locker
             // 

@@ -146,6 +146,27 @@ namespace Kitbox
 
         }
 
+        public string GetColorDB(string color)
+        {
+            string dbColor = "";
+
+            if (color == "Brown")
+                dbColor = "Brun";
+
+            if (color == "White")
+                dbColor = "Blanc";
+
+            if (color == "Green")
+                dbColor = "Vert";
+
+            if (color == "Black")
+                dbColor = "Noir";
+
+            if (color == "glass")
+                dbColor = "Verre";
+
+            return dbColor;
+        }
 
         public string GetColor()
         {
@@ -291,10 +312,10 @@ namespace Kitbox
 
         private List<Accessory> accessoryList;
 
+        private int ID;
 
 
-
-        public Locker(List<Accessory> accessoryList, double lockerHeight, string color)
+        public Locker(List<Accessory> accessoryList, double lockerHeight, string color, int ID)
 
         {
 
@@ -304,6 +325,7 @@ namespace Kitbox
 
             this.color = color;
 
+            this.ID = ID;
         }
 
         public List<Accessory> GetAccessoryList()
@@ -320,6 +342,11 @@ namespace Kitbox
         public double GetLockerHeight()
         {
             return this.lockerHeight;
+        }
+
+        public double GetAccessHeight()
+        {
+            return (this.lockerHeight - 4) ;
         }
 
         public void SetLockerHeight(double newLockerHeight)
@@ -350,7 +377,15 @@ namespace Kitbox
             return price;
         }
 
+        public int GetID()
+        {
+            return this.ID;
+        }
 
+        public void SetID(int newID)
+        {
+            this.ID = newID;
+        }
 
         public void AddAccessory(Accessory accessory)
 
@@ -360,7 +395,26 @@ namespace Kitbox
 
         }
 
+        public bool HasDoor()
+        {
+            foreach (Accessory elem in accessoryList)
+            {
+                if (elem.GetRefDB() == "Porte")
+                    return true;
+            }
+            return false;
+        }
 
+        public Accessory.Door GetDoor()
+        {
+            foreach (Accessory elem in accessoryList)
+            {
+                if (elem.GetRefDB() == "Porte")
+                    return (Accessory.Door) elem;
+            }
+            Accessory.Door door = new Accessory.Door(0, 0);
+            return door;
+        }
 
         public void RemoveAccessory(Accessory accessory)
 
@@ -555,26 +609,18 @@ namespace Kitbox
 
     public abstract class Accessory
     {
-
-        // public double price;
-
-        // public bool isMajor;
-
-        //private string type ;
-
-        //public abstract double GetPrice();
         public MySqlConnection connection;
-
         public abstract bool IsMajor();
-
+        public abstract string GetRefDB();
         public abstract string GetAccessType();
-
+        public abstract string GetColor();
+        public abstract double GetHeight();
+        public abstract double GetWidth();
+        public abstract double GetDepth();
         public abstract double GetPrice(MySqlConnection connection);
-
         public abstract double GetInstock(MySqlConnection connection);
 
-
-        public double GetInstocks(MySqlConnection connection, string reference, double height, double width, double depth, string color)
+        public string GetColorDB(string color)
         {
             string dbColor = "";
 
@@ -593,7 +639,12 @@ namespace Kitbox
             if (color == "glass")
                 dbColor = "Verre";
 
+            return dbColor;
+        }
 
+        public double GetInstocks(MySqlConnection connection, string reference, double height, double width, double depth, string color)
+        {
+            string dbColor = GetColorDB(color);
 
             MySqlDataReader reader;
             MySqlCommand command = new MySqlCommand("SELECT InStock, PartForLocker FROM `kitboxdb2.0`.`parts` WHERE ref='" + reference + "'AND height='" + Convert.ToString(height) + "'AND width='" + Convert.ToString(width) + "'AND depth='" + Convert.ToString(depth) + "'AND color='" + dbColor + "'", connection);
@@ -622,24 +673,7 @@ namespace Kitbox
 
         public double GetPrices(MySqlConnection connection, string reference, double height, double width, double depth, string color)
         {
-            string dbColor = "";
-
-            if (color == "Brown")
-                dbColor = "Brun";
-
-            if (color == "White")
-                dbColor = "Blanc";
-
-            if (color == "Green")
-                dbColor = "Vert";
-
-            if (color == "Black")
-                dbColor = "Noir";
-
-            if (color == "glass")
-                dbColor = "Verre";
-
-
+            string dbColor = GetColorDB(color);
 
             MySqlDataReader reader;
             MySqlCommand command = new MySqlCommand("SELECT Price, PartForLocker FROM `kitboxdb2.0`.`parts` WHERE ref='" + reference + "'AND height='" + Convert.ToString(height) + "'AND width='" + Convert.ToString(width) + "'AND depth='" + Convert.ToString(depth) + "'AND color='" + dbColor + "'", connection);
@@ -679,7 +713,7 @@ namespace Kitbox
             protected string type = "Door";
             private double height;
             private double width;
-
+            private string reference = "Porte";
 
             public Door(double height, double width)
             {
@@ -687,20 +721,36 @@ namespace Kitbox
                 this.width = width;
             }
 
-            public double GetHeight()
+            public override double GetHeight()
             {
                 return this.height;
             }
 
-            public double GetWidth()
+            public override double GetWidth()
             {
                 return this.width;
             }
+
+            public override double GetDepth()
+            {
+                return 0;
+            }
+
 
             public override bool IsMajor()
             {
                 return isMajor;
 
+            }
+
+            public override string GetColor()
+            {
+                return "";
+            }
+
+            public override string GetRefDB()
+            {
+                return this.reference;
             }
 
             public override string GetAccessType()
@@ -727,17 +777,26 @@ namespace Kitbox
             private double price;
             private double inStock;
             new private string type = "glassDoor";
+            private string reference = "Porte";
 
-
-            public GlassDoor(double height, double width) : base(height, width)
+            public GlassDoor(double height, double width, string color = "Verre") : base(height, width)
             {
 
             }
 
+            public override string GetRefDB()
+            {
+                return this.reference;
+            }
 
             public override string GetAccessType()
             {
                 return this.type;
+            }
+
+            public override string GetColor()
+            {
+                return "glass";
             }
 
             public override double GetPrice(MySqlConnection connection)
@@ -768,6 +827,7 @@ namespace Kitbox
             private string color;
 
             new protected string type = "normalDoor";
+            private string reference = "Porte";
 
             public NormalDoor(double height, double width, string color) : base(height, width)
             {
@@ -776,7 +836,7 @@ namespace Kitbox
 
             }
 
-            public string GetColor()
+            public override string GetColor()
             {
                 return this.color;
             }
@@ -786,6 +846,10 @@ namespace Kitbox
                 this.color = newColor;
             }
 
+            public override string GetRefDB()
+            {
+                return this.reference;
+            }
 
             public override string GetAccessType()
             {
@@ -819,6 +883,7 @@ namespace Kitbox
             private bool isMajor = true;
 
             private string type = "cleat";
+            private string reference = "Tasseau";
 
             public Cleat(double height)
             {
@@ -827,9 +892,19 @@ namespace Kitbox
 
             }
 
-            public double GetHeight()
+            public override double GetHeight()
             {
                 return this.height;
+            }
+
+            public override double GetWidth()
+            {
+                return 0;
+            }
+
+            public override double GetDepth()
+            {
+                return 0;
             }
 
             public void SetHeight(double newHeight)
@@ -837,13 +912,21 @@ namespace Kitbox
                 this.height = newHeight;
             }
 
-
+            public override string GetColor()
+            {
+                return "";
+            }
 
             public override bool IsMajor()
             {
 
                 return isMajor;
 
+            }
+
+            public override string GetRefDB()
+            {
+                return this.reference;
             }
 
             public override string GetAccessType()
@@ -875,6 +958,7 @@ namespace Kitbox
             private bool isMajor = true;
 
             private string type = "Rail";
+            private string reference = "Traverse";
 
             public Rail()
             {
@@ -882,7 +966,10 @@ namespace Kitbox
 
             }
 
-
+            public override string GetColor()
+            {
+                return "";
+            }
 
             public override bool IsMajor()
 
@@ -892,10 +979,29 @@ namespace Kitbox
 
             }
 
+            public override string GetRefDB()
+            {
+                return this.reference;
+            }
 
             public override string GetAccessType()
             {
                 return this.type;
+            }
+
+            public override double GetHeight()
+            {
+                return 0 ;
+            }
+
+            public override double GetWidth()
+            {
+                return 0;
+            }
+
+            public override double GetDepth()
+            {
+                return 0;
             }
 
             public override double GetPrice(MySqlConnection connection)
@@ -919,7 +1025,7 @@ namespace Kitbox
             private double inStock;
             private double width;
             private string type = "ARrail";
-
+            private string reference = "Traverse Ar";
 
             public ARrail(double width)
             {
@@ -928,9 +1034,14 @@ namespace Kitbox
 
             }
 
-            public double GetWidtht()
+            public override double GetWidth()
             {
                 return this.width;
+            }
+
+            public override string GetRefDB()
+            {
+                return this.reference;
             }
 
             public override string GetAccessType()
@@ -956,7 +1067,7 @@ namespace Kitbox
             private double inStock;
             private double width;
             private string type = "AVrail";
-
+            private string reference = "Traverse Av";
 
             public AVrail(double width)
 
@@ -966,9 +1077,14 @@ namespace Kitbox
 
             }
 
-            public double GetWidtht()
+            public override double GetWidth()
             {
                 return this.width;
+            }
+
+            public override string GetRefDB()
+            {
+                return this.reference;
             }
 
             public override string GetAccessType()
@@ -996,7 +1112,7 @@ namespace Kitbox
             private double instock;
             private double depth;
             private string type = "GDrail";
-
+            private string reference = "Traverse GD";
 
             public GDrail(double depth)
 
@@ -1006,9 +1122,14 @@ namespace Kitbox
 
             }
 
-            public double GetDepth()
+            public override double GetDepth()
             {
                 return this.depth;
+            }
+
+            public override string GetRefDB()
+            {
+                return this.reference;
             }
 
             public override string GetAccessType()
@@ -1046,13 +1167,15 @@ namespace Kitbox
 
             private string type = "Panel";
 
+            private string reference = "Panneau";
+
 
             public Panel(string color)
             {
                 this.color = color;
             }
 
-            public string GetColor()
+            public override string GetColor()
             {
                 return this.color;
             }
@@ -1069,6 +1192,26 @@ namespace Kitbox
 
                 return isMajor;
 
+            }
+
+            public override double GetHeight()
+            {
+                return 0;
+            }
+
+            public override double GetWidth()
+            {
+                return 0;
+            }
+
+            public override double GetDepth()
+            {
+                return 0;
+            }
+
+            public override string GetRefDB()
+            {
+                return this.reference;
             }
 
             public override string GetAccessType()
@@ -1101,6 +1244,7 @@ namespace Kitbox
             private double height;
 
             private string type = "ARpanel";
+            private string reference = "Panneau Ar";
 
             public ARpanel(string color, double width, double height) : base(color)
 
@@ -1112,14 +1256,19 @@ namespace Kitbox
 
             }
 
-            public double GetHeight()
+            public override double GetHeight()
             {
                 return this.height;
             }
 
-            public double GetWidth()
+            public override double GetWidth()
             {
                 return this.width;
+            }
+
+            public override string GetRefDB()
+            {
+                return this.reference;
             }
 
             public override string GetAccessType()
@@ -1152,6 +1301,8 @@ namespace Kitbox
 
             private string type = "GDpanel";
 
+            private string reference = "Panneau GD";
+
             public GDpanel(string color, double depth, double height) : base(color)
 
             {
@@ -1162,14 +1313,19 @@ namespace Kitbox
 
             }
 
-            public double GetDepth()
+            public override double GetDepth()
             {
                 return this.depth;
             }
 
-            public double GetHeight()
+            public override double GetHeight()
             {
                 return this.height;
+            }
+
+            public override string GetRefDB()
+            {
+                return this.reference;
             }
 
             public override string GetAccessType()
@@ -1202,6 +1358,7 @@ namespace Kitbox
             private double width;
 
             private string type = "HBpanel";
+            private string reference = "Panneau HB";
 
             public HBpanel(string color, double depth, double width) : base(color)
 
@@ -1213,14 +1370,19 @@ namespace Kitbox
 
             }
 
-            public double GetDepth()
+            public override double GetDepth()
             {
                 return this.depth;
             }
 
-            public double GetWidth()
+            public override double GetWidth()
             {
                 return this.width;
+            }
+
+            public override string GetRefDB()
+            {
+                return this.reference;
             }
 
             public override string GetAccessType()
@@ -1340,9 +1502,9 @@ namespace Kitbox
 
 
 
-                Locker Casier = new Locker(list, hauteur, couleur);         // ouu Casier.AddAccessory(cleatt);
+                //Locker Casier = new Locker(list, hauteur, couleur);         // ouu Casier.AddAccessory(cleatt);
 
-                lockerList.Add(Casier);                                             // attention problème tous les casiers même nom à résoudre 
+                //lockerList.Add(Casier);                                             // attention problème tous les casiers même nom à résoudre 
 
                 //pas besoin? les ajouter dans une liste directlyy
 

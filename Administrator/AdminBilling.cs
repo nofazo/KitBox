@@ -51,7 +51,11 @@ namespace WindowsFormsApp7
                     int i = 0;
                     sw.WriteLine("Locker n°" + i + ": ");
                     sw.WriteLine("Color: " + locker.GetColor() + "   Price: " + locker.GetPrice(form.connection));   // sprint 3:faire distinction entre casier avec porte et casier sans porte
-                    //Ajouter accessoire non important : Door
+                    if (locker.HasDoor())
+                        if (locker.GetDoor().GetColor() == "glass")
+                            sw.WriteLine(" This locker has glass door");
+                        else
+                            sw.WriteLine(" This locker has a " + locker.GetDoor().GetColor() + " wood door ");
                     i++;
                 }
 

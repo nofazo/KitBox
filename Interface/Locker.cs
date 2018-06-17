@@ -30,15 +30,15 @@ namespace Interface
             InitializeComponent();
         }
 
-        public int HeightGet()          // Hauteur totale du casier
+        public int HeightGet()          // Hauteur des access
         {
-            int height = Convert.ToInt32(comboHeight.Text);
-            return height;
+            return LockerHeightGet() - 4;  // si valeur en cm
         }
 
         public int LockerHeightGet()
-        {
-            return HeightGet() + 4;  // si valeur en cm
+        {         
+            int height = Convert.ToInt32(comboHeight.Text);
+            return height;
         }
 
         public string ColorGet()
@@ -122,7 +122,7 @@ namespace Interface
 
 
             // création d'un nouvel objet locker
-            Kitbox.Locker locker = new Kitbox.Locker(accList, LockerHeightGet(), ColorGet());
+            Kitbox.Locker locker = new Kitbox.Locker(accList, LockerHeightGet(), ColorGet(), 0);
 
             // ajout de mon casier à la liste de casier statique existante dans le Form1
             // Form1.listOfLocker.Add(locker);                                                    //methode qui modifie la listOfLocker si modify
@@ -140,7 +140,7 @@ namespace Interface
 
             // on ajoute dans le datagrid les infos
             dataGridView1["ColorLocker", row].Value = ColorGet();
-            dataGridView1["HeightLocker", row].Value = HeightGet();
+            dataGridView1["HeightLocker", row].Value = LockerHeightGet();
             //Si la porte est en bois
             if (list.Count() != 0)
             {
@@ -252,7 +252,7 @@ namespace Interface
                     dataGridView1.Rows.Add();
                     row = dataGridView1.Rows.Count - 2;
                     dataGridView1["ColorLocker", row].Value = locker.GetColor();
-                    dataGridView1["HeightLocker", row].Value = locker.GetLockerHeight()-4;
+                    dataGridView1["HeightLocker", row].Value = locker.GetLockerHeight();
                     foreach (Accessory accessory in locker.GetAccessoryList())
                     {
                         if (accessory.GetAccessType() == "normalDoor")
@@ -293,7 +293,32 @@ namespace Interface
                 }
             }
 
+        }
+
+        public int GetIDLocker(MySqlConnection connection, int FkOrder, string color, double height)
+        {
+            MySqlDataReader reader;
+            MySqlCommand command = new MySqlCommand("SELECT idLocker FROM `kitboxdb2.0`.`lockers` WHERE FkOrder='" + Convert.ToString(FkOrder) + "'AND color='" + color + "'AND height='" + Convert.ToString(height) + "'", connection);
+
+            reader = command.ExecuteReader();
+
+            int lockerID = 0;
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    lockerID = reader.GetInt32(0);
+                }
             }
+            else
+            {
+                MessageBox.Show("this order is empty");
+            }
+
+            reader.Close();
+            return lockerID;
+        }
 
         private void Finish_Click(object sender, EventArgs e)
         {
@@ -309,13 +334,15 @@ namespace Interface
 
                 for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
                 {
-                    
-                    
-                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`lockers` (`FkOrder`, `color`,`height`, `depth`, `width`) VALUES ('"+order.GetidOrder()+ " ', '" + dataGridView1.Rows[i].Cells[0].Value + "', '" + dataGridView1.Rows[i].Cells[1].Value + "', '" + DepthGet() + "', '" + WidthGet() + "');", form.connection);
-                   
+
+                    string color = Convert.ToString(dataGridView1.Rows[i].Cells[0].Value);
+                    double height = Convert.ToDouble(dataGridView1.Rows[i].Cells[1].Value);
+
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`lockers` (`FkOrder`, `color`,`height`, `depth`, `width`) VALUES ('"+order.GetidOrder()+ " ', '" + dataGridView1.Rows[i].Cells[0].Value + "', '" + dataGridView1.Rows[i].Cells[1].Value + "', '" + DepthGet() + "', '" + WidthGet() + "');", form.connection);                
                     cmd.ExecuteNonQuery();
 
-                   
+                    int IDLocker = GetIDLocker(form.connection, order.GetidOrder(), color, height);
+                    cupBoard.GetLockerList()[i].SetID(IDLocker);
                 }
 
                 dataGridView1.Rows.Clear();
