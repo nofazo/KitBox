@@ -70,7 +70,7 @@ namespace Kitbox
             return this.width;
         }
 
-        public void SetWidth( double newWidth)
+        public void SetWidth(double newWidth)
         {
             this.width = newWidth;
         }
@@ -91,15 +91,15 @@ namespace Kitbox
         {
             double lockerPrice = 0;
 
-            foreach (Locker locker in lockerList)         
+            foreach (Locker locker in lockerList)
                 lockerPrice += locker.GetPrice(connection);
-           
+
             double extrusionPrice = extrusion.GetPrice(connection);
 
-            return lockerPrice + extrusionPrice ; 
+            return lockerPrice + extrusionPrice;
         }
 
-        public double GetTotalHeight()  
+        public double GetTotalHeight()
         {
 
             double height = 0;
@@ -107,7 +107,7 @@ namespace Kitbox
             foreach (Locker locker in lockerList)
             {
 
-                height += locker.GetLockerHeight();  
+                height += locker.GetLockerHeight();
 
             }
 
@@ -133,7 +133,7 @@ namespace Kitbox
         private double price;
         private bool isCut = false;
 
-        private int[] heightList = new int[] { 36, 46, 50, 56, 72, 75, 92, 100, 108, 112, 125, 138, 144, 150, 168, 175, 180, 184, 200, 216, 224, 225, 230, 250, 252, 275, 276, 280, 300, 325, 350, 375};
+        private int[] heightList = new int[] { 36, 46, 50, 56, 72, 75, 92, 100, 108, 112, 125, 138, 144, 150, 168, 175, 180, 184, 200, 216, 224, 225, 230, 250, 252, 275, 276, 280, 300, 325, 350, 375 };
 
 
         public Extrusion(string color, double height)
@@ -168,10 +168,10 @@ namespace Kitbox
             this.height = newHeight;
         }
 
-        public bool IsCut( double height)
+        public bool IsCut(double height)
         {
             isCut = true;
-            foreach(int elem in heightList)
+            foreach (int elem in heightList)
             {
                 if (elem == height)
                     isCut = false;
@@ -182,7 +182,7 @@ namespace Kitbox
         public double GetExistingTopHeight(double height)
         {
             double value = heightList.Max();
-            foreach (int elem in heightList )
+            foreach (int elem in heightList)
             {
                 if (height < elem)
                 {
@@ -190,7 +190,7 @@ namespace Kitbox
                     break;
                 }
             }
-            return value;           
+            return value;
         }
 
 
@@ -209,9 +209,9 @@ namespace Kitbox
 
             if (color == "Black")
                 dbColor = "Noir";
-            
 
-            string reference = "Cornières" ;
+
+            string reference = "Cornières";
             MySqlDataReader reader;
             MySqlDataReader reader2;
             MySqlCommand command = new MySqlCommand("SELECT Price, PartForLocker FROM `kitboxdb2.0`.`parts` WHERE ref='" + reference + "'AND height='" + Convert.ToString(height) + "'AND color='" + dbColor + "'", connection);
@@ -258,7 +258,7 @@ namespace Kitbox
 
                 reader2.Close();
             }
-         
+
 
             return (price * partForCupboard) + 1;
         }
@@ -290,7 +290,7 @@ namespace Kitbox
         private string color;
 
         private List<Accessory> accessoryList;
-        
+
 
 
 
@@ -337,15 +337,15 @@ namespace Kitbox
         {
             this.color = newColor;
         }
-        
+
 
         public double GetPrice(MySqlConnection connection)
         {
             double price = 0;
 
             foreach (Accessory elem in accessoryList)
-            {      
-                price += elem.GetPrice(connection);             
+            {
+                price += elem.GetPrice(connection);
             }
             return price;
         }
@@ -430,7 +430,7 @@ namespace Kitbox
 
 
 
-           // Console.WriteLine("Total : " + cubBoard.GetPrice(MySqlConnection connection));
+            // Console.WriteLine("Total : " + cubBoard.GetPrice(MySqlConnection connection));
 
         }
 
@@ -501,7 +501,7 @@ namespace Kitbox
                         //afficher accessory.GetAccessType() + accessory.GetPrice();
 
                         // afficher nom + id + quantité + prix unitaire + prix totale 
-                        
+
                         // ajouter une variable "quantité?" pour la quantitié qu'il faut d'un access pour un casier
 
                         // attention responsabilité unique
@@ -512,7 +512,7 @@ namespace Kitbox
 
 
 
-               // sw.WriteLine("Total : " + cubBoard.GetPrice(MySqlConnection connection));
+                // sw.WriteLine("Total : " + cubBoard.GetPrice(MySqlConnection connection));
 
             }
 
@@ -571,25 +571,74 @@ namespace Kitbox
 
         public abstract double GetPrice(MySqlConnection connection);
 
-        public double GetPrices(MySqlConnection connection , string reference, double height, double width, double depth, string color)
+        public abstract double GetInstock(MySqlConnection connection);
+
+
+        public double GetInstocks(MySqlConnection connection, string reference, double height, double width, double depth, string color)
         {
             string dbColor = "";
 
             if (color == "Brown")
-                dbColor = "Brun";          
+                dbColor = "Brun";
 
             if (color == "White")
-                dbColor = "Blanc";            
+                dbColor = "Blanc";
 
             if (color == "Green")
                 dbColor = "Vert";
-            
+
             if (color == "Black")
-                dbColor = "Noir";            
+                dbColor = "Noir";
 
             if (color == "glass")
                 dbColor = "Verre";
-            
+
+
+
+            MySqlDataReader reader;
+            MySqlCommand command = new MySqlCommand("SELECT InStock, PartForLocker FROM `kitboxdb2.0`.`parts` WHERE ref='" + reference + "'AND height='" + Convert.ToString(height) + "'AND width='" + Convert.ToString(width) + "'AND depth='" + Convert.ToString(depth) + "'AND color='" + dbColor + "'", connection);
+
+            reader = command.ExecuteReader();
+
+            double inStock = 0;
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    inStock = reader.GetDouble(0) - reader.GetDouble(1);
+                }
+            }
+            else
+            {
+                MessageBox.Show("there is no rows in the datareader");
+            }
+
+            reader.Close();
+
+            return inStock;
+        }
+
+
+        public double GetPrices(MySqlConnection connection, string reference, double height, double width, double depth, string color)
+        {
+            string dbColor = "";
+
+            if (color == "Brown")
+                dbColor = "Brun";
+
+            if (color == "White")
+                dbColor = "Blanc";
+
+            if (color == "Green")
+                dbColor = "Vert";
+
+            if (color == "Black")
+                dbColor = "Noir";
+
+            if (color == "glass")
+                dbColor = "Verre";
+
 
 
             MySqlDataReader reader;
@@ -603,647 +652,716 @@ namespace Kitbox
             {
                 while (reader.Read())
                 {
-                   price = reader.GetDouble(0) * reader.GetDouble(1);                    
+                    price = reader.GetDouble(0) * reader.GetDouble(1);
                 }
             }
             else
             {
-                MessageBox.Show("there is no rows in the datareader");               
+                MessageBox.Show("there is no rows in the datareader");
             }
 
             reader.Close();
-       
-            return price;
-        }
-        
-    }
 
-
-
-    public class Door : Accessory
-    {
-
-        private double price;
-
-        private bool isMajor = false;
-
-        protected string type = "Door";
-        private double height;
-        private double width;
-
-
-        public Door(double height, double width)
-        {
-            this.height = height;
-            this.width = width;
-        }
-
-        public double GetHeight()
-        {
-            return this.height;
-        }
-
-        public double GetWidth()
-        {
-            return this.width;
-        }
-
-        public override bool IsMajor()
-        {
-            return isMajor;
-
-        }
-
-        public override string GetAccessType()
-        {
-            return this.type;
-        }
-
-        public override double GetPrice(MySqlConnection connection)
-        {
-            return GetPrices(connection, "Door", height, width, 0, "");
-        }
-
-
-    }
-
-
-
-    public class GlassDoor : Door
-    {
-
-        private double price;
-        new private string type = "glassDoor";
-
-
-        public GlassDoor(double height, double width) : base( height, width)
-        {
-
-        }
-
-
-        public override string GetAccessType()
-        {
-            return this.type;
-        }
-
-        public override double GetPrice(MySqlConnection connection)
-        {
-            price = GetPrices(connection, "Porte", GetHeight(), GetWidth(), 0, "glass");   // va-t-il retourner le bon height et width?
-            return price;
-
-        }
-
-    }
-
-
-
-    public class NormalDoor : Door
-    {
-
-        private double cabinetHandlePrice;
-
-        private double price;
-
-        private string color;
-
-        new protected string type = "normalDoor";
-
-        public NormalDoor(double height, double width, string color): base (height, width)
-        {
-
-            this.color = color;
-
-        }
-
-        public string GetColor()
-        {
-            return this.color;
-        }
-
-        public void SetColor(string newColor)
-        {
-            this.color = newColor;
-        }
-
-
-        public override string GetAccessType()
-        {
-            return this.type;
-        }
-
-        public override double GetPrice(MySqlConnection connection)
-        {
-            price = GetPrices(connection, "Porte", GetHeight(), GetWidth(), 0, color);
-            cabinetHandlePrice = GetPrices(connection, "Coupelles", 0, 0, 0, "");
-            return price + cabinetHandlePrice;
-        }
-
-    }
-
-
-
-    public class Cleat : Accessory
-    {
-
-        private double height;
-
-        private double price;
-
-        private bool isMajor = true;
-
-        private string type = "cleat";
-
-        public Cleat(double height)
-        {
-
-            this.height = height;
-
-        }
-
-        public double GetHeight()
-        {
-            return this.height;
-        }
-
-        public void SetHeight(double newHeight)
-        {
-            this.height = newHeight;
-        }
-
-
-
-        public override bool IsMajor()
-        {
-
-            return isMajor;
-
-        }
-
-        public override string GetAccessType()
-        {
-            return this.type;
-        }
-
-        public override double GetPrice(MySqlConnection connection)
-        {
-            price = GetPrices(connection, "Tasseau", height, 0, 0, "");
             return price;
         }
 
-    }
 
 
 
-    public class Rail : Accessory
-    {
 
-        private double price;
-
-        private bool isMajor = true;
-
-        private string type = "Rail";
-
-        public Rail()
+        public class Door : Accessory
         {
+            private double inStock;
+            private double price;
 
+            private bool isMajor = false;
+
+            protected string type = "Door";
+            private double height;
+            private double width;
+
+
+            public Door(double height, double width)
+            {
+                this.height = height;
+                this.width = width;
+            }
+
+            public double GetHeight()
+            {
+                return this.height;
+            }
+
+            public double GetWidth()
+            {
+                return this.width;
+            }
+
+            public override bool IsMajor()
+            {
+                return isMajor;
+
+            }
+
+            public override string GetAccessType()
+            {
+                return this.type;
+            }
+
+            public override double GetPrice(MySqlConnection connection)
+            {
+                return GetPrices(connection, "Door", height, width, 0, "");
+            }
+            public override double GetInstock(MySqlConnection connection)
+            {
+                return GetInstocks(connection,"Door",height,width,0,"");
+            }
 
         }
 
 
 
-        public override bool IsMajor()
-
+        public class GlassDoor : Door
         {
 
-            return isMajor;
+            private double price;
+            private double inStock;
+            new private string type = "glassDoor";
 
-        }
 
-
-        public override string GetAccessType()
-        {
-            return this.type;
-        }
-
-        public override double GetPrice(MySqlConnection connection)
-        {
-            price = GetPrices(connection, "Traverse", 0, 0, 0, "");
-            return price;
-        }
-
-    }
-
-
-
-    public class ARrail : Rail
-    {
-        private double price;
-        private double width;
-        private string type = "ARrail";
-
-
-        public ARrail(double width)
-        {
-
-            this.width = width;
-
-        }
-
-        public double GetWidtht()
-        {
-            return this.width;
-        }
-
-        public override string GetAccessType()
-        {
-            return this.type;
-        }
-
-        public override double GetPrice(MySqlConnection connection)
-        {
-            price = GetPrices(connection, "Traverse Ar", 0, width, 0, "");
-            return price;
-        }
-
-    }
-
-    public class AVrail : Rail
-    {
-        private double price;
-        private double width;
-        private string type = "AVrail";
-
-
-        public AVrail(double width)
-
-        {
-
-            this.width = width;
-
-        }
-
-        public double GetWidtht()
-        {
-            return this.width;
-        }
-
-        public override string GetAccessType()
-        {
-            return this.type;
-        }
-
-        public override double GetPrice(MySqlConnection connection)
-        {
-            price = GetPrices(connection, "Traverse Av", 0, width, 0, "");
-            return price;
-        }
-
-    }
-
-
-
-    public class GDrail : Rail
-    {
-        private double price;
-        private double depth;
-        private string type = "GDrail";
-
-
-        public GDrail(double depth)
-
-        {
-
-            this.depth = depth;
-
-        }
-
-        public double GetDepth()
-        {
-            return this.depth;
-        }
-
-        public override string GetAccessType()
-        {
-            return this.type;
-        }
-
-        public override double GetPrice(MySqlConnection connection)
-        {
-            price = GetPrices(connection, "Traverse GD", 0, 0, depth, "");
-            return price;
-        }
-
-    }
-
-
-
-
-
-    public class Panel : Accessory
-
-    {
-
-        private string color;
-
-        private double price;
-
-        private bool isMajor = true;
-
-        private string type = "Panel";
-
-
-        public Panel(string color)
-        {
-            this.color = color;
-        }
-
-        public string GetColor()
-        {
-            return this.color;
-        }
-
-        public void SetColor(string newColor)
-        {
-            this.color = newColor;
-        }
-
-
-        public override bool IsMajor()
-
-        {
-
-            return isMajor;
-
-        }
-
-        public override string GetAccessType()
-        {
-            return this.type;
-        }
-
-        public override double GetPrice(MySqlConnection connection)
-        {
-            price = GetPrices(connection, "Panneau", 0, 0, 0, color);
-            return price;
-        }
-
-    }
-
-
-
-    public class ARpanel : Panel
-
-    {
-        private double price;
-
-        private double width;
-
-        private double height;
-
-        private string type = "ARpanel";
-
-        public ARpanel(string color, double width, double height) : base(color)
-
-        {
-
-            this.width = width;
-
-            this.height = height;
-
-        }
-
-        public double GetHeight()
-        {
-            return this.height;
-        }
-
-        public double GetWidth()
-        {
-            return this.width;
-        }
-
-        public override string GetAccessType()
-        {
-            return this.type;
-        }
-
-        public override double GetPrice(MySqlConnection connection)
-        {
-            price = GetPrices(connection, "Panneau Ar", height, width, 0, GetColor());
-            return price;
-        }
-    }
-
-
-
-    public class GDpanel : Panel
-    {
-        private double price;
-
-        private double depth;
-
-        private double height;
-
-        private string type = "GDpanel";
-
-        public GDpanel(string color, double depth, double height) : base(color)
-
-        {
-
-            this.depth = depth;
-
-            this.height = height;
-
-        }
-
-        public double GetDepth()
-        {
-            return this.depth;
-        }
-
-        public double GetHeight()
-        {
-            return this.height;
-        }
-
-        public override string GetAccessType()
-        {
-            return this.type;
-        }
-
-        public override double GetPrice(MySqlConnection connection)
-        {
-            price = GetPrices(connection, "Panneau GD", height, 0, depth, GetColor());
-            return price;
-        }
-    }
-
-
-
-    public class HBpanel : Panel
-    {
-        private double price;
-
-        private double depth;
-
-        private double width;
-
-        private string type = "HBpanel";
-
-        public HBpanel(string color, double depth, double width) : base(color)
-
-        {
-
-            this.depth = depth;
-
-            this.width = width;
-
-        }
-
-        public double GetDepth()
-        {
-            return this.depth;
-        }
-
-        public double GetWidth()
-        {
-            return this.width;
-        }
-
-        public override string GetAccessType()
-        {
-            return this.type;
-        }
-
-        public override double GetPrice(MySqlConnection connection)
-        {
-            price = GetPrices(connection, "Panneau HB", 0, width, depth, GetColor());
-            return price;
-        }
-    }
-
-
-
-
-
-    public class tg
-
-    {
-
-        List<Locker> lockerList = new List<Locker>(); // static ou pas? à chaque fois que l'appli se lance la liste est remise à 0
-
-
-
-        public void CasierOk(double hauteur, string couleur, double profondeur, double largeur, bool porte, string materiau, string couleur2)
-
-        {
-
-            List<Accessory> list = new List<Accessory>();
-
-
-
-            double hauteurTasseau = hauteur - 4; // en cm
-
-
-
-            HBpanel HBpanell = new HBpanel(couleur, profondeur, largeur);
-
-            list.Add(HBpanell);
-
-
-
-            GDpanel GDpanell = new GDpanel(couleur, profondeur, hauteurTasseau);
-
-            list.Add(GDpanell);
-
-
-
-            ARpanel ARpanell = new ARpanel(couleur, largeur, hauteurTasseau);
-
-            list.Add(ARpanell);
-
-
-
-            //ARAVrail ARAVraill = new ARAVrail(largeur);   //x2
-
-            //list.Add(ARAVraill);
-
-
-
-            GDrail GDraill = new GDrail(profondeur);     //x2
-
-            list.Add(GDraill);
-
-
-
-            Cleat cleatt = new Cleat(hauteurTasseau);           //x4
-
-            list.Add(cleatt);
-
-
-
-
-
-            if (largeur < 62)
-
+            public GlassDoor(double height, double width) : base(height, width)
             {
 
-                // présenter le champ "door" dans l'interface 
-
-                // penser à afficher un message dans la fenêtre 1 pour avertir des limitations des largeurs pour les portes
+            }
 
 
+            public override string GetAccessType()
+            {
+                return this.type;
+            }
 
-                if (materiau == "Verre")
+            public override double GetPrice(MySqlConnection connection)
+            {
+                price = GetPrices(connection, "Porte", GetHeight(), GetWidth(), 0, "glass");   // va-t-il retourner le bon height et width?
+                return price;
 
-                {
+            }
+            public override double GetInstock(MySqlConnection connection)
+            {
+                inStock = GetPrices(connection, "Porte", GetHeight(), GetWidth(), 0, "glass");   // va-t-il retourner le bon height et width?
+                return inStock;
 
-                    //GlassDoor glassDoor = new GlassDoor(); 
+            }
 
-                    //list.Add(glassDoor);
-
-                }
-
-
-
-                else
-
-                {
-
-                    //NormalDoor normalDoor = new NormalDoor( couleur2);
-
-                    //list.Add(normalDoor);
+        }
 
 
 
-                }
+        public class NormalDoor : Door
+        {
+
+            private double cabinetHandlePrice;
+            private double cabinetHandleInStock;
+            private double price;
+            private double inStock;
+
+            private string color;
+
+            new protected string type = "normalDoor";
+
+            public NormalDoor(double height, double width, string color) : base(height, width)
+            {
+
+                this.color = color;
+
+            }
+
+            public string GetColor()
+            {
+                return this.color;
+            }
+
+            public void SetColor(string newColor)
+            {
+                this.color = newColor;
+            }
+
+
+            public override string GetAccessType()
+            {
+                return this.type;
+            }
+
+            public override double GetPrice(MySqlConnection connection)
+            {
+                price = GetPrices(connection, "Porte", GetHeight(), GetWidth(), 0, color);
+                cabinetHandlePrice = GetPrices(connection, "Coupelles", 0, 0, 0, "");
+                return price + cabinetHandlePrice;
+            }
+            public override double GetInstock(MySqlConnection connection)
+            {
+                inStock = GetInstocks(connection, "Porte", GetHeight(), GetWidth(), 0, color);
+                
+                return inStock;
+            }
+        }
+
+
+
+        public class Cleat : Accessory
+        {
+
+            private double height;
+
+            private double price;
+            private double inStock;
+
+            private bool isMajor = true;
+
+            private string type = "cleat";
+
+            public Cleat(double height)
+            {
+
+                this.height = height;
+
+            }
+
+            public double GetHeight()
+            {
+                return this.height;
+            }
+
+            public void SetHeight(double newHeight)
+            {
+                this.height = newHeight;
+            }
+
+
+
+            public override bool IsMajor()
+            {
+
+                return isMajor;
+
+            }
+
+            public override string GetAccessType()
+            {
+                return this.type;
+            }
+
+            public override double GetPrice(MySqlConnection connection)
+            {
+                price = GetPrices(connection, "Tasseau", height, 0, 0, "");
+                return price;
+            }
+            public override double GetInstock(MySqlConnection connection)
+            {
+                inStock = GetInstocks(connection, "Tasseau", height, 0, 0, "");
+                return inStock;
+            }
+
+        }
+
+
+
+        public class Rail : Accessory
+        {
+
+            private double price;
+            private double inStock;
+
+            private bool isMajor = true;
+
+            private string type = "Rail";
+
+            public Rail()
+            {
+
 
             }
 
 
 
-            Locker Casier = new Locker(list, hauteur, couleur);         // ouu Casier.AddAccessory(cleatt);
+            public override bool IsMajor()
 
-            lockerList.Add(Casier);                                             // attention problème tous les casiers même nom à résoudre 
+            {
 
-            //pas besoin? les ajouter dans une liste directlyy
+                return isMajor;
 
-            //hauteur = hauteur casier entré dans l'interface
+            }
 
-            //meilleur manière de rassembler les casier dans une liste
 
-            // choisir éléments bdd (décrémenter)                                                                              
+            public override string GetAccessType()
+            {
+                return this.type;
+            }
 
-            //boucle avec interface
-
-            //BDD
-
-            //gérer les erreures
-
-            //cornière découpée
+            public override double GetPrice(MySqlConnection connection)
+            {
+                price = GetPrices(connection, "Traverse", 0, 0, 0, "");
+                return price;
+            }
+            public override double GetInstock(MySqlConnection connection)
+            {
+                inStock = GetInstocks(connection, "Traverse", 0, 0, 0, "");
+                return inStock;
+            }
 
         }
 
+
+
+        public class ARrail : Rail
+        {
+            private double price;
+            private double inStock;
+            private double width;
+            private string type = "ARrail";
+
+
+            public ARrail(double width)
+            {
+
+                this.width = width;
+
+            }
+
+            public double GetWidtht()
+            {
+                return this.width;
+            }
+
+            public override string GetAccessType()
+            {
+                return this.type;
+            }
+
+            public override double GetPrice(MySqlConnection connection)
+            {
+                price = GetPrices(connection, "Traverse Ar", 0, width, 0, "");
+                return price;
+            }
+            public override double GetInstock(MySqlConnection connection)
+            {
+                inStock= GetInstocks(connection, "Traverse Ar", 0, width, 0, "");
+                return inStock;
+            }
+        }
+
+        public class AVrail : Rail
+        {
+            private double price;
+            private double inStock;
+            private double width;
+            private string type = "AVrail";
+
+
+            public AVrail(double width)
+
+            {
+
+                this.width = width;
+
+            }
+
+            public double GetWidtht()
+            {
+                return this.width;
+            }
+
+            public override string GetAccessType()
+            {
+                return this.type;
+            }
+
+            public override double GetPrice(MySqlConnection connection)
+            {
+                price = GetPrices(connection, "Traverse Av", 0, width, 0, "");
+                return price;
+            }
+            public override double GetInstock(MySqlConnection connection)
+            {
+                inStock = GetInstocks(connection, "Traverse Av", 0, width, 0, "");
+                return inStock;
+            }
+        }
+
+
+
+        public class GDrail : Rail
+        {
+            private double price;
+            private double instock;
+            private double depth;
+            private string type = "GDrail";
+
+
+            public GDrail(double depth)
+
+            {
+
+                this.depth = depth;
+
+            }
+
+            public double GetDepth()
+            {
+                return this.depth;
+            }
+
+            public override string GetAccessType()
+            {
+                return this.type;
+            }
+
+            public override double GetPrice(MySqlConnection connection)
+            {
+                price = GetPrices(connection, "Traverse GD", 0, 0, depth, "");
+                return price;
+            }
+            public override double GetInstock(MySqlConnection connection)
+            {
+                price = GetInstocks(connection, "Traverse GD", 0, 0, depth, "");
+                return price;
+            }
+        }
+
+
+
+
+
+        public class Panel : Accessory
+
+        {
+
+            private string color;
+
+            private double price;
+           
+            private double inStock;
+
+            private bool isMajor = true;
+
+            private string type = "Panel";
+
+
+            public Panel(string color)
+            {
+                this.color = color;
+            }
+
+            public string GetColor()
+            {
+                return this.color;
+            }
+
+            public void SetColor(string newColor)
+            {
+                this.color = newColor;
+            }
+
+
+            public override bool IsMajor()
+
+            {
+
+                return isMajor;
+
+            }
+
+            public override string GetAccessType()
+            {
+                return this.type;
+            }
+
+            public override double GetPrice(MySqlConnection connection)
+            {
+                price = GetPrices(connection, "Panneau", 0, 0, 0, color);
+                return price;
+            }
+            public override double GetInstock(MySqlConnection connection)
+            {
+                inStock = GetInstocks(connection, "Panneau", 0, 0, 0, color);
+                return inStock;
+            }
+        }
+
+
+
+        public class ARpanel : Panel
+
+        {
+            private double price;
+            private double inStock;
+
+            private double width;
+
+            private double height;
+
+            private string type = "ARpanel";
+
+            public ARpanel(string color, double width, double height) : base(color)
+
+            {
+
+                this.width = width;
+
+                this.height = height;
+
+            }
+
+            public double GetHeight()
+            {
+                return this.height;
+            }
+
+            public double GetWidth()
+            {
+                return this.width;
+            }
+
+            public override string GetAccessType()
+            {
+                return this.type;
+            }
+
+            public override double GetPrice(MySqlConnection connection)
+            {
+                price = GetPrices(connection, "Panneau Ar", height, width, 0, GetColor());
+                return price;
+            }
+            public override double GetInstock(MySqlConnection connection)
+            {
+                inStock = GetInstocks(connection, "Panneau Ar", height, width, 0, GetColor());
+                return inStock;
+            }
+        }
+
+
+
+        public class GDpanel : Panel
+        {
+            private double price;
+            private double inStock;
+
+            private double depth;
+
+            private double height;
+
+            private string type = "GDpanel";
+
+            public GDpanel(string color, double depth, double height) : base(color)
+
+            {
+
+                this.depth = depth;
+
+                this.height = height;
+
+            }
+
+            public double GetDepth()
+            {
+                return this.depth;
+            }
+
+            public double GetHeight()
+            {
+                return this.height;
+            }
+
+            public override string GetAccessType()
+            {
+                return this.type;
+            }
+
+            public override double GetPrice(MySqlConnection connection)
+            {
+                price = GetPrices(connection, "Panneau GD", height, 0, depth, GetColor());
+                return price;
+            }
+            public override double GetInstock(MySqlConnection connection)
+            {
+                inStock = GetInstocks(connection, "Panneau GD", height, 0, depth, GetColor());
+                return inStock;
+          
+            }
+        }
+
+
+
+        public class HBpanel : Panel
+        {
+            private double price;
+            private double inStock;
+
+            private double depth;
+
+            private double width;
+
+            private string type = "HBpanel";
+
+            public HBpanel(string color, double depth, double width) : base(color)
+
+            {
+
+                this.depth = depth;
+
+                this.width = width;
+
+            }
+
+            public double GetDepth()
+            {
+                return this.depth;
+            }
+
+            public double GetWidth()
+            {
+                return this.width;
+            }
+
+            public override string GetAccessType()
+            {
+                return this.type;
+            }
+
+            public override double GetPrice(MySqlConnection connection)
+            {
+                price = GetPrices(connection, "Panneau HB", 0, width, depth, GetColor());
+                return price;
+            }
+            public override double GetInstock(MySqlConnection connection)
+            {
+                inStock = GetInstocks(connection, "Panneau HB", 0, width, depth, GetColor());
+                return inStock;
+            }
+        }
+
+
+
+
+
+        public class tg
+
+        {
+
+            List<Locker> lockerList = new List<Locker>(); // static ou pas? à chaque fois que l'appli se lance la liste est remise à 0
+
+
+
+            public void CasierOk(double hauteur, string couleur, double profondeur, double largeur, bool porte, string materiau, string couleur2)
+
+            {
+
+                List<Accessory> list = new List<Accessory>();
+
+
+
+                double hauteurTasseau = hauteur - 4; // en cm
+
+
+
+                HBpanel HBpanell = new HBpanel(couleur, profondeur, largeur);
+
+                list.Add(HBpanell);
+
+
+
+                GDpanel GDpanell = new GDpanel(couleur, profondeur, hauteurTasseau);
+
+                list.Add(GDpanell);
+
+
+
+                ARpanel ARpanell = new ARpanel(couleur, largeur, hauteurTasseau);
+
+                list.Add(ARpanell);
+
+
+
+                //ARAVrail ARAVraill = new ARAVrail(largeur);   //x2
+
+                //list.Add(ARAVraill);
+
+
+
+                GDrail GDraill = new GDrail(profondeur);     //x2
+
+                list.Add(GDraill);
+
+
+
+                Cleat cleatt = new Cleat(hauteurTasseau);           //x4
+
+                list.Add(cleatt);
+
+
+
+
+
+                if (largeur < 62)
+
+                {
+
+                    // présenter le champ "door" dans l'interface 
+
+                    // penser à afficher un message dans la fenêtre 1 pour avertir des limitations des largeurs pour les portes
+
+
+
+                    if (materiau == "Verre")
+
+                    {
+
+                        //GlassDoor glassDoor = new GlassDoor(); 
+
+                        //list.Add(glassDoor);
+
+                    }
+
+
+
+                    else
+
+                    {
+
+                        //NormalDoor normalDoor = new NormalDoor( couleur2);
+
+                        //list.Add(normalDoor);
+
+
+
+                    }
+
+                }
+
+
+
+                Locker Casier = new Locker(list, hauteur, couleur);         // ouu Casier.AddAccessory(cleatt);
+
+                lockerList.Add(Casier);                                             // attention problème tous les casiers même nom à résoudre 
+
+                //pas besoin? les ajouter dans une liste directlyy
+
+                //hauteur = hauteur casier entré dans l'interface
+
+                //meilleur manière de rassembler les casier dans une liste
+
+                // choisir éléments bdd (décrémenter)                                                                              
+
+                //boucle avec interface
+
+                //BDD
+
+                //gérer les erreures
+
+                //cornière découpée
+
+            }
+
+        }
     }
 }
