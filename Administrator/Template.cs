@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using WindowsFormsApp7;
-
+using Kitbox;
 
 namespace WindowsFormsApp7
 {
@@ -21,7 +21,13 @@ namespace WindowsFormsApp7
             InitializeComponent();
         }
 
-        //Form1.GetCupBoard();
+        //Reconstruction de l'objet cupBoard
+
+        //Recréer accessoires, ensuite locker ensuite extrusion ensuite cupBoard
+        //Y-a-t-il une porte? comment savoir --> Ajout BDD
+        //Ajout price locker pour aller plus vite
+        //attention diff accessoire pour diff locker composant un mm casier : idlock
+        //organiser ça ds un datagriedview ensuite sur fichier txt
 
         public string server;
         public string database;
