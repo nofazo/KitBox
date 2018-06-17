@@ -30,7 +30,7 @@ namespace Kitbox
         //liste cornière après, pas besoin de liste comme mêmes cornières (prix *4)
 
 
-        public CupBoard(int width, int depth, List<Locker> lockerList, Extrusion extrusion)
+        public CupBoard(double width, double depth, List<Locker> lockerList, Extrusion extrusion)
         {
 
             this.width = width;

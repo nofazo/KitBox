@@ -17,33 +17,54 @@ namespace WindowsFormsApp7
     {
         public string CmdID;
         Template form = new Template();
-        
+
         public AdminBilling()
         {
             InitializeComponent();
         }
 
+        public int GetFkOrder()
+        {
+            int FkOrder = Convert.ToInt32(comboBoxCmdID.Text);
+            return FkOrder;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
+            form.OpenConnection();
+
+            CupBoard cupBoard = form.GetCupBoard(form.connection, GetFkOrder());
+            int lockerNumber = cupBoard.GetLockerList().Count();
+            string colorExtrusion = cupBoard.GetExtrusion().GetColor();
+
             string path = @"/Users/User/source/Bill.txt";
 
             using (StreamWriter sw = File.CreateText(path))
-
             {
+                sw.WriteLine("BILL"); //ajouter le prénom et la date?
+                sw.WriteLine("You bought 1 cupBoard of " + lockerNumber + "locker(s).");
+                sw.WriteLine(" ");
 
-                //foreach (Locker locker in cubBoard.GetLockerList())
 
+                foreach (Locker locker in cupBoard.GetLockerList())
                 {
-
-                    //sw.WriteLine(locker.GetColor() + locker.GetPrice(MySqlConnection connection));   // sprint 3:faire distinction entre casier avec porte et casier sans porte
-
+                    int i = 0;
+                    sw.WriteLine("Locker n°" + i + ": ");
+                    sw.WriteLine("Color: " + locker.GetColor() + "   Price: " + locker.GetPrice(form.connection));   // sprint 3:faire distinction entre casier avec porte et casier sans porte
+                    //Ajouter accessoire non important : Door
+                    i++;
                 }
 
+                sw.WriteLine("Corner : ");
+                sw.WriteLine("Color: " + colorExtrusion + "   Price : " + cupBoard.GetExtrusion().GetPrice(form.connection));
 
+                sw.WriteLine(" ");
 
-                //sw.WriteLine("Total" + cubBoard.GetPrice(MySqlConnection connection));
+                sw.WriteLine("Total : " + cupBoard.GetPrice(form.connection) + "euros");
 
             }
+
+            form.CloseConnection();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -83,6 +104,7 @@ namespace WindowsFormsApp7
             connectionString = "SERVER=" + form.server + ";" + "DATABASE=" + form.database + ";" + "UID=" + form.uid + ";" + "PASSWORD=" + form.password + ";";
 
             form.connection = new MySqlConnection(connectionString);
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
