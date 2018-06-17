@@ -15,6 +15,7 @@ namespace Interface
     public partial class SpecAllLock : System.Windows.Forms.UserControl
     {
         Form1 form = new Form1();
+        
         public SpecAllLock()
         {
             InitializeComponent();
@@ -87,6 +88,8 @@ namespace Interface
             connectionString = "SERVER=" + form.server + ";" + "DATABASE=" + form.database + ";" + "UID=" + form.uid + ";" + "PASSWORD=" + form.password + ";";
 
             form.connection = new MySqlConnection(connectionString);
+
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

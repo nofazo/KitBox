@@ -64,8 +64,8 @@ namespace Interface
             {
                 Order order = Form1.GetOrder();
                 int idOrder = order.GetidOrder();
-                MySqlCommand cmd = new MySqlCommand("UPDATE `kitboxdb2.0`.`orders` SET State='Completed' WHERE idOrder ='" + idOrder + "'", form.connection);
-
+                MySqlCommand cmd = new MySqlCommand("UPDATE `kitboxdb2.0`.`orders` SET State='Confirmed' WHERE idOrder ='" + idOrder + "'", form.connection);
+                order.SetState("Confirmed");
                 cmd.ExecuteNonQuery();
             }
 
@@ -83,15 +83,13 @@ namespace Interface
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (form.OpenConnection() == true)
-            {
-                Order order = Form1.GetOrder();
-                int idOrder = order.GetidOrder();
-                MySqlCommand cmd = new MySqlCommand("UPDATE `kitboxdb2.0`.`orders` SET State='Completed' WHERE idOrder ='" + idOrder + "'", form.connection);
 
-                cmd.ExecuteNonQuery();
+        }
 
-            }
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Controls.Clear();
+            this.Controls.Add(new Extrusions());
         }
     }
 }

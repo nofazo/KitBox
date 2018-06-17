@@ -169,9 +169,7 @@ namespace Interface
                 }
                 else
                 {
-                    dataGridView1["Disponibility", row].Value = "Available";
-                    
-                    
+                    dataGridView1["Disponibility", row].Value = "Available";                                        
                 }
 
             }
@@ -244,7 +242,7 @@ namespace Interface
             Update.Hide();
 
             //Si on est en previous
-            if (order.GetState() == "InProgress")
+            if (order.GetState() == "InProgress" || order.GetState() == "Completed")
             {
                 foreach (Kitbox.Locker locker in Form1.GetListofLocker())
                 {
@@ -271,7 +269,25 @@ namespace Interface
 
 
                     }
+                    //availability gestion in previous mode
+                    form.OpenConnection();
+                    foreach (Accessory accessory in locker.GetAccessoryList())
+                    {
+                        double instock = accessory.GetInstock(form.connection);
 
+                        if (instock < 1)
+                        {
+                            
+                            dataGridView1["Disponibility", row].Value = "Not Available";
+                            break;
+                        }
+                        else
+                        {
+                            dataGridView1["Disponibility", row].Value = "Available";
+                        }
+
+                    }
+                    form.CloseConnection();
 
 
                 }
