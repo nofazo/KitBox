@@ -252,7 +252,7 @@ namespace Interface
                     dataGridView1.Rows.Add();
                     row = dataGridView1.Rows.Count - 2;
                     dataGridView1["ColorLocker", row].Value = locker.GetColor();
-                    dataGridView1["HeightLocker", row].Value = locker.GetLockerHeight();
+                    dataGridView1["HeightLocker", row].Value = locker.GetLockerHeight()-4;
                     foreach (Accessory accessory in locker.GetAccessoryList())
                     {
                         if (accessory.GetAccessType() == "normalDoor")
