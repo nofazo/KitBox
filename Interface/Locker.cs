@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kitbox;
 using MySql.Data.MySqlClient;
+using static Kitbox.Accessory;
 
 namespace Interface
 {
@@ -22,7 +23,7 @@ namespace Interface
         CupBoard cupBoard = Form1.GetCupBoard();
 
         Order order = Form1.GetOrder();
-        
+
 
         public Locker()
         {
@@ -31,7 +32,7 @@ namespace Interface
 
         public int HeightGet()          // Hauteur totale du casier
         {
-            int height= Convert.ToInt32(comboHeight.Text); 
+            int height = Convert.ToInt32(comboHeight.Text);
             return height;
         }
 
@@ -137,8 +138,10 @@ namespace Interface
                 textBox1.Visible = false;
 
 
+            // on ajoute dans le datagrid les infos
             dataGridView1["ColorLocker", row].Value = ColorGet();
             dataGridView1["HeightLocker", row].Value = HeightGet();
+            //Si la porte est en bois
             if (list.Count() != 0)
             {
                 dataGridView1["DoorType", row].Value = list[0];
@@ -147,10 +150,33 @@ namespace Interface
                 {
                     dataGridView1["ColorDoor", row].Value = list[1];
                 }
+
             }
 
+            // verification availability
 
-            dataGridView1["Disponibility", row].Value = "Disponible";
+            form.OpenConnection();
+
+            foreach (Accessory accessory in locker.GetAccessoryList())
+            {
+                double instock = accessory.GetInstock(form.connection);
+
+                if (instock < 1)
+                {
+                    MessageBox.Show("Some items are sold out , a 7 days delay is neccessary to get them. ");
+                    dataGridView1["Disponibility", row].Value = "Not Available";
+                    break;
+                }
+                else
+                {
+                    dataGridView1["Disponibility", row].Value = "Available";                                        
+                }
+
+            }
+            form.CloseConnection();
+            
+            
+            
 
             //Comme "list" est une variable static, il faut la réinitialiser pour le prochain door
             list.Clear();
@@ -216,7 +242,7 @@ namespace Interface
             Update.Hide();
 
             //Si on est en previous
-            if (order.GetState() == "InProgress")
+            if (order.GetState() == "InProgress" || order.GetState() == "Completed")
             {
                 foreach (Kitbox.Locker locker in Form1.GetListofLocker())
                 {
@@ -243,7 +269,25 @@ namespace Interface
 
 
                     }
+                    //availability gestion in previous mode
+                    form.OpenConnection();
+                    foreach (Accessory accessory in locker.GetAccessoryList())
+                    {
+                        double instock = accessory.GetInstock(form.connection);
 
+                        if (instock < 1)
+                        {
+                            
+                            dataGridView1["Disponibility", row].Value = "Not Available";
+                            break;
+                        }
+                        else
+                        {
+                            dataGridView1["Disponibility", row].Value = "Available";
+                        }
+
+                    }
+                    form.CloseConnection();
 
 
                 }

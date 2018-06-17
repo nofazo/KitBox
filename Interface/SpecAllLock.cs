@@ -15,6 +15,8 @@ namespace Interface
     public partial class SpecAllLock : System.Windows.Forms.UserControl
     {
         Form1 form = new Form1();
+        Order order = Form1.GetOrder();
+        
         public SpecAllLock()
         {
             InitializeComponent();
@@ -72,6 +74,17 @@ namespace Interface
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // in case of previous mode 
+            order.SetState("Canceled");
+            //delete the order
+            MySqlCommand mySqlCommand = new MySqlCommand("Delete FROM `kitboxdb2.0`.`orders` WHERE idOrder ='" + order.GetidOrder() + "'", form.connection);
+            //delete lockers linked to the order
+            MySqlCommand mySqlCommand2 = new MySqlCommand("Delete FROM `kitboxdb2.0`.`lockers` WHERE FkOrder ='" + order.GetidOrder() + "'", form.connection);
+            if (form.OpenConnection() == true)
+            {
+                mySqlCommand.ExecuteNonQuery();
+                mySqlCommand2.ExecuteNonQuery();
+            }
             this.Controls.Clear();
             this.Controls.Add(new Welcome());
         }
@@ -87,6 +100,15 @@ namespace Interface
             connectionString = "SERVER=" + form.server + ";" + "DATABASE=" + form.database + ";" + "UID=" + form.uid + ";" + "PASSWORD=" + form.password + ";";
 
             form.connection = new MySqlConnection(connectionString);
+
+            // in case of previous mode 
+            if (order.GetState()=="InProgress" || order.GetState() == "Completed")
+            {
+                comboWidth.Text = Convert.ToString(Form1.GetCupBoard().GetWidth());
+                comboDepth.Text = Convert.ToString(Form1.GetCupBoard().GetDepth());
+
+            }
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
