@@ -16,7 +16,7 @@ namespace Interface
     {
         Form1 form = new Form1();
         Order order = Form1.GetOrder();
-        
+        CupBoard cupBoard = Form1.GetCupBoard();
         public SpecAllLock()
         {
             InitializeComponent();
@@ -43,7 +43,7 @@ namespace Interface
             }
             else
             {
-                CupBoard cupBoard = Form1.GetCupBoard();
+                
                 cupBoard.SetWidth(WidthGet());
                 cupBoard.SetDepth(DepthGet());
                 this.Controls.Clear();
@@ -75,6 +75,7 @@ namespace Interface
         private void button2_Click(object sender, EventArgs e)
         {
             // in case of previous mode 
+            // Cancel the order 
             order.SetState("Canceled");
             //delete the order
             MySqlCommand mySqlCommand = new MySqlCommand("Delete FROM `kitboxdb2.0`.`orders` WHERE idOrder ='" + order.GetidOrder() + "'", form.connection);
@@ -102,11 +103,11 @@ namespace Interface
             form.connection = new MySqlConnection(connectionString);
 
             // in case of previous mode 
-            if (order.GetState()=="InProgress" || order.GetState() == "Completed")
+            if (order.GetState()=="InProgress" || order.GetState() == "Completed" || order.GetState() == "initialized")
             {
-                comboWidth.Text = Convert.ToString(Form1.GetCupBoard().GetWidth());
-                comboDepth.Text = Convert.ToString(Form1.GetCupBoard().GetDepth());
-
+                comboWidth.Text = Convert.ToString(cupBoard.GetWidth());
+                comboDepth.Text = Convert.ToString(cupBoard.GetDepth());
+                
             }
             
         }
