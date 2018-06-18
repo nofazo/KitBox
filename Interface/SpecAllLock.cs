@@ -35,7 +35,7 @@ namespace Interface
         }
         
 
-        protected void button1_Click(object sender, EventArgs e)
+        protected void ChooseLockers_Click(object sender, EventArgs e)
         {
             if (comboWidth.Text == "" || comboDepth.Text == "")
             {

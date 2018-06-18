@@ -327,7 +327,7 @@ namespace Interface
             return lockerID;
         }
 
-        private void Finish_Click(object sender, EventArgs e)
+        private void FinishLockers_Click(object sender, EventArgs e)
         {
             if (form.OpenConnection() == true)
             {
@@ -380,7 +380,7 @@ namespace Interface
         private void button1_Click(object sender, EventArgs e)
         {            
             AddLocker.Hide();
-            Finish.Hide();
+            FinishLockers.Hide();
             
             Update.Show();
             radioButton1.Hide();
@@ -421,7 +421,7 @@ namespace Interface
             newDataRow.Cells[0].Value = ColorBox.Text;
             
             AddLocker.Show();
-            Finish.Show();
+            FinishLockers.Show();
             Update.Hide();
             radioButton1.Show();
             radioButton2.Show();

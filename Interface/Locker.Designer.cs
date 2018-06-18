@@ -35,7 +35,7 @@
             this.ColorBox = new System.Windows.Forms.ComboBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.Finish = new System.Windows.Forms.Button();
+            this.FinishLockers = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Modify = new System.Windows.Forms.Button();
             this.lockerBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -124,25 +124,25 @@
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // Finish
+            // FinishLockers
             // 
-            this.Finish.BackColor = System.Drawing.Color.Silver;
-            this.Finish.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Finish.ForeColor = System.Drawing.Color.Black;
-            this.Finish.Location = new System.Drawing.Point(919, 504);
-            this.Finish.Margin = new System.Windows.Forms.Padding(4);
-            this.Finish.Name = "Finish";
-            this.Finish.Size = new System.Drawing.Size(204, 101);
-            this.Finish.TabIndex = 18;
-            this.Finish.Text = "No more lockers";
-            this.Finish.UseVisualStyleBackColor = false;
-            this.Finish.Click += new System.EventHandler(this.Finish_Click);
+            this.FinishLockers.BackColor = System.Drawing.Color.Silver;
+            this.FinishLockers.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FinishLockers.ForeColor = System.Drawing.Color.Black;
+            this.FinishLockers.Location = new System.Drawing.Point(919, 504);
+            this.FinishLockers.Margin = new System.Windows.Forms.Padding(4);
+            this.FinishLockers.Name = "FinishLockers";
+            this.FinishLockers.Size = new System.Drawing.Size(204, 101);
+            this.FinishLockers.TabIndex = 18;
+            this.FinishLockers.Text = "No more lockers";
+            this.FinishLockers.UseVisualStyleBackColor = false;
+            this.FinishLockers.Click += new System.EventHandler(this.FinishLockers_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox1.BackgroundImage = global::Interface.Properties.Resources.KITBOX_fond_basecorr;
-            this.pictureBox1.Location = new System.Drawing.Point(85, 382);
+            this.pictureBox1.Location = new System.Drawing.Point(131, 377);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(457, 59);
@@ -270,7 +270,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Modify);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.Finish);
+            this.Controls.Add(this.FinishLockers);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.ColorBox);
@@ -295,7 +295,7 @@
         private System.Windows.Forms.ComboBox ColorBox;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.Button Finish;
+        private System.Windows.Forms.Button FinishLockers;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button Modify;
         private System.Windows.Forms.BindingSource lockerBindingSource;

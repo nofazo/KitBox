@@ -155,7 +155,7 @@ namespace WindowsFormsApp7
             int lockerNumber = cupBoard.GetLockerList().Count();
             string colorExtrusion = cupBoard.GetExtrusion().GetColor();
 
-            string path = @"/Users/User/source/DetailParts.txt";
+            string path = @"/Users/Fatine/source/DetailParts.txt";
 
             using (StreamWriter sw = File.CreateText(path))
             {

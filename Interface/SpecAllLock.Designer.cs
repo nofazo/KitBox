@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpecAllLock));
             this.comboWidth = new System.Windows.Forms.ComboBox();
             this.comboDepth = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ChooseLockers = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -73,17 +73,17 @@
             this.comboDepth.TabIndex = 14;
             this.comboDepth.SelectedIndexChanged += new System.EventHandler(this.comboDepth_SelectedIndexChanged);
             // 
-            // button1
+            // ChooseLockers
             // 
-            this.button1.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(483, 457);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(223, 90);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Choose lockers";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ChooseLockers.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChooseLockers.Location = new System.Drawing.Point(483, 457);
+            this.ChooseLockers.Margin = new System.Windows.Forms.Padding(4);
+            this.ChooseLockers.Name = "ChooseLockers";
+            this.ChooseLockers.Size = new System.Drawing.Size(223, 90);
+            this.ChooseLockers.TabIndex = 15;
+            this.ChooseLockers.Text = "Choose lockers";
+            this.ChooseLockers.UseVisualStyleBackColor = true;
+            this.ChooseLockers.Click += new System.EventHandler(this.ChooseLockers_Click);
             // 
             // textBox1
             // 
@@ -118,7 +118,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ChooseLockers);
             this.Controls.Add(this.comboDepth);
             this.Controls.Add(this.comboWidth);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -134,7 +134,7 @@
 
         private System.Windows.Forms.ComboBox comboWidth;
         private System.Windows.Forms.ComboBox comboDepth;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ChooseLockers;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button2;
     }

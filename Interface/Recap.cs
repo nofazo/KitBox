@@ -62,7 +62,7 @@ namespace Interface
        
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Confirm_Click(object sender, EventArgs e)
         {
             if (form.OpenConnection() == true)
             {              
