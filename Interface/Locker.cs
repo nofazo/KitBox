@@ -222,7 +222,7 @@ namespace Interface
         private void UserControl4_Load_1(object sender, EventArgs e)
 
         {
-            int idOrder = order.GetidOrder();
+            int idOrder = order.GetIdOrder();
            
             form.server = "localhost";
             form.database = "kitboxdb2.0";
@@ -325,7 +325,7 @@ namespace Interface
         {
             if (form.OpenConnection() == true)
             {
-                int idOrder = order.GetidOrder();
+                int idOrder = order.GetIdOrder();
                 //update in database if previous mode.
                 if (order.GetState() == "InProgress")
                 {
@@ -339,10 +339,10 @@ namespace Interface
                     string color = Convert.ToString(dataGridView1.Rows[i].Cells[0].Value);
                     double height = Convert.ToDouble(dataGridView1.Rows[i].Cells[1].Value);
 
-                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`lockers` (`FkOrder`, `color`,`height`, `depth`, `width`) VALUES ('"+order.GetidOrder()+ " ', '" + dataGridView1.Rows[i].Cells[0].Value + "', '" + dataGridView1.Rows[i].Cells[1].Value + "', '" + DepthGet() + "', '" + WidthGet() + "');", form.connection);                
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`lockers` (`FkOrder`, `color`,`height`, `depth`, `width`) VALUES ('"+order.GetIdOrder()+ " ', '" + dataGridView1.Rows[i].Cells[0].Value + "', '" + dataGridView1.Rows[i].Cells[1].Value + "', '" + DepthGet() + "', '" + WidthGet() + "');", form.connection);                
                     cmd.ExecuteNonQuery();
 
-                    int IDLocker = GetIDLocker(form.connection, order.GetidOrder(), color, height);
+                    int IDLocker = GetIDLocker(form.connection, order.GetIdOrder(), color, height);
                     cupBoard.GetLockerList()[i].SetID(IDLocker);
                 }
 
@@ -353,7 +353,7 @@ namespace Interface
             }
             if (form.OpenConnection() == true)
             {
-                int idOrder = order.GetidOrder();
+                int idOrder = order.GetIdOrder();
 
                 order.SetState("InProgress");
                 MySqlCommand cmd = new MySqlCommand("UPDATE `kitboxdb2.0`.`orders` SET State='InProgress' WHERE idOrder ='" + idOrder + "'", form.connection);

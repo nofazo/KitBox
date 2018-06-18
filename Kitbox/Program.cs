@@ -112,11 +112,6 @@ namespace Kitbox
             return height;
 
         }
-
-        public void AddLocker(Locker locker)
-        {
-            this.lockerList.Add(locker);
-        }
     }
 
 
@@ -311,21 +306,6 @@ namespace Kitbox
 
 
 
-    public class CutExtrusion : Extrusion
-
-    {
-
-        public CutExtrusion(string color, double height) : base(color, height)
-        {
-
-        }
-
-    }
-
-
-
-
-
     public class Locker
     {
 
@@ -335,7 +315,7 @@ namespace Kitbox
 
         private List<Accessory> accessoryList;
 
-        private int ID;
+        private int id;
 
 
         public Locker(List<Accessory> accessoryList, double lockerHeight, string color, int ID)
@@ -348,19 +328,13 @@ namespace Kitbox
 
             this.color = color;
 
-            this.ID = ID;
+            this.id = ID;
         }
 
         public List<Accessory> GetAccessoryList()
         {
             return this.accessoryList;
         }
-
-        public void SetAccessoryList(List<Accessory> newAccessList)
-        {
-            this.accessoryList = newAccessList;
-        }
-
 
         public double GetLockerHeight()
         {
@@ -402,19 +376,25 @@ namespace Kitbox
 
         public int GetID()
         {
-            return this.ID;
+            return this.id;
         }
 
         public void SetID(int newID)
         {
-            this.ID = newID;
+            this.id = newID;
         }
 
         public void AddAccessory(Accessory accessory)
-
         {
 
             accessoryList.Add(accessory);
+
+        }
+
+        public void RemoveAccessory(Accessory accessory)
+        {
+
+            //supprimer accessoire dans la liste
 
         }
 
@@ -433,19 +413,11 @@ namespace Kitbox
             foreach (Accessory elem in accessoryList)
             {
                 if (elem.GetRefDB() == "Porte")
-                    return (Accessory.Door) elem;
+                    return (Accessory.Door)elem;
             }
             Accessory.Door door = new Accessory.Door(0, 0);
             return door;
         }
-
-        public void RemoveAccessory(Accessory accessory)
-        {
-
-            //supprimer accessoire dans la liste
-
-        }
-
 
     }
 
@@ -453,19 +425,14 @@ namespace Kitbox
 
     public class Order
     {
-
-        private CupBoard cubBoard;
-
         private int id;
         private string state;
-        private string NameClient;
 
-
-        public void SetId(int id)
+        public void SetIdOrder(int id)
         {
             this.id = id;
         }
-        public int GetidOrder()
+        public int GetIdOrder()
         {
             return this.id;
         }
@@ -483,7 +450,6 @@ namespace Kitbox
 
     public abstract class Accessory
     {
-        public MySqlConnection connection;
         public abstract bool IsMajor();
         public abstract string GetRefDB();
         public abstract string GetAccessType();

@@ -43,7 +43,7 @@ namespace WindowsFormsApp7
             {
                 sw.WriteLine("BILL"); //ajouter le prénom et la date?
                 sw.WriteLine(" ");
-                sw.WriteLine("You bought 1 cupBoard of " + lockerNumber + "locker(s).");
+                sw.WriteLine("You bought 1 cupboard with " + lockerNumber + " locker(s).");
                 sw.WriteLine(" ");
 
                 int i = 1;
@@ -53,9 +53,9 @@ namespace WindowsFormsApp7
                     sw.WriteLine("Color: " + locker.GetColor() + "   Price: " + locker.GetPrice(form.connection));  
                     if (locker.HasDoor())
                         if (locker.GetDoor().GetColor() == "glass")
-                            sw.WriteLine(" This locker has 2 glass door");
+                            sw.WriteLine(" This locker has 2 glass doors");
                         else
-                            sw.WriteLine(" This locker has 2 " + locker.GetDoor().GetColor() + " wood door ");
+                            sw.WriteLine(" This locker has 2 " + locker.GetDoor().GetColor() + " wood doors ");
                     else
                         sw.WriteLine(" ");
 
@@ -158,7 +158,7 @@ namespace WindowsFormsApp7
             {
                 sw.WriteLine("DETAIL PARTS"); 
                 sw.WriteLine(" ");
-                sw.WriteLine("there is in this order:  1 cupBoard of " + lockerNumber + "locker(s).");
+                sw.WriteLine("there is in this order:  1 cupboard with " + lockerNumber + " locker(s).");
                 sw.WriteLine(" ");
 
                 int i = 1;

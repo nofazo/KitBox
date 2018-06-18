@@ -63,7 +63,7 @@ namespace Interface
         {
             if (form.OpenConnection() == true)
             {              
-                int idOrder = order.GetidOrder();
+                int idOrder = order.GetIdOrder();
                 MySqlCommand cmd = new MySqlCommand("UPDATE `kitboxdb2.0`.`orders` SET State='Confirmed' WHERE idOrder ='" + idOrder + "'", form.connection);
                 order.SetState("Confirmed");
                 cmd.ExecuteNonQuery();
@@ -74,7 +74,7 @@ namespace Interface
             MessageBox.Show(Convert.ToString(price));
 
             //Affiche idOrder
-            MessageBox.Show("Order confirmed ! Here is your order number : " +Convert.ToString(order.GetidOrder()) + ".   Please communicate it to the storekeeper.");
+            MessageBox.Show("Order confirmed ! Here is your order number : " +Convert.ToString(order.GetIdOrder()) + ".   Please communicate it to the storekeeper.");
 
             CompleteLinkedTable();
 
@@ -113,7 +113,7 @@ namespace Interface
                     reader.Close();
 
                     //insérer les IDPARTS dans la table linked, ainsi on sait quel type de part est concerné pour chaque locker --> facile pour faire -1 
-                    MySqlCommand command2 = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`linked` (FkkOrder, FkkLocker,`FkkPart`) VALUES ('" + order.GetidOrder() + " ', '" + Convert.ToString(locker.GetID()) + "', '" + idPart + "');", form.connection);
+                    MySqlCommand command2 = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`linked` (FkkOrder, FkkLocker,`FkkPart`) VALUES ('" + order.GetIdOrder() + " ', '" + Convert.ToString(locker.GetID()) + "', '" + idPart + "');", form.connection);
                     command2.ExecuteNonQuery();                   
                 }
             }
@@ -153,7 +153,7 @@ namespace Interface
 
             //prendre nptqel id de locker
             int fkkLocker = cupBoard.GetLockerList()[0].GetID();
-            MySqlCommand command4 = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`linked` (FkkOrder, FkkLocker,`FkkPart`) VALUES ('" + order.GetidOrder() + "', '" + fkkLocker + "', '" + idCor + "');", form.connection);
+            MySqlCommand command4 = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`linked` (FkkOrder, FkkLocker,`FkkPart`) VALUES ('" + order.GetIdOrder() + "', '" + fkkLocker + "', '" + idCor + "');", form.connection);
             command4.ExecuteNonQuery();
         }
 
