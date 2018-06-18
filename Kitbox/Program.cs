@@ -27,8 +27,6 @@ namespace Kitbox
 
         private Extrusion extrusion;
 
-        //liste cornière après, pas besoin de liste comme mêmes cornières (prix *4)
-
 
         public CupBoard(double width, double depth, List<Locker> lockerList, Extrusion extrusion)
         {
@@ -119,9 +117,6 @@ namespace Kitbox
         {
             this.lockerList.Add(locker);
         }
-
-        //RemoveLastLocker?
-        //Remove un locker en particulier, comment ? parcourir et regarder les caractéristiques qui match ?
     }
 
 
@@ -130,7 +125,6 @@ namespace Kitbox
     {
         private string color;
         private double height;
-        private double price;
         private bool isCut = false;
 
         private int[] heightList = new int[] { 36, 46, 50, 56, 72, 75, 92, 100, 108, 112, 125, 138, 144, 150, 168, 175, 180, 184, 200, 216, 224, 225, 230, 250, 252, 275, 276, 280, 300, 325, 350, 375 };
@@ -166,6 +160,35 @@ namespace Kitbox
                 dbColor = "Verre";
 
             return dbColor;
+        }
+
+        public double GetInstock(MySqlConnection connection)
+        {
+            string dbColor = GetColorDB(color);
+            string reference = "Cornières";
+
+            MySqlDataReader reader;
+            MySqlCommand command = new MySqlCommand("SELECT InStock, PartForLocker FROM `kitboxdb2.0`.`parts` WHERE ref='" + reference + "'AND height='" + Convert.ToString(height) + "'AND width='" + Convert.ToString(0) + "'AND depth='" + Convert.ToString(0) + "'AND color='" + dbColor + "'", connection);
+
+            reader = command.ExecuteReader();
+
+            double inStock = 0;
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    inStock = reader.GetDouble(0) - reader.GetDouble(1);
+                }
+            }
+            else
+            {
+                MessageBox.Show("there is no rows in the datareader");
+            }
+
+            reader.Close();
+
+            return inStock;
         }
 
         public string GetColor()
@@ -274,7 +297,7 @@ namespace Kitbox
 
                 else
                 {
-                    MessageBox.Show("there is no rows in the datareader !");
+                    MessageBox.Show("there is no rows in the datareader extrusion !");
                 }
 
                 reader2.Close();
@@ -417,22 +440,12 @@ namespace Kitbox
         }
 
         public void RemoveAccessory(Accessory accessory)
-
         {
 
             //supprimer accessoire dans la liste
 
         }
 
-
-
-        public void UpdateAccessory(Accessory accessory)
-
-        {
-
-            //+ de paramètre pour les variables spécifiques à changer?
-
-        }
 
     }
 
@@ -446,56 +459,6 @@ namespace Kitbox
         private int id;
         private string state;
         private string NameClient;
-
-
-
-        public void GetRecapitulatif()
-        {
-
-            foreach (Locker locker in cubBoard.GetLockerList())
-            {
-
-                int i = 1;
-
-                Console.WriteLine("Casier n°" + i);               // afficher casier n°i :
-
-                Console.WriteLine(); // afficher cornière + id + x4 + prix unitaire + prix tot
-
-                i += 1;
-
-
-
-                foreach (Accessory accessory in locker.GetAccessoryList())
-                {
-
-                    //afficher accessory.name + accessory.GetPrice();
-
-                    // nom + id + quantité + prix unitaire + prix totale 
-
-                    //nom + id + prix unitaire de l'accessoire à prendre de la bdd? 
-
-                    // ajouter une variable "quantité?"
-
-                    // attention responsabilité unique
-
-                }
-
-            }
-
-
-
-            // Console.WriteLine("Total : " + cubBoard.GetPrice(MySqlConnection connection));
-
-        }
-
-
-
-        public double GetTotalPrice(int quantity, double price)
-        {
-
-            return quantity * price;
-
-        }
 
 
         public void SetId(int id)
@@ -516,95 +479,6 @@ namespace Kitbox
             return this.state;
         }
     }
-
-
-
-    public class Bill  //facture
-    {
-
-        private string date;
-
-        private CupBoard cubBoard;
-
-
-
-        public void GetDetailPart()
-        {
-
-            string path = @"/Users/User/source/DetailPart.txt";
-
-            using (StreamWriter sw = File.CreateText(path))
-            {
-
-                foreach (Locker locker in cubBoard.GetLockerList())
-                {
-
-                    int i = 1;
-
-                    sw.WriteLine("Casier n°" + i);               // afficher casier n°i :
-
-                    sw.WriteLine(); // afficher cornière + id + x4 + prix unitaire + prix tot
-
-                    i += 1;
-
-
-
-                    foreach (Accessory accessory in locker.GetAccessoryList())
-                    {
-
-                        //afficher accessory.GetAccessType() + accessory.GetPrice();
-
-                        // afficher nom + id + quantité + prix unitaire + prix totale 
-
-                        // ajouter une variable "quantité?" pour la quantitié qu'il faut d'un access pour un casier
-
-                        // attention responsabilité unique
-
-                    }
-
-                }
-
-
-
-                // sw.WriteLine("Total : " + cubBoard.GetPrice(MySqlConnection connection));
-
-            }
-
-        }
-
-
-
-
-
-        public void GetBill()
-        {
-
-            string path = @"/Users/User/source/Bill.txt";
-
-            using (StreamWriter sw = File.CreateText(path))
-
-            {
-
-                foreach (Locker locker in cubBoard.GetLockerList())
-
-                {
-
-                    //sw.WriteLine(locker.GetColor() + locker.GetPrice(MySqlConnection connection));   // sprint 3:faire distinction entre casier avec porte et casier sans porte
-
-                }
-
-
-
-                //sw.WriteLine("Total" + cubBoard.GetPrice(MySqlConnection connection));
-
-            }
-
-        }
-
-
-
-    }
-
 
 
     public abstract class Accessory
@@ -691,7 +565,7 @@ namespace Kitbox
             }
             else
             {
-                MessageBox.Show("there is no rows in the datareader");
+                MessageBox.Show("there is no rows in the datareader prices");
             }
 
             reader.Close();
@@ -1401,129 +1275,6 @@ namespace Kitbox
                 return inStock;
             }
         }
-
-
-
-
-
-        public class tg
-
-        {
-
-            List<Locker> lockerList = new List<Locker>(); // static ou pas? à chaque fois que l'appli se lance la liste est remise à 0
-
-
-
-            public void CasierOk(double hauteur, string couleur, double profondeur, double largeur, bool porte, string materiau, string couleur2)
-
-            {
-
-                List<Accessory> list = new List<Accessory>();
-
-
-
-                double hauteurTasseau = hauteur - 4; // en cm
-
-
-
-                HBpanel HBpanell = new HBpanel(couleur, profondeur, largeur);
-
-                list.Add(HBpanell);
-
-
-
-                GDpanel GDpanell = new GDpanel(couleur, profondeur, hauteurTasseau);
-
-                list.Add(GDpanell);
-
-
-
-                ARpanel ARpanell = new ARpanel(couleur, largeur, hauteurTasseau);
-
-                list.Add(ARpanell);
-
-
-
-                //ARAVrail ARAVraill = new ARAVrail(largeur);   //x2
-
-                //list.Add(ARAVraill);
-
-
-
-                GDrail GDraill = new GDrail(profondeur);     //x2
-
-                list.Add(GDraill);
-
-
-
-                Cleat cleatt = new Cleat(hauteurTasseau);           //x4
-
-                list.Add(cleatt);
-
-
-
-
-
-                if (largeur < 62)
-
-                {
-
-                    // présenter le champ "door" dans l'interface 
-
-                    // penser à afficher un message dans la fenêtre 1 pour avertir des limitations des largeurs pour les portes
-
-
-
-                    if (materiau == "Verre")
-
-                    {
-
-                        //GlassDoor glassDoor = new GlassDoor(); 
-
-                        //list.Add(glassDoor);
-
-                    }
-
-
-
-                    else
-
-                    {
-
-                        //NormalDoor normalDoor = new NormalDoor( couleur2);
-
-                        //list.Add(normalDoor);
-
-
-
-                    }
-
-                }
-
-
-
-                //Locker Casier = new Locker(list, hauteur, couleur);         // ouu Casier.AddAccessory(cleatt);
-
-                //lockerList.Add(Casier);                                             // attention problème tous les casiers même nom à résoudre 
-
-                //pas besoin? les ajouter dans une liste directlyy
-
-                //hauteur = hauteur casier entré dans l'interface
-
-                //meilleur manière de rassembler les casier dans une liste
-
-                // choisir éléments bdd (décrémenter)                                                                              
-
-                //boucle avec interface
-
-                //BDD
-
-                //gérer les erreures
-
-                //cornière découpée
-
-            }
-
-        }
+        
     }
 }

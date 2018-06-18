@@ -70,8 +70,11 @@ namespace Interface
             }
 
             //Affiche le prix total pour vérification
-            double price = Form1.GetCupBoard().GetPrice(form.connection);
+            double price = Form1.GetCupBoard().GetPrice(form.connection); 
             MessageBox.Show(Convert.ToString(price));
+
+            //Affiche idOrder
+            MessageBox.Show("Order confirmed ! Here is your order number : " +Convert.ToString(order.GetidOrder()) + ".   Please communicate it to the storekeeper.");
 
             CompleteLinkedTable();
 

@@ -62,12 +62,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(534, 435);
-            this.textBox1.Multiline = true;
+            this.textBox1.Location = new System.Drawing.Point(660, 425);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(344, 40);
+            this.textBox1.Size = new System.Drawing.Size(232, 22);
             this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "Please enter an email before starting";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // contextMenuStrip1

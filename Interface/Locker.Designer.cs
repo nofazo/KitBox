@@ -134,7 +134,7 @@
             this.Finish.Name = "Finish";
             this.Finish.Size = new System.Drawing.Size(204, 101);
             this.Finish.TabIndex = 18;
-            this.Finish.Text = "No more locker";
+            this.Finish.Text = "No more lockers";
             this.Finish.UseVisualStyleBackColor = false;
             this.Finish.Click += new System.EventHandler(this.Finish_Click);
             // 

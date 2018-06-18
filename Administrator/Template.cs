@@ -53,7 +53,30 @@ namespace WindowsFormsApp7
             return IDList;
         }
 
+        public string GetColorEnglish(string color)
+        {
+            string dbColor = "";
 
+            if (color == "Brun")
+                dbColor = "Brown";
+
+            if (color == "Blanc")
+                dbColor = "White";
+
+            if (color == "Vert")
+                dbColor = "Green";
+
+            if (color == "Noir")
+                dbColor = "Black";
+
+            if (color == "Verre")
+                dbColor = "glass";
+
+            if (color == "Galvanisé")
+                dbColor = "Galvanised";
+
+            return dbColor;
+        }
 
         public Dictionary<string, string> GetLockerAttribute (MySqlConnection connection, int FkOrder, int idLocker)
         {
@@ -129,7 +152,8 @@ namespace WindowsFormsApp7
 
                 else
                 {
-                    Accessory.NormalDoor normalDoor = new Accessory.NormalDoor(height, width, colorDoor);
+                    string colorDoorEnglish = GetColorEnglish(colorDoor);
+                    Accessory.NormalDoor normalDoor = new Accessory.NormalDoor(height, width, colorDoorEnglish);
                     accessList.Add(normalDoor);
                 }
             }
@@ -169,10 +193,14 @@ namespace WindowsFormsApp7
             {
                 while (reader.Read())
                 {
-                    IdPart = reader.GetString(0);
-                    string refPart = IdPart.Substring(0, 3);
+                    string IdPartObj = reader.GetString(0);
+                    string refPart = IdPartObj.Substring(0, 3);
                     if (refPart == referencePart)
+                    {
+                        IdPart = IdPartObj;
                         break;
+                    }
+                        
                 }
             }
             else
@@ -185,7 +213,7 @@ namespace WindowsFormsApp7
             return IdPart;
         }
         
-        public string GetColorPart(string IdPart)
+        public string GetColorPart(string IdPart) //tt renvoi en fr
         {
             MySqlDataReader reader;
             MySqlCommand command = new MySqlCommand("SELECT color FROM `kitboxdb2.0`.`parts` WHERE Idpart='" + IdPart + "'", connection);
@@ -217,7 +245,8 @@ namespace WindowsFormsApp7
             string IdPart = GetIdPart(FkOrder, idLocker, "COR");
             if ( IdPart != "")
             {
-                string colorExtrusion = GetColorPart(IdPart);
+                string colorExtr = GetColorPart(IdPart); //en fr
+                string colorExtrusion = GetColorEnglish(colorExtr);
                 Extrusion extrusion = new Extrusion(colorExtrusion, 0);
                 return extrusion;
             }

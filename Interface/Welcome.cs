@@ -25,9 +25,9 @@ namespace Interface
         private void Start_Click(object sender, EventArgs e)
         {
             
-            if  (textBox1.Text=="Please enter an email before starting")
+            if  (textBox1.Text=="")
             {
-                MessageBox.Show("You forgot enter an email !!");
+                MessageBox.Show("You forgot your name !!");
             }
             else
             {

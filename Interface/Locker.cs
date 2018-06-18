@@ -117,6 +117,7 @@ namespace Interface
                 if (list[0] == "glass")
                 {
                     GlassDoor door = new GlassDoor(HeightGet(), WidthGet());
+                    accList.Add(door);
                 }
             }
 

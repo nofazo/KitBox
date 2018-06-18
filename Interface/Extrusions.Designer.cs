@@ -43,7 +43,7 @@
             "Brown",
             "Black",
             "Galvanised"});
-            this.extrusionColor.Location = new System.Drawing.Point(720, 176);
+            this.extrusionColor.Location = new System.Drawing.Point(665, 161);
             this.extrusionColor.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.extrusionColor.Name = "extrusionColor";
             this.extrusionColor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;

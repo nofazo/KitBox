@@ -81,7 +81,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(223, 90);
             this.button1.TabIndex = 15;
-            this.button1.Text = "Choose Locker";
+            this.button1.Text = "Choose lockers";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -101,7 +101,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(57, 566);
+            this.button2.Location = new System.Drawing.Point(57, 553);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(223, 90);
