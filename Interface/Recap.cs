@@ -64,13 +64,12 @@ namespace Interface
 
         private void Confirm_Click(object sender, EventArgs e)
         {
-            if (form.OpenConnection() == true)
-            {              
+                          
                 int idOrder = order.GetIdOrder();
                 MySqlCommand cmd = new MySqlCommand("UPDATE `kitboxdb2.0`.`orders` SET State='Confirmed' WHERE idOrder ='" + idOrder + "'", form.connection);
                 order.SetState("Confirmed");
                 cmd.ExecuteNonQuery();
-            }
+            
 
             
 
