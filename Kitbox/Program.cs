@@ -432,6 +432,12 @@ namespace Kitbox
     {
         private int id;
         private string state;
+        private CupBoard cupboard;
+
+        public Order(CupBoard cupboard)
+        {
+            this.cupboard = cupboard;
+        }
 
         public void SetIdOrder(int id)
         {

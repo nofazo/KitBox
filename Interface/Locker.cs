@@ -278,7 +278,7 @@ namespace Interface
 
                         if (instock < 1)
                         {
-                            
+
                             dataGridView1["Disponibility", row].Value = "Not Available";
                             break;
                         }
@@ -288,10 +288,16 @@ namespace Interface
                         }
 
                     }
+                    
                     form.CloseConnection();
 
 
                 }
+
+                // nettoyer la liste des anciens lockers
+                cupBoard.GetLockerList().Clear();
+                //remettre la commande en état initialisée
+                order.SetState("initialized");
             }
 
         }
@@ -326,6 +332,7 @@ namespace Interface
             if (form.OpenConnection() == true)
             {
                 int idOrder = order.GetIdOrder();
+                //reinitialize the list of lockers
                 //update in database if previous mode.
                 if (order.GetState() == "InProgress")
                 {

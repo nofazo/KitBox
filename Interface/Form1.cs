@@ -22,7 +22,7 @@ namespace Interface
         public MySqlConnection connection;
         public MySqlDataAdapter mySqlDataAdapter;
 
-        private static Order order = new Order();
+        private static Order order = new Order(GetCupBoard());
        
         private static Extrusion extrusion = new Extrusion("", 0);
         private static List<Kitbox.Locker> listOfLocker = new List<Kitbox.Locker>();  
