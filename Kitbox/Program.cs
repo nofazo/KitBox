@@ -112,6 +112,11 @@ namespace Kitbox
             return height;
 
         }
+
+        public void AddLocker(Locker locker)
+        {
+            lockerList.Add(locker);
+        }
     }
 
 

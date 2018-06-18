@@ -78,9 +78,9 @@ namespace Interface
             // Cancel the order 
             order.SetState("Canceled");
             //delete the order
-            MySqlCommand mySqlCommand = new MySqlCommand("Delete FROM `kitboxdb2.0`.`orders` WHERE idOrder ='" + order.GetidOrder() + "'", form.connection);
+            MySqlCommand mySqlCommand = new MySqlCommand("Delete FROM `kitboxdb2.0`.`orders` WHERE idOrder ='" + order.GetIdOrder() + "'", form.connection);
             //delete lockers linked to the order
-            MySqlCommand mySqlCommand2 = new MySqlCommand("Delete FROM `kitboxdb2.0`.`lockers` WHERE FkOrder ='" + order.GetidOrder() + "'", form.connection);
+            MySqlCommand mySqlCommand2 = new MySqlCommand("Delete FROM `kitboxdb2.0`.`lockers` WHERE FkOrder ='" + order.GetIdOrder() + "'", form.connection);
             if (form.OpenConnection() == true)
             {
                 mySqlCommand.ExecuteNonQuery();

@@ -34,7 +34,7 @@ namespace Interface
             if (form.OpenConnection() == true)
             {
                 
-                int idOrder = order.GetidOrder();
+                int idOrder = order.GetIdOrder();
                 MySqlCommand cmd = new MySqlCommand("UPDATE `kitboxdb2.0`.`orders` SET State='Completed' WHERE idOrder ='" + idOrder + "'", form.connection);
 
                 cmd.ExecuteNonQuery();
