@@ -32,12 +32,15 @@ namespace WindowsFormsApp7
         private void button1_Click(object sender, EventArgs e)
         {
             form.OpenConnection();
-
+            //supprime les pièces dans la base de donnée 
+            DeleteParts();
+            //renvoie la facture
+            
             CupBoard cupBoard = form.GetCupBoard(form.connection, GetFkOrder());
             int lockerNumber = cupBoard.GetLockerList().Count();
             string colorExtrusion = cupBoard.GetExtrusion().GetColor();
 
-            string path = @"/Users/User/source/Bill.txt";
+            string path = @"/Users/Fatine/source/Bill.txt";
 
             using (StreamWriter sw = File.CreateText(path))
             {
@@ -48,9 +51,9 @@ namespace WindowsFormsApp7
 
                 int i = 1;
                 foreach (Locker locker in cupBoard.GetLockerList())
-                {                  
+                {
                     sw.WriteLine("Locker n°" + i + ": ");
-                    sw.WriteLine("Color: " + locker.GetColor() + "   Price: " + locker.GetPrice(form.connection));  
+                    sw.WriteLine("Color: " + locker.GetColor() + "   Price: " + locker.GetPrice(form.connection));
                     if (locker.HasDoor())
                         if (locker.GetDoor().GetColor() == "glass")
                             sw.WriteLine(" This locker has 2 glass doors");
@@ -80,7 +83,7 @@ namespace WindowsFormsApp7
             if (form.OpenConnection() == true)
             {
                 //Afficher également les détails
-                form.mySqlDataAdapter = new MySqlDataAdapter("select * from lockers where FkOrder= '"+comboBoxCmdID.Text+"';", form.connection);
+                form.mySqlDataAdapter = new MySqlDataAdapter("select * from lockers where FkOrder= '" + comboBoxCmdID.Text + "';", form.connection);
                 DataSet DS = new DataSet();
                 form.mySqlDataAdapter.Fill(DS);
 
@@ -156,7 +159,7 @@ namespace WindowsFormsApp7
 
             using (StreamWriter sw = File.CreateText(path))
             {
-                sw.WriteLine("DETAIL PARTS"); 
+                sw.WriteLine("DETAIL PARTS");
                 sw.WriteLine(" ");
                 sw.WriteLine("there is in this order:  1 cupboard with " + lockerNumber + " locker(s).");
                 sw.WriteLine(" ");
@@ -168,15 +171,15 @@ namespace WindowsFormsApp7
                     sw.WriteLine("Color: " + locker.GetColor() + "   Price: " + locker.GetPrice(form.connection) + " euros");
                     sw.WriteLine("   Parts : ");
 
-                    foreach(Accessory access in locker.GetAccessoryList())
+                    foreach (Accessory access in locker.GetAccessoryList())
                     {
                         string availability;
                         if (access.GetInstock(form.connection) > 1)
                             availability = "available";
                         else
                             availability = "not available";
-                        
-                        sw.WriteLine("    Type : " + access.GetAccessType() + "   color : "+ GetRealColor(access.GetColor()) + "   dimensions : " + GetDimension(access.GetHeight(), access.GetWidth(), access.GetDepth()) + "   price : " + access.GetPrice(form.connection) + " euros"+ "   " + availability);
+
+                        sw.WriteLine("    Type : " + access.GetAccessType() + "   color : " + GetRealColor(access.GetColor()) + "   dimensions : " + GetDimension(access.GetHeight(), access.GetWidth(), access.GetDepth()) + "   price : " + access.GetPrice(form.connection) + " euros" + "   " + availability);
                     }
 
                     sw.WriteLine(" ");
@@ -191,7 +194,7 @@ namespace WindowsFormsApp7
                     availabilityC = "not available";
 
                 sw.WriteLine("Corner ");
-                sw.WriteLine("Color: " + colorExtrusion + "   height : " + extrusion.GetHeight() + "   Price : " + extrusion.GetPrice(form.connection) + " euros " +"   " + availabilityC);
+                sw.WriteLine("Color: " + colorExtrusion + "   height : " + extrusion.GetHeight() + "   Price : " + extrusion.GetPrice(form.connection) + " euros " + "   " + availabilityC);
 
                 sw.WriteLine(" ");
 
@@ -200,6 +203,101 @@ namespace WindowsFormsApp7
             }
 
             form.CloseConnection();
+        }
+
+        public void DeleteParts()
+        {
+            CupBoard cupBoard = form.GetCupBoard(form.connection,GetFkOrder());
+            string idPart = "";
+            int numberOfPart = 0;
+            int InStock = 0;
+
+            foreach (Kitbox.Locker locker in cupBoard.GetLockerList())
+            {
+                foreach (Accessory access in locker.GetAccessoryList())
+                {
+                    //Prendre les references de toutes les parts d'un locker 
+
+                    MySqlDataReader reader;
+                    MySqlCommand command = new MySqlCommand("SELECT Idpart FROM `kitboxdb2.0`.`parts` WHERE ref='" + access.GetRefDB() + "'AND height='" + Convert.ToString(access.GetHeight()) + "'AND width='" + Convert.ToString(access.GetWidth()) + "'AND depth='" + Convert.ToString(access.GetDepth()) + "'AND color='" + access.GetColorDB(access.GetColor()) + "'", form.connection);
+                    reader = command.ExecuteReader();
+
+                                   
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+
+                        {
+                            idPart = reader.GetString(0);                                                                                                                                                                 
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("there is no idPart in the datareader");
+                    }
+
+                    reader.Close();
+
+                }
+            }
+            foreach (Kitbox.Locker locker in cupBoard.GetLockerList())
+            {
+                foreach (Accessory access in locker.GetAccessoryList())
+                {
+
+                    MySqlDataReader reader3;
+                    MySqlCommand command3 = new MySqlCommand("SELECT PartForLocker FROM `kitboxdb2.0`.`parts` WHERE ref='" + access.GetRefDB() + "'AND height='" + Convert.ToString(access.GetHeight()) + "'AND width='" + Convert.ToString(access.GetWidth()) + "'AND depth='" + Convert.ToString(access.GetDepth()) + "'AND color='" + access.GetColorDB(access.GetColor()) + "'", form.connection);
+                    reader3 = command3.ExecuteReader();                  
+
+                    if (reader3.HasRows)
+                    {
+                        while (reader3.Read())
+
+                        {
+                            numberOfPart = Convert.ToInt32(reader3.GetString(0));
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("there is no idPart in the datareader");
+                    }
+
+                    reader3.Close();
+
+                }
+            }
+            foreach (Kitbox.Locker locker in cupBoard.GetLockerList())
+            {
+                foreach (Accessory access in locker.GetAccessoryList())
+                {
+
+                    MySqlDataReader reader4;
+                    MySqlCommand command4 = new MySqlCommand("SELECT Instock FROM `kitboxdb2.0`.`parts` WHERE ref='" + access.GetRefDB() + "'AND height='" + Convert.ToString(access.GetHeight()) + "'AND width='" + Convert.ToString(access.GetWidth()) + "'AND depth='" + Convert.ToString(access.GetDepth()) + "'AND color='" + access.GetColorDB(access.GetColor()) + "'", form.connection);
+                    reader4 = command4.ExecuteReader();
+
+                    if (reader4.HasRows)
+                    {
+                        while (reader4.Read())
+
+                        {
+                            InStock = Convert.ToInt32(reader4.GetString(0));
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("there is no idPart in the datareader");
+                    }
+
+                    reader4.Close();
+
+                }
+            }
+
+            //retirer les parts liés à la commande.
+            MySqlCommand command2 = new MySqlCommand("Update `kitboxdb2.0`.`parts` SET Instock= '" + (InStock - numberOfPart) + "' WHERE Idpart='" + idPart + "'", form.connection);
+            command2.ExecuteNonQuery();
         }
     }
 }

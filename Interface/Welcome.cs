@@ -33,7 +33,7 @@ namespace Interface
             {
                 if (form.OpenConnection() == true)
                 {
-                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`orders` (`clientAdressMail`,`State`) VALUES ('" + textBox1.Text + "','initialized');", form.connection);
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `kitboxdb2.0`.`orders` (`clientName`,`State`) VALUES ('" + textBox1.Text + "','initialized');", form.connection);
                     form.mySqlDataAdapter = new MySqlDataAdapter("SELECT  idOrder FROM  orders WHERE  idOrder = (SELECT MAX(idOrder) FROM orders)", form.connection);
 
                     cmd.ExecuteNonQuery();

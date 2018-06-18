@@ -45,19 +45,22 @@ namespace Interface
             foreach (Kitbox.Locker locker in Form1.GetListofLocker())
             {
                 //remplir le textbox avec les valeurs des objects existants
-                textBox1.AppendText(" "+i+ " : One "  + locker.GetColor()+ "  locker. \n");
-
-                foreach (Kitbox.Accessory accessory in locker.GetAccessoryList())
-                {
-                    textBox1.AppendText(" " + accessory.GetAccessType() + " ");
-                }
+                textBox1.AppendText(" "+i+ " : One "  + locker.GetColor()+ "  locker. \n");               
                                        
                 i += 1;
             }
-
+            //Affiche le prix total pour vérification
+            if (form.OpenConnection() == true)
+            {
+                double price = Form1.GetCupBoard().GetPrice(form.connection);
+                textBox1.AppendText("Total: " + Convert.ToString(price) + " .");
+            }
+            
+            
+            
         }
+       
 
-        
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -69,9 +72,7 @@ namespace Interface
                 cmd.ExecuteNonQuery();
             }
 
-            //Affiche le prix total pour vérification
-            double price = Form1.GetCupBoard().GetPrice(form.connection); 
-            MessageBox.Show(Convert.ToString(price));
+            
 
             //Affiche idOrder
             MessageBox.Show("Order confirmed ! Here is your order number : " +Convert.ToString(order.GetIdOrder()) + ".   Please communicate it to the storekeeper.");
@@ -117,6 +118,8 @@ namespace Interface
                     command2.ExecuteNonQuery();                   
                 }
             }
+
+            
 
             //Ajout de extrusion dans linked : une seule fois
             Extrusion extrusion = cupBoard.GetExtrusion();
